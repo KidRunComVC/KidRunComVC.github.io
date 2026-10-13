@@ -1,0 +1,6 @@
+# Hidden until there is more to read.
+# At launch: delete this file, or replace the rule below with "Allow: /".
+# Also remove the noindex meta tag from every HTML page. See README.md.
+
+User-agent: *
+Disallow: /

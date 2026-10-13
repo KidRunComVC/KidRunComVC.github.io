@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var theme = saved === "light" || saved === "dark"
+            ? saved
+            : (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>TODO: Post title — KidRunComVC</title>
+    <meta name="description" content="TODO: One-sentence description of the post for the browser and for search, once search is allowed.">
+    <meta name="author" content="KidRunComVC">
+    <link rel="canonical" href="https://kidruncomvc.github.io/posts/_template.html">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#10140f" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f3efe4" media="(prefers-color-scheme: light)">
+    <link rel="preload" href="/assets/fonts/fraunces-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <header class="mast">
+      <div class="mast-inner">
+        <div class="status-row">
+          <p class="status"><span class="dot" aria-hidden="true"></span> Desk online <span aria-hidden="true">/</span> education only</p>
+          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch color theme">
+            <span class="theme-swatch" aria-hidden="true"></span>
+            <span class="theme-toggle-label">Theme</span>
+          </button>
+        </div>
+        <div class="brand-row">
+          <a class="brand" href="/">KidRunComVC</a>
+          <nav class="site-nav" aria-label="Primary">
+            <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/market-history/">Market history</a></li>
+            <li><a href="/technical-analysis/">Technical analysis</a></li>
+            <li><a href="/about/">About</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" tabindex="-1">
+      <article class="article">
+        <!--
+          Template, not a published essay.
+          1. Copy this file to posts/your-slug.html (lowercase, hyphens).
+          2. Replace every TODO, including the <title>, description, and canonical URL.
+          3. Delete this comment and the template banner below.
+          4. Link the new file from market-history/index.html or technical-analysis/index.html.
+          5. Optionally add the same link to the home page preview.
+          See README.md.
+        -->
+        <p class="template-banner">Template only. Copy this file, then delete this banner. It is not a published essay.</p>
+        <header class="article-head">
+          <p class="kicker"><a href="/market-history/">TODO: Market history or Technical analysis</a></p>
+          <h1>TODO: Post title</h1>
+          <p class="deck">TODO: One sentence that says what this piece is actually about.</p>
+          <p class="byline">
+            <span>KidRunComVC</span>
+            <span aria-hidden="true">/</span>
+            <time datetime="2026-01-01">TODO: 1 January 2026</time>
+            <span aria-hidden="true">/</span>
+            <span>TODO minute read</span>
+          </p>
+        </header>
+
+        <p>TODO: Opening paragraph. Say the point in plain language. Save the joke for when the facts have landed.</p>
+
+        <h2>TODO: First section</h2>
+        <p>TODO: Body. History posts should keep the dates and name a source when a number could be argued with. Technical posts should explain the tool and refuse to turn it into a command.</p>
+
+        <h2>TODO: A picture, if you need one</h2>
+        <p>TODO: If you add a chart, use inline SVG, and label it illustrative in the picture and in the caption. Do not present a sketch as market data.</p>
+
+        <aside class="lesson">
+          <h2>The lesson</h2>
+          <p>TODO: One closing line. Funny is allowed. Smug is not. It should follow from the piece.</p>
+        </aside>
+
+        <section class="sources" aria-label="Sources">
+          <h2>Sources</h2>
+          <ul>
+            <li>TODO: Remove this section if the piece is an explainer with nothing to cite. Otherwise name the book, report, or record a careful reader could find.</li>
+          </ul>
+        </section>
+
+        <nav class="more" aria-label="More to read">
+          <h2>Keep reading</h2>
+          <ul>
+            <li><a href="/">Back to the desk</a></li>
+          </ul>
+        </nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <nav class="footer-nav" aria-label="Footer">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/market-history/">Market history</a></li>
+            <li><a href="/technical-analysis/">Technical analysis</a></li>
+            <li><a href="/about/">About</a></li>
+          </ul>
+        </nav>
+        <p class="legal">© 2026 KidRunComVC. All rights reserved. Education and entertainment only, not investment advice.</p>
+      </div>
+    </footer>
+    <script src="/js/site.js"></script>
+  </body>
+</html>

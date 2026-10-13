@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var theme = saved === "light" || saved === "dark"
+            ? saved
+            : (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Support and resistance — KidRunComVC</title>
+    <meta name="description" content="Support and resistance are zones where price has stalled before. An explainer with an illustrative chart, not a trading signal.">
+    <meta name="author" content="KidRunComVC">
+    <link rel="canonical" href="https://kidruncomvc.github.io/posts/support-and-resistance.html">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#10140f" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f3efe4" media="(prefers-color-scheme: light)">
+    <link rel="preload" href="/assets/fonts/fraunces-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <header class="mast">
+      <div class="mast-inner">
+        <div class="status-row">
+          <p class="status"><span class="dot" aria-hidden="true"></span> Desk online <span aria-hidden="true">/</span> education only</p>
+          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch color theme">
+            <span class="theme-swatch" aria-hidden="true"></span>
+            <span class="theme-toggle-label">Theme</span>
+          </button>
+        </div>
+        <div class="brand-row">
+          <a class="brand" href="/">KidRunComVC</a>
+          <nav class="site-nav" aria-label="Primary">
+            <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/market-history/">Market history</a></li>
+            <li><a href="/technical-analysis/" aria-current="page">Technical analysis</a></li>
+            <li><a href="/about/">About</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" tabindex="-1">
+      <article class="article">
+        <header class="article-head">
+          <p class="kicker"><a href="/technical-analysis/">Technical analysis</a></p>
+          <h1>Support and resistance</h1>
+          <p class="deck">The chart's memory of a place where buyers or sellers dug in. A zone, not a spell.</p>
+          <p class="byline">
+            <span>KidRunComVC</span>
+            <span aria-hidden="true">/</span>
+            <time datetime="2026-10-08">8 October 2026</time>
+            <span aria-hidden="true">/</span>
+            <span>3 minute read</span>
+          </p>
+        </header>
+
+        <p>Price is a negotiation that leaves fingerprints. Trade near the same neighborhood often enough and a chart starts to look as if it has opinions. Support is the name for a zone where declines have stalled. Resistance is the mirror image: a zone where rallies have stalled. That is the whole idea. The rest is manners, and a little caution.</p>
+
+        <h2>A zone, not a razor</h2>
+        <p>Draw these as bands, not as a price to the penny. A crowd does not change its mind at a single tick. It changes its mind around a prior high, a prior low, a round number someone can remember without a pencil. If you have to zoom until a perfect line appears, you have invented a pen pal.</p>
+
+        <figure class="chart-figure">
+        <svg class="chart" viewBox="0 0 760 430" role="img" aria-labelledby="sr-cap" aria-describedby="sr-desc">
+          <desc id="sr-desc">A made-up price line stalls inside an upper band labeled resistance zone and a lower band labeled support zone, then rises through the upper band. The drawing is labeled illustrative and is not market data.</desc>
+          <rect class="zone-resist" x="36" y="78" width="688" height="48"></rect>
+          <rect class="zone-support" x="36" y="268" width="688" height="52"></rect>
+          <line class="grid" x1="36" y1="102" x2="724" y2="102"></line>
+          <line class="grid" x1="36" y1="190" x2="724" y2="190"></line>
+          <line class="grid" x1="36" y1="294" x2="724" y2="294"></line>
+          <line class="axis" x1="36" y1="40" x2="36" y2="352"></line>
+          <line class="axis" x1="36" y1="352" x2="724" y2="352"></line>
+          <polyline class="axis" points="724,352 712,346 712,358"></polyline>
+          <polyline class="axis" points="36,40 30,52 42,52"></polyline>
+          <polyline class="price" points="48,214 86,176 120,190 156,146 190,104 224,116 258,158 292,214 326,292 360,278 394,232 428,164 462,108 496,96 530,150 564,216 598,304 632,280 666,196 700,122 732,62"></polyline>
+          <circle class="touch" cx="190" cy="104" r="5"></circle>
+          <circle class="touch" cx="224" cy="116" r="5"></circle>
+          <circle class="touch" cx="326" cy="292" r="5"></circle>
+          <circle class="touch" cx="462" cy="108" r="5"></circle>
+          <circle class="touch" cx="496" cy="96" r="5"></circle>
+          <circle class="touch" cx="598" cy="304" r="5"></circle>
+          <circle class="touch" cx="732" cy="62" r="5"></circle>
+          <text x="48" y="100">resistance zone</text>
+          <text x="48" y="298">support zone</text>
+          <text class="label-accent" x="520" y="52">leaves the zone</text>
+          <text class="label-muted" x="48" y="28">price, higher is up</text>
+          <text class="label-muted" x="380" y="386" text-anchor="middle">time</text>
+          <text class="label-muted" x="560" y="412" text-anchor="end">illustrative sketch</text>
+        </svg>
+        <ul class="chart-key">
+          <li><span class="key-swatch key-resist" aria-hidden="true"></span> Resistance zone</li>
+          <li><span class="key-swatch key-support" aria-hidden="true"></span> Support zone</li>
+          <li><span class="key-swatch key-price" aria-hidden="true"></span> Made-up price</li>
+        </ul>
+        <figcaption id="sr-cap"><span class="badge">Illustrative</span> Made-up prices. The dots mark pauses in a resistance zone, pauses in a support zone, and one break above the upper zone. Not market data.</figcaption>
+      </figure>
+
+        <h2>Why the same neighborhoods return</h2>
+        <p>Memory. Someone bought there and spent weeks wishing they had not, and a return to that price feels like a door. Someone sold there and felt clever, and a revisit looks like a second chance to feel clever again. Neither feeling is a law. Both show up often enough that the marks are worth seeing.</p>
+        <p>A level can also switch jobs. Resistance that finally gives way is sometimes treated, on a later visit, as support. The old ceiling gets tested as a floor. Sometimes. That word is doing all the honest work in the sentence. A chart does not owe anyone a role reversal because a textbook sketched one.</p>
+
+        <h2>How to look without fooling yourself</h2>
+        <p>Real charts are ruder than the sketch above. They poke through a zone, wander back, and dare you to explain it with a ruler. A mark that deserves the name has dull evidence: more than one pause, trading that actually happened there, and a zone you can describe out loud. One touch is an anecdote.</p>
+        <p>Nothing on this page is an instruction. A support zone is not a promise that price will bounce, and it is not a reason to do anything with money. It is a note about where a fight happened. The next fight is a new negotiation. It has heard of the last one. It is not bound by it.</p>
+
+        <aside class="lesson">
+          <h2>The lesson</h2>
+          <p>Support is a place the chart remembers a fight. It is not a contract that the same side will win again.</p>
+        </aside>
+
+        <nav class="more" aria-label="More technical analysis">
+          <h2>Keep reading</h2>
+          <ul>
+            <li><a href="/posts/moving-averages.html">Moving averages</a></li>
+            <li><a href="/technical-analysis/">All technical analysis</a></li>
+          </ul>
+        </nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <nav class="footer-nav" aria-label="Footer">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/market-history/">Market history</a></li>
+            <li><a href="/technical-analysis/" aria-current="page">Technical analysis</a></li>
+            <li><a href="/about/">About</a></li>
+          </ul>
+        </nav>
+        <p class="legal">© 2026 KidRunComVC. All rights reserved. Education and entertainment only, not investment advice.</p>
+      </div>
+    </footer>
+    <script src="/js/site.js"></script>
+  </body>
+</html>

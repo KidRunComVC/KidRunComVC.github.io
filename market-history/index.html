@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var theme = saved === "light" || saved === "dark"
+            ? saved
+            : (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Market history — KidRunComVC</title>
+    <meta name="description" content="Stories of what prices did, with the dates left on and the folklore labeled. Tulip Mania and Black Monday to start.">
+    <meta name="author" content="KidRunComVC">
+    <link rel="canonical" href="https://kidruncomvc.github.io/market-history/">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#10140f" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f3efe4" media="(prefers-color-scheme: light)">
+    <link rel="preload" href="/assets/fonts/fraunces-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <header class="mast">
+      <div class="mast-inner">
+        <div class="status-row">
+          <p class="status"><span class="dot" aria-hidden="true"></span> Desk online <span aria-hidden="true">/</span> education only</p>
+          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch color theme">
+            <span class="theme-swatch" aria-hidden="true"></span>
+            <span class="theme-toggle-label">Theme</span>
+          </button>
+        </div>
+        <div class="brand-row">
+          <a class="brand" href="/">KidRunComVC</a>
+          <nav class="site-nav" aria-label="Primary">
+            <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/market-history/" aria-current="page">Market history</a></li>
+            <li><a href="/technical-analysis/">Technical analysis</a></li>
+            <li><a href="/about/">About</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" tabindex="-1">
+      <header class="page-head wrap">
+        <p class="kicker">Section</p>
+        <h1>Market history</h1>
+        <p class="deck">Prices have been misbehaving for a long time. These starter stories keep the dates and scrape off the folklore. More when the desk has more to say.</p>
+      </header>
+      <section class="catalog wrap" aria-label="Market history posts">
+        <ol class="story-list">
+          <li>
+            <a class="story" href="/posts/tulip-mania-1637.html">
+              <span class="story-index" aria-hidden="true">01</span>
+              <span class="story-body">
+                <span class="story-kicker">February 1637</span>
+                <span class="story-title">Tulip Mania</span>
+                <span class="story-deck">A real price spike, a market in contracts, and a legend that got a better press agent.</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="story" href="/posts/black-monday-1987.html">
+              <span class="story-index" aria-hidden="true">02</span>
+              <span class="story-body">
+                <span class="story-kicker">19 October 1987</span>
+                <span class="story-title">Black Monday</span>
+                <span class="story-deck">A 22.6 percent day, and the hedge that sold into its own shadow.</span>
+              </span>
+            </a>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <nav class="footer-nav" aria-label="Footer">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/market-history/" aria-current="page">Market history</a></li>
+            <li><a href="/technical-analysis/">Technical analysis</a></li>
+            <li><a href="/about/">About</a></li>
+          </ul>
+        </nav>
+        <p class="legal">© 2026 KidRunComVC. All rights reserved. Education and entertainment only, not investment advice.</p>
+      </div>
+    </footer>
+    <script src="/js/site.js"></script>
+  </body>
+</html>

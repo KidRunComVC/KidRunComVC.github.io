@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var theme = saved === "light" || saved === "dark"
+            ? saved
+            : (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>About — KidRunComVC</title>
+    <meta name="description" content="Dad, runner, comedian on the side, trader. KidRunComVC is Kid, Run, Com, VC.">
+    <meta name="author" content="KidRunComVC">
+    <link rel="canonical" href="https://kidruncomvc.github.io/about/">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#10140f" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f3efe4" media="(prefers-color-scheme: light)">
+    <link rel="preload" href="/assets/fonts/fraunces-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <header class="mast">
+      <div class="mast-inner">
+        <div class="status-row">
+          <p class="status"><span class="dot" aria-hidden="true"></span> Desk online <span aria-hidden="true">/</span> education only</p>
+          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch color theme">
+            <span class="theme-swatch" aria-hidden="true"></span>
+            <span class="theme-toggle-label">Theme</span>
+          </button>
+        </div>
+        <div class="brand-row">
+          <a class="brand" href="/">KidRunComVC</a>
+          <nav class="site-nav" aria-label="Primary">
+            <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/market-history/">Market history</a></li>
+            <li><a href="/technical-analysis/">Technical analysis</a></li>
+            <li><a href="/about/" aria-current="page">About</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" tabindex="-1">
+      <article class="article">
+        <header class="article-head">
+          <p class="kicker">About</p>
+          <h1>About this desk</h1>
+          <p class="deck">Dad, runner, comedian on the side, trader.</p>
+        </header>
+        <h2>The name</h2>
+        <p>KidRunComVC is four pieces stuck together: Kid, Run, Com, VC.</p>
+        <ul>
+          <li><strong>Kid</strong>, because this is a dad.</li>
+          <li><strong>Run</strong>, because the miles happen whether or not the chart cooperates.</li>
+          <li><strong>Com</strong>, because there is a comedian on the side.</li>
+          <li><strong>VC</strong> is the last piece of the handle. It is part of the name, not a job title and not a pitch.</li>
+        </ul>
+        <h2>What shows up here</h2>
+        <p>Market history and technical analysis, written so they can be read out loud without a glossary. A joke gets in when it has earned the space. Nothing on this site is a recommendation, a signal, or a reason to do anything with money.</p>
+        <p>If you came for a stock tip, the back button is the whole product. If you came for 1637 with the folklore scraped down, you are in the right room.</p>
+        <p>No real name, no city, no headshot. The essays are the introduction.</p>
+        <nav class="more" aria-label="Start reading">
+          <h2>Start here</h2>
+          <ul>
+            <li><a href="/market-history/">Market history</a></li>
+            <li><a href="/technical-analysis/">Technical analysis</a></li>
+          </ul>
+        </nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <nav class="footer-nav" aria-label="Footer">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/market-history/">Market history</a></li>
+            <li><a href="/technical-analysis/">Technical analysis</a></li>
+            <li><a href="/about/" aria-current="page">About</a></li>
+          </ul>
+        </nav>
+        <p class="legal">© 2026 KidRunComVC. All rights reserved. Education and entertainment only, not investment advice.</p>
+      </div>
+    </footer>
+    <script src="/js/site.js"></script>
+  </body>
+</html>
