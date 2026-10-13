@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var theme = saved === "light" || saved === "dark"
+            ? saved
+            : (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>TODO: Entry title — KidRunComVC</title>
+    <meta name="description" content="TODO: One sentence on the story, with no names you do not mean to publish.">
+    <meta name="author" content="KidRunComVC">
+    <link rel="canonical" href="https://kidruncomvc.github.io/posts/_roadlog-template.html">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#10140f" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f3efe4" media="(prefers-color-scheme: light)">
+    <link rel="preload" href="/assets/fonts/fraunces-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <header class="mast">
+      <div class="mast-inner">
+        <div class="status-row">
+          <p class="status"><span class="dot" aria-hidden="true"></span> Desk online <span aria-hidden="true">/</span> education only</p>
+          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch color theme">
+            <span class="theme-swatch" aria-hidden="true"></span>
+            <span class="theme-toggle-label">Theme</span>
+          </button>
+        </div>
+        <div class="brand-row">
+          <a class="brand" href="/">KidRunComVC</a>
+          <nav class="site-nav" aria-label="Primary">
+            <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/market-history/">Market history</a></li>
+            <li><a href="/technical-analysis/">Technical analysis</a></li>
+            <li><a href="/road-log/" aria-current="page">Road log</a></li>
+            <li><a href="/about/">About</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" tabindex="-1">
+      <article class="article">
+        <!--
+          Road log template, not a published entry.
+          1. Copy this file to posts/your-slug.html (lowercase, hyphens).
+          2. Put 1 to 4 photos in assets/roadlog/, named for the entry.
+          3. Replace every TODO, including the title, description, and canonical URL.
+          4. Delete this comment, the template banner, and any photo slots you do not use.
+          5. Add a card on road-log/index.html and remove the "First entries coming soon" line once a real entry exists.
+          Keep place names and other people's names out unless you mean to publish them.
+          See README.md.
+        -->
+        <p class="template-banner">Template only. Copy this file, then delete this banner. It is not a published road log entry.</p>
+        <header class="article-head">
+          <p class="kicker"><a href="/road-log/">Road log</a></p>
+          <h1>TODO: Entry title</h1>
+          <p class="deck">TODO: One sentence on what happened, kept general.</p>
+          <p class="byline">
+            <span>KidRunComVC</span>
+            <span aria-hidden="true">/</span>
+            <time datetime="2026-01-01">TODO: 1 January 2026</time>
+          </p>
+        </header>
+
+        <p>TODO: The short story. A few paragraphs is enough. Leave out real names of places and other people unless you have decided they belong here.</p>
+        <p>TODO: The turn. What the receipt proves.</p>
+
+        <!-- One to four photos. Delete any <li> you do not use. Do not leave an empty image. -->
+        <ul class="receipts">
+          <li>
+            <figure>
+              <img src="/assets/roadlog/TODO-slug-1.jpg" width="1200" height="900" alt="TODO: what is in the photo, in one sentence.">
+              <figcaption>TODO: caption.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="/assets/roadlog/TODO-slug-2.jpg" width="1200" height="900" alt="TODO: what is in the photo, in one sentence.">
+              <figcaption>TODO: caption.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="/assets/roadlog/TODO-slug-3.jpg" width="1200" height="900" alt="TODO: what is in the photo, in one sentence.">
+              <figcaption>TODO: caption.</figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure>
+              <img src="/assets/roadlog/TODO-slug-4.jpg" width="1200" height="900" alt="TODO: what is in the photo, in one sentence.">
+              <figcaption>TODO: caption.</figcaption>
+            </figure>
+          </li>
+        </ul>
+
+        <nav class="more" aria-label="More from the road log">
+          <h2>Keep reading</h2>
+          <ul>
+            <li><a href="/road-log/">All road log entries</a></li>
+          </ul>
+        </nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <nav class="footer-nav" aria-label="Footer">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/market-history/">Market history</a></li>
+            <li><a href="/technical-analysis/">Technical analysis</a></li>
+            <li><a href="/road-log/" aria-current="page">Road log</a></li>
+            <li><a href="/about/">About</a></li>
+          </ul>
+        </nav>
+        <p class="legal">© 2026 KidRunComVC. All rights reserved. Education and entertainment only, not investment advice.</p>
+      </div>
+    </footer>
+    <script src="/js/site.js"></script>
+  </body>
+</html>
