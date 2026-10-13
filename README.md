@@ -83,6 +83,7 @@ Do both. The meta tag and `robots.txt` are separate switches.
 ## House rules
 
 - The byline is KidRunComVC. Do not put a real name or a location on the site.
-- The name breaks into Kid, Run, Com, VC. That is the whole explanation, and it already lives on the About page.
+- The short bio is: Dad, runner, former comedy tour manager, trader.
+- The name breaks into Kid, Run, Com, VC. Com is the comedy business, the touring: he was a tour manager. That explanation already lives on the About page.
 - Leave the footer as it is: `© 2026 KidRunComVC. All rights reserved. Education and entertainment only, not investment advice.`
 - Fonts in `assets/fonts/` are under the SIL Open Font License. The license texts sit next to the files (Fraunces, Source Serif 4, IBM Plex Mono).
