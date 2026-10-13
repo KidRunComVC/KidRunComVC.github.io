@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var theme = saved === "light" || saved === "dark"
+            ? saved
+            : (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Moving averages — KidRunComVC</title>
+    <meta name="description" content="A moving average smooths closes by averaging them. It lags on purpose. An explainer with an illustrative chart.">
+    <meta name="author" content="KidRunComVC">
+    <link rel="canonical" href="https://kidruncomvc.github.io/posts/moving-averages.html">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#10140f" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f3efe4" media="(prefers-color-scheme: light)">
+    <link rel="preload" href="/assets/fonts/fraunces-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <header class="mast">
+      <div class="mast-inner">
+        <div class="status-row">
+          <p class="status"><span class="dot" aria-hidden="true"></span> Desk online <span aria-hidden="true">/</span> education only</p>
+          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch color theme">
+            <span class="theme-swatch" aria-hidden="true"></span>
+            <span class="theme-toggle-label">Theme</span>
+          </button>
+        </div>
+        <div class="brand-row">
+          <a class="brand" href="/">KidRunComVC</a>
+          <nav class="site-nav" aria-label="Primary">
+            <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/market-history/">Market history</a></li>
+            <li><a href="/technical-analysis/" aria-current="page">Technical analysis</a></li>
+            <li><a href="/about/">About</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" tabindex="-1">
+      <article class="article">
+        <header class="article-head">
+          <p class="kicker"><a href="/technical-analysis/">Technical analysis</a></p>
+          <h1>Moving averages</h1>
+          <p class="deck">A smoother for a noisy line. Late on purpose.</p>
+          <p class="byline">
+            <span>KidRunComVC</span>
+            <span aria-hidden="true">/</span>
+            <time datetime="2026-10-10">10 October 2026</time>
+            <span aria-hidden="true">/</span>
+            <span>3 minute read</span>
+          </p>
+        </header>
+
+        <p>A moving average is what it says it is. Take the last handful of closing prices, add them, and divide by how many you took. Next session, drop the oldest close, add the new one, and do it again. The result is a line that travels with price and refuses to flinch at every wiggle.</p>
+        <pre class="formula">average of the last n closes
+= their sum, divided by n</pre>
+
+        <h2>The lag is the product</h2>
+        <p>Day-to-day noise shrinks. So does anything sudden. The average cannot answer a price it has not swallowed yet, so it lags. People talk about that lag as if it were a loose screw. It is not. An average of the past is supposed to arrive after the past.</p>
+
+        <figure class="chart-figure">
+        <svg class="chart" viewBox="0 0 760 400" role="img" aria-labelledby="ma-cap" aria-describedby="ma-desc">
+          <desc id="ma-desc">A made-up jagged price line and a smoother average of the last eight closes. At the right edge the average is still catching up to the price. The drawing is labeled illustrative and is not market data.</desc>
+          <line class="grid" x1="64" y1="80" x2="690" y2="80"></line>
+          <line class="grid" x1="64" y1="150" x2="690" y2="150"></line>
+          <line class="grid" x1="64" y1="220" x2="690" y2="220"></line>
+          <line class="grid" x1="64" y1="290" x2="690" y2="290"></line>
+          <line class="axis" x1="64" y1="36" x2="64" y2="320"></line>
+          <line class="axis" x1="64" y1="320" x2="700" y2="320"></line>
+          <polyline class="axis" points="700,320 688,314 688,326"></polyline>
+          <polyline class="axis" points="64,36 58,48 70,48"></polyline>
+          <line class="price" x1="48" y1="24" x2="78" y2="24"></line>
+          <text x="86" y="28">price</text>
+          <line class="average" x1="180" y1="24" x2="210" y2="24"></line>
+          <text x="218" y="28">average of 8 closes</text>
+          <polyline class="price" points="78.0,256.0 102.0,241.0 126.0,248.5 150.0,226.0 174.0,206.0 198.0,218.5 222.0,191.0 246.0,171.0 270.0,183.5 294.0,198.5 318.0,178.5 342.0,156.0 366.0,166.0 390.0,146.0 414.0,126.0 438.0,138.5 462.0,153.5 486.0,133.5 510.0,111.0 534.0,121.0 558.0,101.0 582.0,81.0 606.0,93.5 630.0,66.0"></polyline>
+          <polyline class="average" points="246.0,219.8 270.0,210.7 294.0,205.4 318.0,196.6 342.0,187.9 366.0,182.9 390.0,173.8 414.0,165.7 438.0,161.6 462.0,157.9 486.0,149.8 510.0,141.3 534.0,136.9 558.0,128.8 582.0,120.7 606.0,116.6 630.0,107.6"></polyline>
+          <line class="lag" x1="630.0" y1="66.0" x2="630.0" y2="107.6"></line>
+          <text class="label-accent" x="640.0" y="86.8">lag</text>
+          <text class="label-muted" x="78" y="348">price, higher is up</text>
+          <text class="label-muted" x="380" y="376" text-anchor="middle">time</text>
+          <text class="label-muted" x="690" y="348" text-anchor="end">illustrative sketch</text>
+        </svg>
+        <ul class="chart-key">
+          <li><span class="key-swatch key-price" aria-hidden="true"></span> Price</li>
+          <li><span class="key-swatch key-avg" aria-hidden="true"></span> Average of 8 closes</li>
+          <li><span class="key-swatch key-lag" aria-hidden="true"></span> Lag</li>
+        </ul>
+        <figcaption id="ma-cap"><span class="badge">Illustrative</span> Made-up closes. The smooth line is the average of the last eight prices on this drawing. The gap marked lag is the average still catching up. Not market data.</figcaption>
+      </figure>
+
+        <h2>Short, long, and still backward</h2>
+        <p>You will hear certain windows mentioned until they sound official: 20 sessions, 50, 200. A short window hugs price and still twitches. A long window is the slow opinion of many closes. Traders use them partly because other traders can see the same line. That is a social fact, not a mathematical blessing. This page is not handing you a number.</p>
+        <p>There is a cousin, often called an exponential average, that weighs recent prices more and old prices less. Same job, a shorter memory, still a look backward. If you keep one thing, keep the direction of the glance. These tools face the wrong way for prophecy. They face the right way for a summary.</p>
+
+        <h2>A cross is a raised hand, second</h2>
+        <p>When a shorter average crosses a longer one, the event has nicknames and a small industry of confidence. A cross means the recent window has moved above, or fallen behind, the longer window. It describes closes that already printed. The move that caused the cross happened first. The cross raises its hand second.</p>
+        <p>In a choppy stretch, price will step across the average just often enough to tire a confident person out. The line sits in the middle while the market changes its mind. An average is a poor oracle on a path with no direction, which is a lot of paths, on a lot of days.</p>
+        <p>Use one as context. It will show the slope of a run of closes without making you stare at every tick. It will not tell you what to do next. Anyone selling the lag as a head start has misunderstood the clock.</p>
+
+        <aside class="lesson">
+          <h2>The lesson</h2>
+          <p>A moving average is the last few closes, holding hands. They will tell you where they have been. They will be a little late even about that.</p>
+        </aside>
+
+        <nav class="more" aria-label="More technical analysis">
+          <h2>Keep reading</h2>
+          <ul>
+            <li><a href="/posts/support-and-resistance.html">Support and resistance</a></li>
+            <li><a href="/technical-analysis/">All technical analysis</a></li>
+          </ul>
+        </nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <nav class="footer-nav" aria-label="Footer">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/market-history/">Market history</a></li>
+            <li><a href="/technical-analysis/" aria-current="page">Technical analysis</a></li>
+            <li><a href="/about/">About</a></li>
+          </ul>
+        </nav>
+        <p class="legal">© 2026 KidRunComVC. All rights reserved. Education and entertainment only, not investment advice.</p>
+      </div>
+    </footer>
+    <script src="/js/site.js"></script>
+  </body>
+</html>
