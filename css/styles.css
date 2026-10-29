@@ -527,6 +527,11 @@ h3 {
   color: var(--muted);
 }
 
+.section-block > .section-copy:only-child {
+  grid-column: 1 / -1;
+  max-width: 42rem;
+}
+
 .text-link {
   display: inline-flex;
   align-items: center;
