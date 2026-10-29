@@ -340,6 +340,11 @@ a:hover {
   padding: 2.75rem 0 2.25rem;
 }
 
+.hero-solo {
+  grid-template-columns: minmax(0, 40rem);
+  align-items: start;
+}
+
 .issue {
   display: flex;
   gap: 0.7rem;
@@ -503,6 +508,10 @@ h3 {
   color: var(--muted);
 }
 
+.story-list + .panel {
+  margin-top: 1.25rem;
+}
+
 .home-sections {
   display: grid;
   gap: 1.5rem;
@@ -562,7 +571,7 @@ h3 {
   box-shadow: 5px 5px 0 var(--shadow);
 }
 
-.story:hover {
+a.story:hover {
   color: inherit;
   transform: translate(2px, 2px);
   box-shadow: 3px 3px 0 var(--shadow);
@@ -1052,8 +1061,8 @@ figcaption {
     animation: none;
   }
 
-  .button:hover,
-  .story:hover,
+.button:hover,
+  a.story:hover,
   .theme-toggle:hover {
     transform: none;
   }
