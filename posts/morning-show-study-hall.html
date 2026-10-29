@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var theme = saved === "light" || saved === "dark"
+            ? saved
+            : (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Morning Show, Study Hall — KidRunComVC</title>
+    <meta name="description" content="Written by Joey, edited with help.">
+    <meta name="author" content="KidRunComVC">
+    <link rel="canonical" href="https://kidruncomvc.github.io/posts/morning-show-study-hall.html">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#10140f" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f3efe4" media="(prefers-color-scheme: light)">
+    <link rel="preload" href="/assets/fonts/fraunces-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <header class="mast">
+      <div class="mast-inner">
+        <div class="status-row">
+          <p class="status"><span class="dot" aria-hidden="true"></span> Desk online <span aria-hidden="true">/</span> education only</p>
+          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch color theme">
+            <span class="theme-swatch" aria-hidden="true"></span>
+            <span class="theme-toggle-label">Theme</span>
+          </button>
+        </div>
+        <div class="brand-row">
+          <a class="brand" href="/">KidRunComVC</a>
+          <nav class="site-nav" aria-label="Primary">
+            <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/market-history/">Market history</a></li>
+            <li><a href="/technical-analysis/">Technical analysis</a></li>
+            <li><a href="/road-log/" aria-current="page">Road log</a></li>
+            <li><a href="/about/">About</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" tabindex="-1">
+      <article class="article">
+        <header class="article-head">
+          <p class="kicker"><a href="/road-log/">Road log</a></p>
+          <h1>Morning Show, Study Hall</h1>
+          <p class="deck">Written by Joey, edited with help.</p>
+          <p class="byline">
+            <span>KidRunComVC</span>
+          </p>
+        </header>
+
+        <p>I started watching the StockMarketTV morning show around 2022, after following <a href="https://x.com/JC_ParetsX">JC Parets</a> on Twitter, now X. What I liked right away was how plain he talks. He points out opportunities, and in the same breath he reminds you that managing your risk is your job, not his. His co-host <a href="https://x.com/sstrazza">Steve Strazza</a> talks markets the same way, and he's always ready to push back when JC gets a little too wild with a take. That back-and-forth is half the fun.</p>
+        <p>Now that I'm studying for the CMT, the Chartered Market Technician exam, I started watching the show a different way. They aren't making predictions with deadlines, and they'll tell you not to copy their trades. They even joke that they might change their mind before the show is over. So I stopped thinking of it as a show about calls and started thinking of it as a show about setups, which are exactly the things I'm learning about in my studies.</p>
+        <p>The show is basically a live version of my textbook. They compare sectors to the S&amp;P 500, read bonds and the dollar as clues for stocks, and name chart patterns in real time. That's just a few examples, too. They cover a lot more CMT material in their daily conversations, but I'm keeping this one short. So now I treat each segment like a practice problem. I pause the clip, name the pattern, and write down where it would trigger, where I'd be wrong, and how long I'd give it. Then I check back about a month later to see what happened.</p>
+        <p>That last part taught me the most. Even the best-known chart patterns, by most counts, only reach their targets some of the time. Naming a pattern doesn't make it a sure thing. Knowing where you get out is what makes it a trade.</p>
+        <p>I've seen a lot of market shows, and this one is the most transparent I've found. They show their work and they tell you it's on you. That's exactly how a study partner should act.</p>
+
+        <nav class="more" aria-label="More from the road log">
+          <h2>Keep reading</h2>
+          <ul>
+            <li><a href="/road-log/">All road log entries</a></li>
+          </ul>
+        </nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <nav class="footer-nav" aria-label="Footer">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/market-history/">Market history</a></li>
+            <li><a href="/technical-analysis/">Technical analysis</a></li>
+            <li><a href="/road-log/" aria-current="page">Road log</a></li>
+            <li><a href="/about/">About</a></li>
+          </ul>
+        </nav>
+        <p class="legal">© 2026 KidRunComVC. All rights reserved. Education and entertainment only, not investment advice.</p>
+      </div>
+    </footer>
+    <script src="/js/site.js"></script>
+  </body>
+</html>
