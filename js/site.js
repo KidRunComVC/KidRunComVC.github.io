@@ -2,7 +2,6 @@
   var root = document.documentElement;
   var toggle = document.querySelector(".theme-toggle");
   var label = toggle ? toggle.querySelector(".theme-toggle-label") : null;
-  var media = window.matchMedia("(prefers-color-scheme: light)");
 
   function current() {
     return root.getAttribute("data-theme") === "light" ? "light" : "dark";
@@ -31,19 +30,6 @@
       } catch (err) {
         /* Storage can be blocked. The choice still applies for this visit. */
       }
-    });
-  }
-
-  if (typeof media.addEventListener === "function") {
-    media.addEventListener("change", function (event) {
-      var saved = null;
-      try {
-        saved = localStorage.getItem("theme");
-      } catch (err) {
-        saved = null;
-      }
-      if (saved === "light" || saved === "dark") return;
-      apply(event.matches ? "light" : "dark");
     });
   }
 })();
