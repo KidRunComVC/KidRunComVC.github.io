@@ -614,6 +614,18 @@ a.story:hover {
   line-height: 1.45;
 }
 
+.story-deck p {
+  margin: 0 0 0.75rem;
+}
+
+.story-deck p:last-child {
+  margin-bottom: 0;
+}
+
+.story-span {
+  grid-column: 1 / -1;
+}
+
 .about-strip {
   display: flex;
   flex-wrap: wrap;
