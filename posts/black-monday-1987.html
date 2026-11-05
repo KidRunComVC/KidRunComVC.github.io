@@ -1,6 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" class="fx-milemarkers fx-tints fx-progress fx-marquee fx-404" data-theme="dark">
   <head>
+    <!--
+      Desk effects (assets/creative.css, assets/creative.js) are on only while
+      the matching class sits on <html>. Remove a class to turn that effect off:
+        fx-milemarkers  mile-marker kickers, MI 0.0 Home through MI 26.2 Market History
+        fx-tints        subtle per-section accent on the same dark base
+        fx-progress     chart-line reading progress in the header on post pages
+        fx-marquee      "Closed tonight" marquee on empty Runner's Kitchen and SpaceXSI boards
+        fx-404          404 page drawn as a price gap, with a button back home
+    -->
     <meta charset="utf-8">
     <script>
       (function () {
@@ -23,21 +32,26 @@
     <link rel="preload" href="/assets/fonts/fraunces-700.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/assets/creative.css">
   </head>
-  <body>
+  <body data-section="history">
     <a class="skip" href="#content">Skip to content</a>
     <header class="mast">
       <div class="mast-inner">
         <div class="status-row">
           <p class="status"><span class="dot" aria-hidden="true"></span> Desk online <span aria-hidden="true">/</span> education only</p>
-          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch color theme">
+          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to light theme">
             <span class="theme-swatch" aria-hidden="true"></span>
-            <span class="theme-toggle-label">Theme</span>
+            <span class="theme-toggle-label"><span class="label-to-light">Light</span><span class="label-to-dark">Dark</span></span>
           </button>
         </div>
         <div class="brand-row">
           <a class="brand" href="/">KidRunComVC</a>
-          <nav class="site-nav" aria-label="Primary">
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+            <span class="nav-toggle-bars" aria-hidden="true"></span>
+            <span class="nav-toggle-label">Menu</span>
+          </button>
+          <nav class="site-nav" id="site-nav" aria-label="Primary">
             <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about/">About</a></li>
@@ -125,6 +139,7 @@
         <p class="legal">© 2026 KidRunComVC. All rights reserved. Education and entertainment only, not investment advice.</p>
       </div>
     </footer>
+    <script src="/assets/creative.js"></script>
     <script src="/js/site.js"></script>
   </body>
 </html>

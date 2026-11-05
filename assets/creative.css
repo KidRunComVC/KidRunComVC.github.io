@@ -1,0 +1,203 @@
+/*
+  Desk effects. Each one runs only while its class is on <html>.
+  Remove a class to turn that effect off (see the comment at the top of <head>):
+    fx-milemarkers  mile-marker kickers, MI 0.0 Home through MI 26.2 Market History
+    fx-tints        subtle per-section accent on the same dark base
+    fx-progress     chart-line reading progress in the header on post pages
+    fx-marquee      "Closed tonight" marquee on empty Runner's Kitchen and SpaceXSI boards
+    fx-404          404 page drawn as a price gap, with a button back home
+*/
+
+html.fx-milemarkers .hero > .hero-copy > .kicker {
+  margin: 0 0 0.75rem;
+}
+
+html.fx-milemarkers .article-head .kicker .mile {
+  margin-right: 0.45rem;
+}
+
+html.fx-tints[data-theme="dark"] body[data-section="about"] {
+  --bg: #101218;
+  --bg-panel: #171b22;
+  --bg-inset: #0c0e14;
+  --section-accent: #b7c7dc;
+}
+
+html.fx-tints[data-theme="dark"] body[data-section="road-log"] {
+  --bg: #14110f;
+  --bg-panel: #1c1816;
+  --bg-inset: #100d0c;
+  --section-accent: #ffb4a2;
+}
+
+html.fx-tints[data-theme="dark"] body[data-section="kitchen"] {
+  --bg: #0f1410;
+  --bg-panel: #162016;
+  --bg-inset: #0b100c;
+  --section-accent: #8fd9a8;
+}
+
+html.fx-tints[data-theme="dark"] body[data-section="tara"] {
+  --bg: #14130e;
+  --bg-panel: #1c1b14;
+  --bg-inset: #100f0a;
+  --section-accent: #f0c14b;
+}
+
+html.fx-tints[data-theme="dark"] body[data-section="spacexsi"] {
+  --bg: #0e1216;
+  --bg-panel: #151b22;
+  --bg-inset: #0a0e12;
+  --section-accent: #9ecbff;
+}
+
+html.fx-tints[data-theme="dark"] body[data-section="history"] {
+  --bg: #13110f;
+  --bg-panel: #1b1814;
+  --bg-inset: #0e0c0a;
+  --section-accent: #e2c9a0;
+}
+
+html.fx-tints[data-theme="dark"] body[data-section] .mast {
+  border-bottom-color: var(--section-accent, var(--stroke));
+}
+
+html.fx-tints[data-theme="dark"] body[data-section] .page-head > .kicker,
+html.fx-tints[data-theme="dark"] body[data-section] .article-head > .kicker {
+  color: var(--section-accent, var(--label));
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint="about"] {
+  border-top-color: #b7c7dc;
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint="road-log"] {
+  border-top-color: #ffb4a2;
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint="kitchen"] {
+  border-top-color: #8fd9a8;
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint="tara"] {
+  border-top-color: #f0c14b;
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint="spacexsi"] {
+  border-top-color: #9ecbff;
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint="history"] {
+  border-top-color: #e2c9a0;
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint] > .section-copy > .kicker {
+  color: inherit;
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint="about"] > .section-copy > .kicker {
+  color: #b7c7dc;
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint="road-log"] > .section-copy > .kicker {
+  color: #ffb4a2;
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint="kitchen"] > .section-copy > .kicker {
+  color: #8fd9a8;
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint="tara"] > .section-copy > .kicker {
+  color: #f0c14b;
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint="spacexsi"] > .section-copy > .kicker {
+  color: #9ecbff;
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint="history"] > .section-copy > .kicker {
+  color: #e2c9a0;
+}
+
+html.fx-progress .read-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 2px;
+  z-index: 3;
+  pointer-events: none;
+  background: transparent;
+}
+
+html.fx-progress .read-progress-line {
+  display: block;
+  position: relative;
+  height: 2px;
+  width: 0;
+  background: var(--ink);
+}
+
+html.fx-progress .read-progress-line::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--bg);
+  transform: translate(0, -50%);
+}
+
+html.fx-marquee .empty-marquee {
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  color: var(--label);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+html.fx-marquee .empty-marquee-track {
+  display: inline-flex;
+  width: max-content;
+  white-space: nowrap;
+  animation: desk-marquee 16s linear infinite;
+}
+
+@keyframes desk-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+html.fx-404 .gap-chart {
+  display: block;
+  margin: 1.35rem 0 0.25rem;
+}
+
+html.fx-404 .gap-chart .chart {
+  background: var(--bg-inset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.fx-marquee .empty-marquee-track {
+    animation: none;
+  }
+}
+
+@media print {
+  .read-progress,
+  .empty-marquee,
+  .gap-chart {
+    display: none;
+  }
+}

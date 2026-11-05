@@ -1,6 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" class="fx-milemarkers fx-tints fx-progress fx-marquee fx-404" data-theme="dark">
   <head>
+    <!--
+      Desk effects (assets/creative.css, assets/creative.js) are on only while
+      the matching class sits on <html>. Remove a class to turn that effect off:
+        fx-milemarkers  mile-marker kickers, MI 0.0 Home through MI 26.2 Market History
+        fx-tints        subtle per-section accent on the same dark base
+        fx-progress     chart-line reading progress in the header on post pages
+        fx-marquee      "Closed tonight" marquee on empty Runner's Kitchen and SpaceXSI boards
+        fx-404          404 page drawn as a price gap, with a button back home
+    -->
     <meta charset="utf-8">
     <script>
       (function () {
@@ -23,21 +32,26 @@
     <link rel="preload" href="/assets/fonts/fraunces-700.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/assets/creative.css">
   </head>
-  <body>
+  <body data-section="missing">
     <a class="skip" href="#content">Skip to content</a>
     <header class="mast">
       <div class="mast-inner">
         <div class="status-row">
           <p class="status"><span class="dot" aria-hidden="true"></span> Desk online <span aria-hidden="true">/</span> education only</p>
-          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch color theme">
+          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to light theme">
             <span class="theme-swatch" aria-hidden="true"></span>
-            <span class="theme-toggle-label">Theme</span>
+            <span class="theme-toggle-label"><span class="label-to-light">Light</span><span class="label-to-dark">Dark</span></span>
           </button>
         </div>
         <div class="brand-row">
           <a class="brand" href="/">KidRunComVC</a>
-          <nav class="site-nav" aria-label="Primary">
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+            <span class="nav-toggle-bars" aria-hidden="true"></span>
+            <span class="nav-toggle-label">Menu</span>
+          </button>
+          <nav class="site-nav" id="site-nav" aria-label="Primary">
             <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about/">About</a></li>
@@ -57,6 +71,25 @@
         <p class="kicker">404</p>
         <h1>Not on the desk</h1>
         <p class="deck">That page is not here. The link may be old, or the essay has not been written yet.</p>
+        <figure class="gap-chart">
+          <svg class="chart" viewBox="0 0 760 280" role="img" aria-labelledby="gap-cap">
+            <title>Price gapped here</title>
+            <desc id="gap-desc">A made-up price line that stops, leaves an empty gap, and starts again at another level. The drawing is labeled illustrative and is not market data.</desc>
+            <line class="grid" x1="64" y1="48" x2="700" y2="48"></line>
+            <line class="grid" x1="64" y1="108" x2="700" y2="108"></line>
+            <line class="grid" x1="64" y1="168" x2="700" y2="168"></line>
+            <line class="axis" x1="64" y1="28" x2="64" y2="210"></line>
+            <line class="axis" x1="64" y1="210" x2="710" y2="210"></line>
+            <polyline class="price" points="78,168 130,150 182,156 234,120 286,132"></polyline>
+            <polyline class="price" points="470,78 522,90 574,64 626,72 690,48"></polyline>
+            <line class="lag" x1="286" y1="132" x2="470" y2="78" stroke-dasharray="5 6"></line>
+            <text class="label-accent" x="348" y="92">gap</text>
+            <text class="label-muted" x="78" y="242">last print</text>
+            <text class="label-muted" x="690" y="242" text-anchor="end">next print</text>
+            <text class="label-muted" x="690" y="264" text-anchor="end">illustrative sketch</text>
+          </svg>
+          <figcaption id="gap-cap"><span class="badge">Illustrative</span> Price gapped here. The last print and the next one never met.</figcaption>
+        </figure>
         <div class="hero-actions">
           <a class="button button-primary" href="/">Back to the desk</a>
           <a class="button" href="/market-history/">Market History</a>
@@ -80,6 +113,7 @@
         <p class="legal">© 2026 KidRunComVC. All rights reserved. Education and entertainment only, not investment advice.</p>
       </div>
     </footer>
+    <script src="/assets/creative.js"></script>
     <script src="/js/site.js"></script>
   </body>
 </html>
