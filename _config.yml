@@ -1,0 +1,4 @@
+# Static HTML. Jekyll copies the pages through and does not publish _drafts/.
+# Keep this file. A .nojekyll file would turn Jekyll off and publish the drafts.
+exclude:
+  - "_drafts"

@@ -25,13 +25,13 @@ The site is served from the root of `main`.
 3. Branch: **main**. Folder: **/ (root)**.
 4. Save.
 
-`.nojekyll` is in the root so Pages serves these files as they are and does not run Jekyll.
+Pages runs Jekyll just far enough to copy this static HTML through. `_config.yml` excludes `_drafts/`, so the draft templates stay in the repo and are not published. Do not add a `.nojekyll` file: that would turn the exclude off and publish the drafts.
 
 ## Add a post
 
-Posts live in [`posts/`](posts/). Start from [`posts/_template.html`](posts/_template.html).
+Posts live in [`posts/`](posts/). Start from [`_drafts/_template.html`](_drafts/_template.html).
 
-1. Copy `posts/_template.html` to `posts/your-slug.html`. Use lowercase words and hyphens, for example `posts/south-sea-bubble-1720.html`.
+1. Copy `_drafts/_template.html` to `posts/your-slug.html`. Use lowercase words and hyphens, for example `posts/south-sea-bubble-1720.html`.
 2. Replace every TODO: the `<title>`, the meta description, the canonical URL, the date, the section link, the heading, and the essay.
 3. Delete the HTML comment at the top of the article and the banner that says "Template only."
 4. Keep the footer sentence and the `noindex` meta tag until launch (see below).
@@ -64,7 +64,7 @@ History pieces should keep the dates on and name a source when a figure could be
 Road Log is for short stories from the road, with the photos as proof. The section index is [`road-log/index.html`](road-log/index.html). It starts empty on purpose. Do not publish a story until you mean to.
 
 1. Put 1 to 4 photos in [`assets/roadlog/`](assets/roadlog/). Name them for the entry, for example `assets/roadlog/night-drive-1.jpg`.
-2. Copy [`posts/_roadlog-template.html`](posts/_roadlog-template.html) to `posts/your-slug.html`.
+2. Copy [`_drafts/_roadlog-template.html`](_drafts/_roadlog-template.html) to `posts/your-slug.html`.
 3. Replace every TODO: title, description, canonical URL, date, story, and each photo's `src`, `alt`, `width`, `height`, and caption.
 4. Keep it general. Leave out real names of places and other people unless you have decided that detail belongs in the story.
 5. Use at least one photo and no more than four. Delete the unused slots in the gallery. Each photo needs alt text and a caption.
@@ -89,7 +89,7 @@ Road Log is for short stories from the road, with the photos as proof. The secti
 
 Search engines are blocked on purpose, until there is more to read.
 
-1. On every HTML page, including `posts/_template.html`, `posts/_roadlog-template.html`, and `404.html`, remove this tag:
+1. On every HTML page, including `_drafts/_template.html`, `_drafts/_roadlog-template.html`, and `404.html`, remove this tag:
 
    ```html
    <meta name="robots" content="noindex, nofollow">
