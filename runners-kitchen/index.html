@@ -1,6 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" class="fx-milemarkers fx-tints fx-progress fx-marquee fx-404" data-theme="dark">
   <head>
+    <!--
+      Desk effects (assets/creative.css, assets/creative.js) are on only while
+      the matching class sits on <html>. Remove a class to turn that effect off:
+        fx-milemarkers  mile-marker kickers, MI 0.0 Home through MI 26.2 Market History
+        fx-tints        subtle per-section accent on the same dark base
+        fx-progress     chart-line reading progress in the header on post pages
+        fx-marquee      "Closed tonight" marquee on empty Runner's Kitchen and SpaceXSI boards
+        fx-404          404 page drawn as a price gap, with a button back home
+    -->
     <meta charset="utf-8">
     <script>
       (function () {
@@ -14,7 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>Runner's Kitchen — KidRunComVC</title>
-    <meta name="description" content="Posts coming soon.">
+    <meta name="description" content="No posts yet.">
     <meta name="author" content="KidRunComVC">
     <link rel="canonical" href="https://kidruncomvc.github.io/runners-kitchen/">
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -23,21 +32,26 @@
     <link rel="preload" href="/assets/fonts/fraunces-700.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/assets/creative.css">
   </head>
-  <body>
+  <body data-section="kitchen">
     <a class="skip" href="#content">Skip to content</a>
     <header class="mast">
       <div class="mast-inner">
         <div class="status-row">
           <p class="status"><span class="dot" aria-hidden="true"></span> Desk online <span aria-hidden="true">/</span> education only</p>
-          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch color theme">
+          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to light theme">
             <span class="theme-swatch" aria-hidden="true"></span>
-            <span class="theme-toggle-label">Theme</span>
+            <span class="theme-toggle-label"><span class="label-to-light">Light</span><span class="label-to-dark">Dark</span></span>
           </button>
         </div>
         <div class="brand-row">
           <a class="brand" href="/">KidRunComVC</a>
-          <nav class="site-nav" aria-label="Primary">
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+            <span class="nav-toggle-bars" aria-hidden="true"></span>
+            <span class="nav-toggle-label">Menu</span>
+          </button>
+          <nav class="site-nav" id="site-nav" aria-label="Primary">
             <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about/">About</a></li>
@@ -58,7 +72,10 @@
         <h1>Runner's Kitchen</h1>
       </header>
       <section class="catalog wrap" aria-label="Runner's Kitchen posts">
-        <p class="empty-log">Posts coming soon.</p>
+        <div class="empty-board">
+            <p class="empty-marquee" aria-hidden="true"><span class="empty-marquee-track"><span>Closed tonight · Closed tonight · Closed tonight · </span><span>Closed tonight · Closed tonight · Closed tonight · </span></span></p>
+            <p class="empty-log">No posts yet.</p>
+          </div>
         <ol class="story-list">
           <!-- New entries go at the top. -->
         </ol>
@@ -81,6 +98,7 @@
         <p class="legal">© 2026 KidRunComVC. All rights reserved. Education and entertainment only, not investment advice.</p>
       </div>
     </footer>
+    <script src="/assets/creative.js"></script>
     <script src="/js/site.js"></script>
   </body>
 </html>
