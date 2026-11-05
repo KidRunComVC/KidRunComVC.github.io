@@ -1,6 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" class="fx-milemarkers fx-tints fx-progress fx-marquee fx-404" data-theme="dark">
   <head>
+    <!--
+      Desk effects (assets/creative.css, assets/creative.js) are on only while
+      the matching class sits on <html>. Remove a class to turn that effect off:
+        fx-milemarkers  mile-marker kickers, MI 0.0 Home through MI 26.2 Market History
+        fx-tints        subtle per-section accent on the same dark base
+        fx-progress     chart-line reading progress in the header on post pages
+        fx-marquee      "Closed tonight" marquee on empty Runner's Kitchen and SpaceXSI boards
+        fx-404          404 page drawn as a price gap, with a button back home
+    -->
     <meta charset="utf-8">
     <script>
       (function () {
@@ -23,21 +32,26 @@
     <link rel="preload" href="/assets/fonts/fraunces-700.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/assets/creative.css">
   </head>
-  <body>
+  <body data-section="road-log">
     <a class="skip" href="#content">Skip to content</a>
     <header class="mast">
       <div class="mast-inner">
         <div class="status-row">
           <p class="status"><span class="dot" aria-hidden="true"></span> Desk online <span aria-hidden="true">/</span> education only</p>
-          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch color theme">
+          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to light theme">
             <span class="theme-swatch" aria-hidden="true"></span>
-            <span class="theme-toggle-label">Theme</span>
+            <span class="theme-toggle-label"><span class="label-to-light">Light</span><span class="label-to-dark">Dark</span></span>
           </button>
         </div>
         <div class="brand-row">
           <a class="brand" href="/">KidRunComVC</a>
-          <nav class="site-nav" aria-label="Primary">
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+            <span class="nav-toggle-bars" aria-hidden="true"></span>
+            <span class="nav-toggle-label">Menu</span>
+          </button>
+          <nav class="site-nav" id="site-nav" aria-label="Primary">
             <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about/">About</a></li>
@@ -67,7 +81,7 @@
           </p>
         </header>
 
-        <ul class="receipts">
+        <ul class="photo-strip">
           <li>
             <figure>
               <img src="/assets/roadlog/henry-1-street.jpg" width="360" height="420" alt="A woman in a pink-and-white striped shirt, sunglasses on her head, holding a coffee cup beside Henry Rollins in a black t-shirt on a city sidewalk.">
@@ -77,7 +91,7 @@
 
         <p>In the summer of 2013, Lindsay and I were in Washington, DC, when Henry Rollins rolled into town to film his History Channel H2 show, <em>10 Things You Don't Know About</em>. He was kind enough to let us be part of it. We interviewed him on the street about marriage equality, one of the biggest issues in the country at the time. More on that interview in a later post. Sometimes life drops you in exactly the right place at exactly the right time, and this was one of those moments.</p>
 
-        <ul class="receipts">
+        <ul class="photo-strip">
           <li>
             <figure>
               <img src="/assets/roadlog/henry-2-scene.jpg" width="938" height="600" alt="A woman in a pink-and-white striped shirt seated beside Henry Rollins while a camera films them. He is talking and gesturing, with tattoos on his arms.">
@@ -88,7 +102,7 @@
         <p>Lindsay's segment was pure Lindsay, goofy and fearless on the outside. On the inside, she found Henry a little intimidating, and her crush was very real. Then, right in the middle of her scene, Henry Rollins sat down on her lap. Did I get a picture of it? Nope. If you want to see it, you'll have to watch the episode like everybody else. Consider it the least punk rock cliffhanger ever. Years later, we still have the photos, and the memories still make us smile.</p>
         <p>The episode was "Prohibition," and it aired on November 23, 2013. In every photo from that day, my wife is grinning ear to ear.</p>
 
-        <ul class="receipts">
+        <ul class="photo-strip">
           <li>
             <figure>
               <img src="/assets/roadlog/henry-3-joey.jpg" width="1064" height="600" alt="Henry Rollins in a black t-shirt with his arm around a man in a black hoodie and camouflage cap on a sunny city sidewalk.">
@@ -125,6 +139,7 @@
         <p class="legal">© 2026 KidRunComVC. All rights reserved. Education and entertainment only, not investment advice.</p>
       </div>
     </footer>
+    <script src="/assets/creative.js"></script>
     <script src="/js/site.js"></script>
   </body>
 </html>
