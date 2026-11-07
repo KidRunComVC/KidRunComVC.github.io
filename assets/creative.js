@@ -5,7 +5,7 @@
     "Home": "0.0",
     "About": "4.4",
     "Road Log": "13.1",
-    "Runner's Kitchen": "16.2",
+    "Runner's Log": "16.2",
     "TARA Blog": "20.0",
     "SpaceXSI": "23.1",
     "Market History": "26.2"
