@@ -70,4 +70,65 @@
       if (window.matchMedia("(min-width: 701px)").matches) setOpen(false);
     });
   }
+
+  var photos = document.querySelectorAll("article img[src]");
+  if (photos.length) {
+    var overlay = document.createElement("div");
+    overlay.className = "lightbox";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-label", "Enlarged photo");
+
+    var closeBtn = document.createElement("button");
+    closeBtn.type = "button";
+    closeBtn.className = "lightbox-close";
+    closeBtn.setAttribute("aria-label", "Close");
+    closeBtn.textContent = "\u00d7";
+
+    var enlarged = document.createElement("img");
+    var caption = document.createElement("p");
+    caption.className = "lightbox-caption";
+
+    overlay.appendChild(closeBtn);
+    overlay.appendChild(enlarged);
+    overlay.appendChild(caption);
+    document.body.appendChild(overlay);
+
+    var lastFocus = null;
+
+    function openPhoto(source) {
+      lastFocus = document.activeElement;
+      enlarged.src = source.currentSrc || source.src;
+      enlarged.alt = source.alt || "";
+      caption.textContent = source.alt || "";
+      caption.hidden = !source.alt;
+      overlay.classList.add("is-open");
+      document.body.classList.add("lightbox-open");
+      closeBtn.focus();
+    }
+
+    function closePhoto() {
+      if (!overlay.classList.contains("is-open")) return;
+      overlay.classList.remove("is-open");
+      enlarged.removeAttribute("src");
+      enlarged.alt = "";
+      document.body.classList.remove("lightbox-open");
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    Array.prototype.forEach.call(photos, function (photo) {
+      photo.addEventListener("click", function () {
+        openPhoto(photo);
+      });
+    });
+
+    overlay.addEventListener("click", function (event) {
+      if (event.target === enlarged) return;
+      closePhoto();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") closePhoto();
+    });
+  }
 })();
