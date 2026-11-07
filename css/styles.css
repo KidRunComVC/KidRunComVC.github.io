@@ -1442,6 +1442,74 @@ figcaption {
   }
 }
 
+article img {
+  cursor: zoom-in;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 4.5rem 1rem 4rem;
+  background: rgba(8, 10, 8, 0.94);
+  cursor: zoom-out;
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: calc(100vh - 8rem);
+  max-height: calc(100dvh - 8rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: 2px solid var(--stroke);
+  box-shadow: 8px 8px 0 #000;
+  cursor: default;
+}
+
+.lightbox-caption {
+  position: absolute;
+  left: 1rem;
+  right: 4.5rem;
+  bottom: 0.85rem;
+  margin: 0;
+  color: #edf3e6;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--stroke);
+  background: var(--bg-panel);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #000;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
 @media print {
   .mast,
   .skip,
@@ -1450,7 +1518,8 @@ figcaption {
   .footer-nav,
   .theme-toggle,
   .nav-toggle,
-  .read-progress {
+  .read-progress,
+  .lightbox {
     display: none;
   }
 
