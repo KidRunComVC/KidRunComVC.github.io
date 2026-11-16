@@ -12,54 +12,128 @@ html.fx-milemarkers .hero > .hero-copy > .kicker {
   margin: 0 0 0.75rem;
 }
 
-html.fx-milemarkers .article-head .kicker .mile {
-  margin-right: 0.45rem;
+html.fx-milemarkers .kicker.has-mile-sign {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.65rem;
+}
+
+html.fx-milemarkers .mile-sign,
+html.fx-tints .kicker .mile-sign,
+html.fx-tints[data-theme="dark"] .kicker .mile-sign {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 1.75rem;
+  min-height: 2.3rem;
+  padding: 0.2rem 0.1rem 0.16rem;
+  background: #006b3f;
+  color: #fff;
+  border: 2px solid #006b3f;
+  border-radius: 0.22rem;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1.5px #fff;
+  font-family: Arial, Helvetica, "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: middle;
+}
+
+html.fx-milemarkers .mile-sign-label,
+html.fx-milemarkers .mile-sign-value,
+html.fx-tints .kicker .mile-sign-label,
+html.fx-tints .kicker .mile-sign-value,
+html.fx-tints[data-theme="dark"] .kicker .mile-sign-label,
+html.fx-tints[data-theme="dark"] .kicker .mile-sign-value {
+  color: #fff;
+  background: transparent;
+  font-family: Arial, Helvetica, "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+html.fx-milemarkers .mile-sign-label,
+html.fx-tints .kicker .mile-sign-label,
+html.fx-tints[data-theme="dark"] .kicker .mile-sign-label {
+  display: block;
+  font-size: 0.5rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.1rem;
+}
+
+html.fx-milemarkers .mile-sign-value,
+html.fx-tints .kicker .mile-sign-value,
+html.fx-tints[data-theme="dark"] .kicker .mile-sign-value {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+html.fx-milemarkers .kicker.has-mile-sign > .kicker-name,
+html.fx-milemarkers .kicker.has-mile-sign > a {
+  min-width: 0;
+}
+
+@media (max-width: 700px) {
+  html.fx-milemarkers .mile-sign,
+  html.fx-tints .kicker .mile-sign {
+    width: 1.75rem;
+    min-height: 2.3rem;
+    padding: 0.2rem 0.1rem 0.16rem;
+  }
+
+  html.fx-milemarkers .mile-sign-label,
+  html.fx-tints .kicker .mile-sign-label {
+    font-size: 0.5rem;
+  }
+
+  html.fx-milemarkers .mile-sign-value,
+  html.fx-tints .kicker .mile-sign-value {
+    font-size: 0.7rem;
+  }
 }
 
 html.fx-tints[data-theme="dark"] body[data-section="about"] {
-  --bg: #101218;
-  --bg-panel: #171b22;
-  --bg-inset: #0c0e14;
   --section-accent: #b7c7dc;
 }
 
 html.fx-tints[data-theme="dark"] body[data-section="road-log"] {
-  --bg: #14110f;
-  --bg-panel: #1c1816;
-  --bg-inset: #100d0c;
   --section-accent: #ffb4a2;
 }
 
 html.fx-tints[data-theme="dark"] body[data-section="kitchen"] {
-  --bg: #0f1410;
-  --bg-panel: #162016;
-  --bg-inset: #0b100c;
   --section-accent: #8fd9a8;
 }
 
 html.fx-tints[data-theme="dark"] body[data-section="tara"] {
-  --bg: #14130e;
-  --bg-panel: #1c1b14;
-  --bg-inset: #100f0a;
   --section-accent: #f0c14b;
 }
 
+html.fx-tints[data-theme="dark"] body[data-section="battle-calls"] {
+  --section-accent: #f0a06a;
+}
+
 html.fx-tints[data-theme="dark"] body[data-section="spacexsi"] {
-  --bg: #0e1216;
-  --bg-panel: #151b22;
-  --bg-inset: #0a0e12;
   --section-accent: #9ecbff;
 }
 
 html.fx-tints[data-theme="dark"] body[data-section="history"] {
-  --bg: #13110f;
-  --bg-panel: #1b1814;
-  --bg-inset: #0e0c0a;
   --section-accent: #e2c9a0;
 }
 
-html.fx-tints[data-theme="dark"] body[data-section] .mast {
-  border-bottom-color: var(--section-accent, var(--stroke));
+html.fx-tints[data-theme="dark"] body[data-section="contact"] {
+  --section-accent: #f0a06a;
 }
 
 html.fx-tints[data-theme="dark"] body[data-section] .page-head > .kicker,
@@ -81,6 +155,10 @@ html.fx-tints[data-theme="dark"] .section-block[data-tint="kitchen"] {
 
 html.fx-tints[data-theme="dark"] .section-block[data-tint="tara"] {
   border-top-color: #f0c14b;
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint="battle-calls"] {
+  border-top-color: #f0a06a;
 }
 
 html.fx-tints[data-theme="dark"] .section-block[data-tint="spacexsi"] {
@@ -109,6 +187,10 @@ html.fx-tints[data-theme="dark"] .section-block[data-tint="kitchen"] > .section-
 
 html.fx-tints[data-theme="dark"] .section-block[data-tint="tara"] > .section-copy > .kicker {
   color: #f0c14b;
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint="battle-calls"] > .section-copy > .kicker {
+  color: #f0a06a;
 }
 
 html.fx-tints[data-theme="dark"] .section-block[data-tint="spacexsi"] > .section-copy > .kicker {

@@ -7,39 +7,63 @@
     "Road Log": "13.1",
     "Runner's Log": "16.2",
     "TARA Blog": "20.0",
+    "Battle Calls": "22.0",
     "SpaceXSI": "23.1",
     "Market History": "26.2"
   };
 
-  function mile(name) {
-    return "MI " + marks[name] + " " + name;
+  function makeMileSign(number) {
+    var sign = document.createElement("span");
+    sign.className = "mile-sign";
+    sign.setAttribute("aria-label", "Mile " + number);
+    var word = document.createElement("span");
+    word.className = "mile-sign-label";
+    word.setAttribute("aria-hidden", "true");
+    word.textContent = "MILE";
+    var num = document.createElement("span");
+    num.className = "mile-sign-value";
+    num.setAttribute("aria-hidden", "true");
+    num.textContent = number;
+    sign.appendChild(word);
+    sign.appendChild(num);
+    return sign;
+  }
+
+  function fillNamedKicker(kicker, name) {
+    var number = marks[name];
+    if (!number || !kicker) return false;
+    kicker.textContent = "";
+    kicker.classList.add("has-mile-sign");
+    kicker.appendChild(makeMileSign(number));
+    var label = document.createElement("span");
+    label.className = "kicker-name";
+    label.textContent = name;
+    kicker.appendChild(label);
+    return true;
   }
 
   if (root.classList.contains("fx-milemarkers")) {
     document.querySelectorAll(".home-sections .section-block > .section-copy > .kicker").forEach(function (kicker) {
       var heading = kicker.parentElement.querySelector("h2");
       var name = heading ? heading.textContent.trim() : "";
-      if (!marks[name] || kicker.querySelector("a")) return;
-      kicker.textContent = mile(name);
+      if (!marks[name] || kicker.querySelector("a") || kicker.querySelector(".mile-sign")) return;
+      fillNamedKicker(kicker, name);
     });
 
     var pageKicker = document.querySelector(".page-head > .kicker");
-    if (pageKicker && pageKicker.textContent.trim() === "Section") {
+    if (pageKicker && !pageKicker.querySelector(".mile-sign") && pageKicker.textContent.trim() === "Section") {
       var pageTitle = document.querySelector(".page-head h1");
       var pageName = pageTitle ? pageTitle.textContent.trim() : "";
-      if (marks[pageName]) pageKicker.textContent = mile(pageName);
+      fillNamedKicker(pageKicker, pageName);
     }
 
     var articleKicker = document.querySelector(".article-head > .kicker");
-    if (articleKicker && !articleKicker.querySelector(".mile")) {
+    if (articleKicker && !articleKicker.querySelector(".mile-sign")) {
       var sectionLink = articleKicker.querySelector("a");
       var sectionName = sectionLink ? sectionLink.textContent.trim() : "";
       if (marks[sectionName]) {
-        var badge = document.createElement("span");
-        badge.className = "mile";
-        badge.textContent = "MI " + marks[sectionName];
-        articleKicker.insertBefore(badge, sectionLink);
-        articleKicker.insertBefore(document.createTextNode(" "), sectionLink);
+        articleKicker.classList.add("has-mile-sign");
+        articleKicker.insertBefore(makeMileSign(marks[sectionName]), sectionLink);
       }
     }
 
@@ -52,8 +76,8 @@
       if (hero && !hero.querySelector(".kicker")) {
         var line = document.createElement("p");
         line.className = "kicker";
-        line.textContent = mile(heroName);
         hero.insertBefore(line, hero.firstChild);
+        fillNamedKicker(line, heroName);
       }
     }
   }
