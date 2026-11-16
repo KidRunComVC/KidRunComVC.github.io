@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" class="fx-milemarkers fx-tints fx-progress fx-marquee fx-404" data-theme="dark">
+  <head>
+    <!--
+      LOCAL COPY ONLY. Not published, not committed, not pushed.
+    -->
+    <meta charset="utf-8">
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var theme = saved === "light" || saved === "dark" ? saved : "dark";
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Contact — KidRunComVC</title>
+    <meta name="description" content="Ideas, corrections, or friendly insults welcome. A message form for the KidRunComVC desk. Education and entertainment only, not investment advice.">
+    <link rel="canonical" href="https://kidruncomvc.github.io/contact/">
+    <meta name="author" content="KidRunComVC">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#10140f" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f3efe4" media="(prefers-color-scheme: light)">
+    <link rel="preload" href="/assets/fonts/fraunces-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/assets/creative.css">
+    <style>
+      /* Page-only form layout. Uses the desk tokens. No third-party scripts. */
+      .contact-page {
+        width: min(44rem, calc(100% - 2.5rem));
+        margin-inline: auto;
+        margin-block: 2.2rem 3.5rem;
+      }
+      .contact-page .page-head {
+        padding: 0 0 0.5rem;
+      }
+      .contact-form {
+        margin-top: 1.4rem;
+        padding: 1.15rem 1.2rem 1.3rem;
+        background: var(--bg-panel);
+        border: 2px solid var(--stroke);
+        border-radius: 1.15rem 1.15rem 1.15rem 0.3rem;
+        box-shadow: 6px 6px 0 var(--shadow);
+      }
+      .contact-form .field {
+        margin: 0 0 1rem;
+      }
+      .contact-form label {
+        display: block;
+        margin: 0 0 0.35rem;
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .contact-form .optional {
+        letter-spacing: 0.04em;
+        text-transform: none;
+        font-size: 0.85em;
+      }
+      .contact-form input[type="text"],
+      .contact-form input[type="email"],
+      .contact-form textarea {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        min-height: 48px;
+        padding: 0.6rem 0.75rem;
+        border: 2px solid var(--stroke);
+        border-radius: 0.2rem;
+        background: var(--bg-inset);
+        color: var(--ink);
+        font-family: var(--serif);
+        font-size: 1.125rem;
+      }
+      .contact-form textarea {
+        min-height: 10rem;
+        resize: vertical;
+        line-height: 1.45;
+      }
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: 3px solid var(--amber);
+        outline-offset: 2px;
+      }
+      .contact-notes {
+        margin: 1rem 0 0;
+      }
+      .contact-notes p {
+        margin: 0 0 0.45rem;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.45;
+      }
+      .contact-notes p:last-child {
+        margin-bottom: 0;
+      }
+      .contact-form .button {
+        margin-top: 0.25rem;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      /* Honeypot: hidden from sighted users and from the tab order, left in the POST. */
+      .honeypot {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body data-section="contact">
+    <a class="skip" href="#content">Skip to content</a>
+    <header class="mast">
+      <div class="mast-inner">
+        <div class="status-row">
+          <p class="status"><span class="dot" aria-hidden="true"></span> Desk online <span aria-hidden="true">/</span> education only</p>
+          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to light theme">
+            <span class="theme-swatch" aria-hidden="true"></span>
+            <span class="theme-toggle-label"><span class="label-to-light">Light</span><span class="label-to-dark">Dark</span></span>
+          </button>
+        </div>
+        <div class="brand-row">
+          <a class="brand" href="/">KidRunComVC</a>
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+            <span class="nav-toggle-bars" aria-hidden="true"></span>
+            <span class="nav-toggle-label">Menu</span>
+          </button>
+          <nav class="site-nav" id="site-nav" aria-label="Primary">
+            <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/road-log/">Road Log</a></li>
+            <li><a href="/runners-log/">Runner's Log</a></li>
+            <li><a href="/technical-analysis/">TARA Blog</a></li>
+            <li><a href="/battle-calls/">Battle Calls</a></li>
+            <li><a href="/spacexsi/">SpaceXSI</a></li>
+            <li><a href="/market-history/">Market History</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" tabindex="-1">
+      <div class="contact-page">
+        <header class="page-head">
+          <p class="kicker">Get in touch</p>
+          <h1>Contact</h1>
+          <p class="deck">Ideas, corrections, or friendly insults welcome.</p>
+        </header>
+
+        <div class="contact-notes">
+          <p>Email required here, or message me on X.<!-- No Joey X profile is linked anywhere in this repo (footer, about, or other live pages). The only x.com links are third-party: @ARKInvest, @StockMktTV, @JC_ParetsX, and @sstrazza. Do not invent a handle. When a site-linked profile exists, turn the word X into: <a href="https://x.com/HANDLE" target="_blank" rel="noopener noreferrer">X</a>. --></p>
+          <p>Anonymous or throwaway messages are deleted unread.</p>
+        </div>
+
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="acfffbb9-c7f6-4bd9-91f4-849d2da68f2e">
+          <input type="hidden" name="subject" value="KidRunComVC site message">
+          <input type="hidden" name="redirect" value="https://kidruncomvc.github.io/contact/thanks/">
+
+          <div class="honeypot" aria-hidden="true">
+            <label for="botcheck">Leave this unchecked</label>
+            <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name">
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <button type="submit" class="button">Send</button>
+        </form>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <nav class="footer-nav" aria-label="Footer">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/road-log/">Road Log</a></li>
+            <li><a href="/runners-log/">Runner's Log</a></li>
+            <li><a href="/technical-analysis/">TARA Blog</a></li>
+            <li><a href="/battle-calls/">Battle Calls</a></li>
+            <li><a href="/spacexsi/">SpaceXSI</a></li>
+            <li><a href="/market-history/">Market History</a></li>
+            <li><a href="/contact/" aria-current="page">Contact</a></li>
+          </ul>
+        </nav>
+        <p class="legal">© 2026 KidRunComVC. All rights reserved. Education and entertainment only, not investment advice.</p>
+      </div>
+    </footer>
+    <script src="/assets/creative.js"></script>
+    <script src="/js/site.js"></script>
+  </body>
+</html>
