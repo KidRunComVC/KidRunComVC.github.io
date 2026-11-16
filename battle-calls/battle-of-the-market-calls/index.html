@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en" class="fx-milemarkers fx-tints fx-progress fx-marquee fx-404" data-theme="dark">
+  <head>
+    <!--
+      LOCAL COPY ONLY. Not published, not committed, not pushed. Planned URL: /battle-calls/battle-of-the-market-calls/.
+      Desk effects (assets/creative.css, assets/creative.js) are on only while
+      the matching class sits on <html>. Remove a class to turn that effect off:
+        fx-milemarkers  mile-marker kickers, MI 0.0 Home through MI 26.2 Market History
+        fx-tints        subtle per-section accent on the same dark base
+        fx-progress     chart-line reading progress in the header on post pages
+        fx-marquee      "Closed tonight" marquee on empty Runner's Log and SpaceXSI boards
+        fx-404          404 page drawn as a price gap, with a button back home
+    -->
+    <meta charset="utf-8">
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var theme = saved === "light" || saved === "dark" ? saved : "dark";
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Gold: Cathie&rsquo;s &lsquo;Going Down&rsquo; vs. Stock Market TV Family&rsquo;s Bet on Miners — KidRunComVC</title>
+    <meta name="description" content="Gold: Cathie&rsquo;s &lsquo;Going Down&rsquo; vs. Stock Market TV Family&rsquo;s Bet on Miners. Round 1 of Battle of the Market Calls, scored weekly from their own words. Education only, not investment advice.">
+    <meta name="author" content="KidRunComVC">
+    <link rel="canonical" href="https://kidruncomvc.github.io/battle-calls/battle-of-the-market-calls/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gold: Cathie&rsquo;s &lsquo;Going Down&rsquo; vs. Stock Market TV Family&rsquo;s Bet on Miners — KidRunComVC">
+    <meta name="twitter:description" content="Gold: Cathie&rsquo;s &lsquo;Going Down&rsquo; vs. Stock Market TV Family&rsquo;s Bet on Miners. Round 1 of Battle of the Market Calls, scored weekly from their own words. Education only, not investment advice.">
+    <meta name="twitter:image" content="https://kidruncomvc.github.io/assets/img/battle-calls/fight-night-social.jpg">
+    <meta name="twitter:image:alt" content="Cartoon fight night: a bull and a bear boxer, a gray-haired referee checking the card, a ring sign reading Battle Calls Round 1, and a card reading Technical Analysis vs. Fundamentals.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Gold: Cathie&rsquo;s &lsquo;Going Down&rsquo; vs. Stock Market TV Family&rsquo;s Bet on Miners — KidRunComVC">
+    <meta property="og:description" content="Gold: Cathie&rsquo;s &lsquo;Going Down&rsquo; vs. Stock Market TV Family&rsquo;s Bet on Miners. Round 1 of Battle of the Market Calls, scored weekly from their own words. Education only, not investment advice.">
+    <meta property="og:image" content="https://kidruncomvc.github.io/assets/img/battle-calls/fight-night-social.jpg">
+    <meta property="og:image:alt" content="Cartoon fight night: a bull and a bear boxer, a gray-haired referee checking the card, a ring sign reading Battle Calls Round 1, and a card reading Technical Analysis vs. Fundamentals.">
+    <meta property="og:url" content="https://kidruncomvc.github.io/battle-calls/battle-of-the-market-calls/">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#10140f" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f3efe4" media="(prefers-color-scheme: light)">
+    <link rel="preload" href="/assets/fonts/fraunces-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/assets/creative.css">
+    <style>
+      /* Page-only layout for the matchup cards and scorecard. Uses the desk tokens. */
+      .article.battle {
+        width: min(86ch, calc(100% - 2.5rem));
+      }
+      .article.battle .article-head h1 {
+        font-size: clamp(1.85rem, 4.2vw, 2.7rem);
+        line-height: 1.15;
+      }
+      .article.battle .byline-meta {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 0.35rem 0.55rem;
+        white-space: nowrap;
+      }
+      .article.battle .byline > span:first-child::after {
+        content: "/";
+        margin-left: 0.55rem;
+      }
+      @media (max-width: 720px) {
+        .article.battle .byline > span:first-child::after {
+          content: none;
+        }
+      }
+      .tape {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin: 1.6rem 0 0.4rem;
+        padding: 0;
+        list-style: none;
+        align-items: stretch;
+      }
+      .tape-col {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        min-width: 0;
+        min-height: 0;
+      }
+      .gold-frame {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        width: 100%;
+        margin: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .gold-pile {
+        --gold: var(--amber);
+        --gold-light: color-mix(in srgb, var(--amber) 62%, #fff);
+        --gold-pale: color-mix(in srgb, var(--amber) 38%, #fff);
+        --gold-dark: color-mix(in srgb, var(--amber) 70%, var(--amber-ink));
+        --gold-deep: color-mix(in srgb, var(--amber) 45%, var(--amber-ink));
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        min-height: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+      .gold-pile svg {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+        overflow: visible;
+      }
+      html[data-theme="light"] .corner-label,
+      html[data-theme="light"] .score-card-label {
+        color: var(--amber-text, #8a6508);
+      }
+      .corner {
+        background: var(--bg-panel);
+        border: 2px solid var(--stroke);
+        border-radius: 1.15rem 1.15rem 1.15rem 0.3rem;
+        box-shadow: 6px 6px 0 var(--shadow);
+        padding: 1.05rem 1.15rem 1.2rem;
+      }
+      .corner-label,
+      .meta dt,
+      .placeholder-label,
+      .score-card-label {
+        margin: 0;
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .corner-label,
+      .score-card-label {
+        color: var(--amber);
+      }
+      .corner h3 {
+        margin: 0.4rem 0 0.15rem;
+        font-family: var(--display);
+        font-size: 1.55rem;
+        line-height: 1.15;
+      }
+      .corner .camp {
+        margin: 0 0 0.9rem;
+        color: var(--muted);
+        font-size: 0.98rem;
+      }
+      .meta {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.25rem 0.75rem;
+        margin: 0 0 1rem;
+        font-size: 0.98rem;
+      }
+      .meta dt {
+        color: var(--muted);
+        padding-top: 0.15rem;
+      }
+      .meta dd {
+        margin: 0;
+      }
+      .corner blockquote {
+        margin: 0.85rem 0 0.35rem;
+        padding: 0.1rem 0 0.1rem 0.9rem;
+        border-left: 4px solid var(--amber);
+        font-family: var(--display);
+        font-style: italic;
+        font-weight: 500;
+        font-size: 1.15rem;
+        line-height: 1.35;
+      }
+      .corner blockquote p {
+        margin: 0;
+        font-size: inherit;
+      }
+      .quote-note {
+        margin: 0 0 0.75rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      .ring,
+      .disclaimer-box,
+      .joey-read {
+        margin: 1.8rem 0;
+        padding: 1.05rem 1.15rem 1.2rem;
+        background: var(--bg-panel);
+        border: 2px solid var(--stroke);
+        border-radius: 1.15rem 1.15rem 1.15rem 0.3rem;
+        box-shadow: 6px 6px 0 var(--shadow);
+      }
+      .ring h2,
+      .joey-read h2,
+      .disclaimer-box h2 {
+        margin: 0 0 0.6rem;
+        font-family: var(--display);
+        font-size: 1.7rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.08;
+        text-transform: none;
+      }
+      .ring ul {
+        margin: 0.4rem 0 0;
+      }
+      .score-wrap {
+        margin: 1.25rem 0 1rem;
+        overflow-x: auto;
+      }
+      .score-caption,
+      .score-pointer {
+        margin: 0 0 0.55rem;
+        color: var(--muted);
+        font-family: var(--serif);
+        font-size: 1.05rem;
+        font-weight: 400;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+      .score-pointer {
+        margin-bottom: 0.85rem;
+      }
+      table.scorecard {
+        width: 100%;
+        border-collapse: collapse;
+        font-variant-numeric: tabular-nums;
+      }
+      table.scorecard th,
+      table.scorecard td {
+        padding: 0.55rem 0.65rem;
+        border: 1px solid var(--line);
+        text-align: left;
+        font-size: 1rem;
+        vertical-align: top;
+      }
+      table.scorecard th {
+        background: var(--bg-inset);
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      table.scorecard td.num,
+      table.scorecard td.change {
+        font-family: var(--mono);
+        font-size: 0.95rem;
+        white-space: nowrap;
+      }
+      table.scorecard td.change {
+        font-weight: 600;
+        font-size: 1.05rem;
+      }
+      .score-cards {
+        display: none;
+      }
+      .score-card {
+        background: var(--bg-panel);
+        border: 2px solid var(--stroke);
+        border-radius: 1.15rem 1.15rem 1.15rem 0.3rem;
+        box-shadow: 6px 6px 0 var(--shadow);
+        padding: 1.05rem 1.15rem 1.15rem;
+        margin: 0 0 0.9rem;
+      }
+      .score-card-instrument {
+        margin: 0.35rem 0 0.1rem;
+        font-family: var(--display);
+        font-size: 1.35rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+      }
+      .score-card-change {
+        margin: 0.1rem 0 0.4rem;
+        font-family: var(--mono);
+        font-size: 1.85rem;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+      }
+      .score-card-wanted {
+        margin: 0 0 0.75rem;
+        color: var(--muted);
+        font-size: 0.98rem;
+      }
+      .score-card-closes {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.2rem 0.85rem;
+        margin: 0;
+        align-items: baseline;
+      }
+      .score-card-closes .score-card-label {
+        color: var(--muted);
+        margin: 0;
+        white-space: nowrap;
+      }
+      .score-card-closes .num {
+        margin: 0;
+        font-family: var(--mono);
+        font-size: 1.05rem;
+        font-variant-numeric: tabular-nums;
+        text-align: right;
+        white-space: nowrap;
+      }
+      .joey-read {
+        border-style: dashed;
+        background: var(--bg-inset);
+      }
+      .placeholder-label {
+        color: var(--muted);
+        margin-bottom: 0.65rem;
+      }
+      .placeholder-slot {
+        margin: 0;
+        min-height: 5.5rem;
+        padding: 0.85rem 1rem;
+        background: var(--bg-panel);
+        border: 1px dashed var(--line);
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.95rem;
+      }
+      .disclaimer-box blockquote {
+        margin: 0.7rem 0 0.35rem;
+        padding: 0.1rem 0 0.1rem 0.9rem;
+        border-left: 4px solid var(--amber);
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: 1.05rem;
+        line-height: 1.45;
+      }
+      .disclaimer-box blockquote p {
+        margin: 0;
+        font-size: inherit;
+      }
+      .site-note {
+        margin: 1rem 0 0;
+      }
+      @media (max-width: 720px) {
+        .tape {
+          grid-template-columns: 1fr;
+        }
+        .gold-frame {
+          display: none;
+        }
+        .score-wrap {
+          display: none;
+          overflow: visible;
+        }
+        .score-cards {
+          display: block;
+          margin: 1.25rem 0 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body data-section="battle-calls">
+    <a class="skip" href="#content">Skip to content</a>
+    <header class="mast">
+      <div class="mast-inner">
+        <div class="status-row">
+          <p class="status"><span class="dot" aria-hidden="true"></span> Desk online <span aria-hidden="true">/</span> education only</p>
+          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to light theme">
+            <span class="theme-swatch" aria-hidden="true"></span>
+            <span class="theme-toggle-label"><span class="label-to-light">Light</span><span class="label-to-dark">Dark</span></span>
+          </button>
+        </div>
+        <div class="brand-row">
+          <a class="brand" href="/">KidRunComVC</a>
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+            <span class="nav-toggle-bars" aria-hidden="true"></span>
+            <span class="nav-toggle-label">Menu</span>
+          </button>
+          <nav class="site-nav" id="site-nav" aria-label="Primary">
+            <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/road-log/">Road Log</a></li>
+            <li><a href="/runners-log/">Runner's Log</a></li>
+            <li><a href="/technical-analysis/">TARA Blog</a></li>
+            <li><a href="/battle-calls/" aria-current="page">Battle Calls</a></li>
+            <li><a href="/spacexsi/">SpaceXSI</a></li>
+            <li><a href="/market-history/">Market History</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" tabindex="-1">
+      <article class="article battle">
+        <header class="article-head">
+          <p class="kicker"><a href="/battle-calls/">Battle Calls</a> <span aria-hidden="true">/</span> Battle of the Market Calls, Round 1</p>
+          <h1>Gold: Cathie&rsquo;s &lsquo;Going Down&rsquo; vs. Stock Market TV Family&rsquo;s Bet on Miners</h1>
+          <p class="deck">Two smart camps reading the gold market differently.</p>
+          <p class="byline">
+            <span>KidRunComVC</span>
+            <span class="byline-meta">
+              <time datetime="2026-11-16">Nov 16, 2026</time>
+              <span aria-hidden="true">/</span>
+              <span>6-minute read</span>
+            </span>
+          </p>
+        </header>
+
+        <p>Round 1 is gold. On Nov 6, Cathie Wood said, “We think gold's going down.” On Nov 11, on Stock Market TV's Morning Show, Jason Perz, All Star Charts' Chief Commodities Strategist, said that if gold “really holds above 4,000, really 3,900,” it can be “very bullish,” and on the miners, “I think you want to be a buyer.” Co-host JC Parets said he “started buying gold stocks yesterday” (Nov 10). Neither side gave a target or a time frame, and they're not technically betting on the same thing (Cathie on the gold price, the Stock Market TV side on the mining stocks), but the rock is the asset that controls the ultimate outcome. Round 1 runs through Dec 31. Here's the tape, the rules, and the weekly score.</p>
+
+        <h2>Tale of the Tape</h2>
+        <p>Each corner has the speaker, the date, the exact quotes, the conditions they actually stated, and the instrument they were talking about. Quotes are word for word from the source, except where a caption is labeled as lightly edited.</p>
+
+        <div class="tape">
+          <div class="tape-col">
+          <section class="corner" aria-labelledby="corner-ark">
+            <p class="corner-label">The ARK Invest corner</p>
+            <h3 id="corner-ark">Cathie Wood</h3>
+            <p class="camp">ARK Invest, CEO and CIO</p>
+            <dl class="meta">
+              <dt>Date</dt>
+              <dd>Nov 6, 2026, ARK <cite>In The Know</cite></dd>
+              <dt>Instrument</dt>
+              <dd>The gold price, scored here with SPDR Gold Shares (GLD)</dd>
+              <dt>Condition</dt>
+              <dd>Tied to what she expects from Fed Chairman Warsh, and to inflation risks coming down. She did not say in this episode what she expects him to do, so this card does not fill that in.</dd>
+              <dt>Target / time frame</dt>
+              <dd>None given</dd>
+            </dl>
+            <blockquote>
+              <p>“Gold price, it did drop below. This is a log chart. It did drop below 4,000 from roughly 5,600. So, that's been quite a correction. If Chairman Warsh does what we think he's going to do, we think the gold price will continue to come down as inflation risks come down.”</p>
+            </blockquote>
+            <p class="quote-note">Lightly edited from captions, stutters removed. <a href="https://www.youtube.com/watch?v=Pk3XgEYGBWQ&amp;t=2647s" target="_blank" rel="noopener noreferrer">Watch at 44:07</a>.</p>
+            <blockquote>
+              <p>“We do think Bitcoin will continue to move up relative to gold. We think gold's going down.”</p>
+            </blockquote>
+            <p class="quote-note">Word for word from the captions. <a href="https://www.youtube.com/watch?v=Pk3XgEYGBWQ&amp;t=3307s" target="_blank" rel="noopener noreferrer">Watch at 55:07</a>.</p>
+          </section>
+          <div class="corner gold-frame" aria-hidden="true">
+          <div class="gold-pile">
+            <svg viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg" focusable="false" preserveAspectRatio="xMidYMid meet">
+              <title>Decorative gold bars stacked on gold nuggets, with miners</title>
+              <defs>
+                <linearGradient id="gp-top" x1="12%" y1="0%" x2="88%" y2="100%">
+                  <stop offset="0%" stop-color="#fff6d0"/>
+                  <stop offset="28%" stop-color="#fbe9a8"/>
+                  <stop offset="62%" stop-color="#f0c14b"/>
+                  <stop offset="100%" stop-color="#d4a030"/>
+                </linearGradient>
+                <linearGradient id="gp-top2" x1="20%" y1="0%" x2="90%" y2="90%">
+                  <stop offset="0%" stop-color="#fbe9a8"/>
+                  <stop offset="55%" stop-color="#f0c14b"/>
+                  <stop offset="100%" stop-color="#c9a03e"/>
+                </linearGradient>
+                <linearGradient id="gp-front" x1="50%" y1="0%" x2="50%" y2="100%">
+                  <stop offset="0%" stop-color="#f6d67c"/>
+                  <stop offset="38%" stop-color="#f0c14b"/>
+                  <stop offset="100%" stop-color="#b88620"/>
+                </linearGradient>
+                <linearGradient id="gp-front2" x1="50%" y1="0%" x2="50%" y2="100%">
+                  <stop offset="0%" stop-color="#f0c14b"/>
+                  <stop offset="100%" stop-color="#a67c22"/>
+                </linearGradient>
+                <linearGradient id="gp-side" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#c9a03e"/>
+                  <stop offset="40%" stop-color="#8f6a14"/>
+                  <stop offset="100%" stop-color="#4a360a"/>
+                </linearGradient>
+                <linearGradient id="gp-bevel" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#fff6d0" stop-opacity="0.7"/>
+                  <stop offset="100%" stop-color="#d4a030" stop-opacity="0.15"/>
+                </linearGradient>
+                <radialGradient id="gp-spec" cx="28%" cy="22%" r="55%">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.72"/>
+                  <stop offset="35%" stop-color="#fff6d0" stop-opacity="0.28"/>
+                  <stop offset="100%" stop-color="#f0c14b" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="gp-nugA" cx="32%" cy="28%" r="72%">
+                  <stop offset="0%" stop-color="#fff6d0"/>
+                  <stop offset="32%" stop-color="#f8d978"/>
+                  <stop offset="70%" stop-color="#f0c14b"/>
+                  <stop offset="100%" stop-color="#6a4e0e"/>
+                </radialGradient>
+                <radialGradient id="gp-nugB" cx="40%" cy="30%" r="75%">
+                  <stop offset="0%" stop-color="#fbe9a8"/>
+                  <stop offset="40%" stop-color="#f0c14b"/>
+                  <stop offset="100%" stop-color="#5a420c"/>
+                </radialGradient>
+                <radialGradient id="gp-nugC" cx="26%" cy="24%" r="70%">
+                  <stop offset="0%" stop-color="#f8e19a"/>
+                  <stop offset="45%" stop-color="#e0b03a"/>
+                  <stop offset="100%" stop-color="#3d2c08"/>
+                </radialGradient>
+                <radialGradient id="gp-nugD" cx="55%" cy="35%" r="78%">
+                  <stop offset="0%" stop-color="#f6d67c"/>
+                  <stop offset="50%" stop-color="#d4a030"/>
+                  <stop offset="100%" stop-color="#4a360a"/>
+                </radialGradient>
+                <filter id="gp-soft" x="-25%" y="-20%" width="150%" height="160%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+                </filter>
+                <filter id="gp-barsh" x="-12%" y="-8%" width="130%" height="140%">
+                  <feOffset dy="3" dx="0.8" in="SourceAlpha" result="off"/>
+                  <feGaussianBlur in="off" stdDeviation="2.4" result="blur"/>
+                  <feFlood flood-color="#1a1406" flood-opacity="0.4" result="color"/>
+                  <feComposite in="color" in2="blur" operator="in" result="sh"/>
+                  <feMerge>
+                    <feMergeNode in="sh"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                <filter id="gp-nugsh" x="-15%" y="-15%" width="140%" height="150%">
+                  <feOffset dy="1.4" dx="0.4" in="SourceAlpha" result="off"/>
+                  <feGaussianBlur in="off" stdDeviation="1.6" result="blur"/>
+                  <feFlood flood-color="#1a1406" flood-opacity="0.35" result="color"/>
+                  <feComposite in="color" in2="blur" operator="in" result="sh"/>
+                  <feMerge>
+                    <feMergeNode in="sh"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              
+                <linearGradient id="gp-denim" x1="30%" y1="0%" x2="80%" y2="100%">
+                  <stop offset="0%" stop-color="#4a5d78"/>
+                  <stop offset="45%" stop-color="#2c3a4e"/>
+                  <stop offset="100%" stop-color="#1a2433"/>
+                </linearGradient>
+                <linearGradient id="gp-denim2" x1="20%" y1="0%" x2="80%" y2="100%">
+                  <stop offset="0%" stop-color="#3e5368"/>
+                  <stop offset="100%" stop-color="#1b2836"/>
+                </linearGradient>
+                <linearGradient id="gp-char" x1="30%" y1="0%" x2="80%" y2="100%">
+                  <stop offset="0%" stop-color="#4a4c50"/>
+                  <stop offset="50%" stop-color="#2c2e32"/>
+                  <stop offset="100%" stop-color="#17181a"/>
+                </linearGradient>
+                <linearGradient id="gp-skin" x1="30%" y1="0%" x2="70%" y2="100%">
+                  <stop offset="0%" stop-color="#d4b08a"/>
+                  <stop offset="100%" stop-color="#8a6244"/>
+                </linearGradient>
+                <linearGradient id="gp-skin2" x1="30%" y1="0%" x2="70%" y2="100%">
+                  <stop offset="0%" stop-color="#c4a07a"/>
+                  <stop offset="100%" stop-color="#7a5638"/>
+                </linearGradient>
+                <linearGradient id="gp-hat" x1="20%" y1="0%" x2="80%" y2="100%">
+                  <stop offset="0%" stop-color="#fbe9a8"/>
+                  <stop offset="45%" stop-color="#f0c14b"/>
+                  <stop offset="100%" stop-color="#8f6a14"/>
+                </linearGradient>
+                <linearGradient id="gp-boot" x1="30%" y1="0%" x2="70%" y2="100%">
+                  <stop offset="0%" stop-color="#3a2a1c"/>
+                  <stop offset="100%" stop-color="#16100a"/>
+                </linearGradient>
+                <linearGradient id="gp-wood" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#6a4424"/>
+                  <stop offset="50%" stop-color="#8a5a30"/>
+                  <stop offset="100%" stop-color="#4a2e16"/>
+                </linearGradient>
+                <linearGradient id="gp-steel" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#d0d4d8"/>
+                  <stop offset="40%" stop-color="#8a9199"/>
+                  <stop offset="100%" stop-color="#3a4048"/>
+                </linearGradient>
+                <radialGradient id="gp-lamp" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#fff6d0" stop-opacity="0.95"/>
+                  <stop offset="40%" stop-color="#f0c14b" stop-opacity="0.7"/>
+                  <stop offset="100%" stop-color="#f0c14b" stop-opacity="0"/>
+                </radialGradient>
+</defs>
+
+              <!-- ground shadow -->
+              <ellipse cx="200" cy="322" rx="168" ry="18" fill="#1a1406" opacity="0.42" filter="url(#gp-soft)"/>
+
+              <!-- back / lower nuggets -->
+              <g filter="url(#gp-nugsh)" fill-rule="evenodd" stroke="#4a360a" stroke-opacity="0.35" stroke-width="0.85" stroke-linejoin="round">
+                <path d="M48 248c8-22 36-30 58-16 14-16 42-14 54 6 16-10 44-8 52 12 8 18-6 32-32 36-24 4-50-4-70 2-22 6-48-2-56-18-6-12-10-16-6-22z" fill="url(#gp-nugC)"/>
+                <path d="M214 252c10-18 38-24 56-8 16-12 40-10 48 8 6 16-8 28-30 30-22 2-44-6-62 0-16 6-28-4-18-18 2-4 4-8 6-12z" fill="url(#gp-nugD)"/>
+                <path d="M22 268c10-16 28-18 40-6 10-12 28-10 34 4 4 14-8 24-26 26-20 2-42-6-48-24z" fill="url(#gp-nugB)"/>
+                <path d="M320 262c8-14 26-16 38-4 10-8 24-6 28 6 2 12-10 20-26 20-18 0-40-8-40-22z" fill="url(#gp-nugC)"/>
+              </g>
+
+              <!-- bottom-right bar, slightly receding -->
+              <g filter="url(#gp-barsh)">
+                <polygon points="198,168 332,168 352,136 226,136" fill="url(#gp-top2)"/>
+                <polygon points="206,162 324,162 340,142 224,142" fill="url(#gp-bevel)" opacity="0.35"/>
+                <polygon points="198,168 332,168 338,208 192,208" fill="url(#gp-front2)"/>
+                <polygon points="332,168 352,136 358,174 338,208" fill="url(#gp-side)"/>
+                <polyline points="198,168 332,168 352,136" fill="none" stroke="#fff6d0" stroke-width="1.3" stroke-linejoin="miter" opacity="0.55"/>
+                <polygon points="214,146 250,146 268,154 220,154" fill="url(#gp-spec)"/>
+                <g font-family="Georgia, Palatino, Times, serif" font-weight="700" text-anchor="middle" transform="translate(276,152) rotate(-8) skewX(-11) scale(1,0.72)">
+                  <text y="-9" fill="#4a360a" opacity="0.68" font-size="12" letter-spacing="0.16em">FINE GOLD</text>
+                  <text y="-9.7" x="-0.5" fill="#fff6d0" opacity="0.55" font-size="12" letter-spacing="0.16em">FINE GOLD</text>
+                  <text y="5" fill="#4a360a" opacity="0.68" font-size="11" letter-spacing="0.16em">999.9</text>
+                  <text y="4.3" x="-0.5" fill="#fff6d0" opacity="0.55" font-size="11" letter-spacing="0.16em">999.9</text>
+                  <text y="17" fill="#4a360a" opacity="0.55" font-size="7.5" letter-spacing="0.14em">No. 0003</text>
+                  <text y="16.4" x="-0.4" fill="#fff6d0" opacity="0.4" font-size="7.5" letter-spacing="0.14em">No. 0003</text>
+                </g>
+              </g>
+
+              <!-- bottom-left bar -->
+              <g filter="url(#gp-barsh)">
+                <polygon points="36,178 178,178 200,144 66,144" fill="url(#gp-top)"/>
+                <polygon points="48,172 170,172 186,152 68,152" fill="url(#gp-bevel)" opacity="0.4"/>
+                <polygon points="36,178 178,178 184,222 30,222" fill="url(#gp-front)"/>
+                <polygon points="178,178 200,144 206,186 184,222" fill="url(#gp-side)"/>
+                <polyline points="36,178 178,178 200,144" fill="none" stroke="#fff6d0" stroke-width="1.5" stroke-linejoin="miter" opacity="0.65"/>
+                <polygon points="58,154 108,154 128,164 66,164" fill="url(#gp-spec)"/>
+                <g font-family="Georgia, Palatino, Times, serif" font-weight="700" text-anchor="middle" transform="translate(118,161) rotate(-8) skewX(-11) scale(1,0.72)">
+                  <text y="-9" fill="#4a360a" opacity="0.68" font-size="12" letter-spacing="0.16em">FINE GOLD</text>
+                  <text y="-9.7" x="-0.5" fill="#fff6d0" opacity="0.55" font-size="12" letter-spacing="0.16em">FINE GOLD</text>
+                  <text y="5" fill="#4a360a" opacity="0.68" font-size="11" letter-spacing="0.16em">999.9</text>
+                  <text y="4.3" x="-0.5" fill="#fff6d0" opacity="0.55" font-size="11" letter-spacing="0.16em">999.9</text>
+                  <text y="17" fill="#4a360a" opacity="0.55" font-size="7.5" letter-spacing="0.14em">No. 0002</text>
+                  <text y="16.4" x="-0.4" fill="#fff6d0" opacity="0.4" font-size="7.5" letter-spacing="0.14em">No. 0002</text>
+                </g>
+              </g>
+
+              <!-- mid / front nuggets, overlapping the bar bases -->
+              <g filter="url(#gp-nugsh)" fill-rule="evenodd" stroke="#4a360a" stroke-opacity="0.35" stroke-width="0.85" stroke-linejoin="round">
+                <path d="M8 292c12-20 34-22 50-8 14-18 40-16 52 4 8 14-4 26-24 30-22 4-46-2-58-12-10-8-18-6-20-14z" fill="url(#gp-nugA)"/>
+                <path d="M70 300c10-16 32-20 48-6 12-14 34-12 42 4 6 16-10 26-30 28-22 2-50-8-60-26z" fill="url(#gp-nugC)"/>
+                <path d="M128 306c12-18 36-18 50-4 14-12 36-8 44 8 4 14-12 24-34 26-22 2-52-8-60-30z" fill="url(#gp-nugB)"/>
+                <path d="M188 304c10-16 30-18 44-4 12-12 32-8 40 8 4 14-10 22-30 24-20 2-48-8-54-28z" fill="url(#gp-nugA)"/>
+                <path d="M246 296c10-16 28-18 42-4 10-10 28-8 34 6 4 14-8 22-26 24-20 2-44-6-50-26z" fill="url(#gp-nugD)"/>
+                <path d="M300 286c8-14 26-16 38-4 10-10 24-8 30 6 2 12-8 20-24 22-18 2-40-8-44-24z" fill="url(#gp-nugB)"/>
+                <path d="M348 278c6-12 20-14 30-4 8-8 20-6 24 6 2 10-8 16-20 16-14 0-32-6-34-18z" fill="url(#gp-nugC)"/>
+                <path d="M40 278c6-12 18-12 26-2 8-8 20-6 24 4 2 10-6 16-18 16-14 0-30-6-32-18z" fill="url(#gp-nugA)"/>
+                <path d="M96 284c6-10 18-12 26-2 8-8 18-6 22 4 2 10-6 16-18 16-12 0-28-6-30-18z" fill="url(#gp-nugB)"/>
+                <path d="M160 288c8-12 20-12 28-2 8-8 20-4 24 6 2 10-8 16-20 16-14 0-32-6-32-20z" fill="url(#gp-nugA)"/>
+                <path d="M220 286c6-10 18-12 26-2 8-6 18-4 22 6 2 8-6 14-18 14-12 0-28-6-30-18z" fill="url(#gp-nugC)"/>
+                <path d="M278 278c6-10 16-10 24-2 6-6 16-4 20 4 2 8-6 14-16 14-12 0-26-6-28-16z" fill="url(#gp-nugD)"/>
+                <!-- small highlight lumps in front -->
+                <path d="M54 296c4-8 14-8 20 0 4-4 12-2 14 4 0 6-6 10-14 9-8-1-20-4-20-13z" fill="url(#gp-nugA)"/>
+                <path d="M118 300c4-8 14-8 20 0 5-4 12-2 14 4 0 6-6 10-14 9-8-1-20-5-20-13z" fill="url(#gp-nugB)"/>
+                <path d="M186 298c4-8 13-8 19 0 5-4 11-2 13 4 0 6-6 10-14 9-8-1-18-5-18-13z" fill="url(#gp-nugA)"/>
+                <path d="M252 292c4-8 12-8 18 0 4-4 11-2 13 4 0 6-5 10-13 9-8-1-18-4-18-13z" fill="url(#gp-nugC)"/>
+              </g>
+
+              <!-- top bar, centered, stamped -->
+              <g filter="url(#gp-barsh)">
+                <polygon points="96,78 268,78 294,38 126,38" fill="url(#gp-top)"/>
+                <polygon points="110,72 256,72 274,48 128,48" fill="url(#gp-bevel)" opacity="0.45"/>
+                <polygon points="96,78 268,78 276,124 88,124" fill="url(#gp-front)"/>
+                <polygon points="268,78 294,38 302,82 276,124" fill="url(#gp-side)"/>
+                <polyline points="96,78 268,78 294,38" fill="none" stroke="#fff6d0" stroke-width="1.7" stroke-linejoin="miter" opacity="0.75"/>
+                <polygon points="118,48 176,48 200,60 128,60" fill="url(#gp-spec)"/>
+                <g font-family="Georgia, Palatino, Times, serif" font-weight="700" text-anchor="middle" transform="translate(192,58) rotate(-8) skewX(-12) scale(1,0.72)">
+                  <text y="-9" fill="#4a360a" opacity="0.68" font-size="13" letter-spacing="0.16em">FINE GOLD</text>
+                  <text y="-9.7" x="-0.5" fill="#fff6d0" opacity="0.55" font-size="13" letter-spacing="0.16em">FINE GOLD</text>
+                  <text y="5" fill="#4a360a" opacity="0.68" font-size="12" letter-spacing="0.16em">999.9</text>
+                  <text y="4.3" x="-0.5" fill="#fff6d0" opacity="0.55" font-size="12" letter-spacing="0.16em">999.9</text>
+                  <text y="17" fill="#4a360a" opacity="0.55" font-size="8" letter-spacing="0.14em">No. 0001</text>
+                  <text y="16.4" x="-0.4" fill="#fff6d0" opacity="0.4" font-size="8" letter-spacing="0.14em">No. 0001</text>
+                </g>
+              </g>
+            
+              <!-- miners: small figures chipping the heap; drawn in front -->
+              <!-- left miner, facing right, mid-swing, weight on the front foot -->
+              <g transform="translate(60,312) rotate(14)">
+                <ellipse cx="1" cy="1.4" rx="16" ry="3.4" fill="#1a1406" opacity="0.4"/>
+                <!-- trailing leg, bent at the knee -->
+                <path d="M-9-20c-2-1-5 2-8 8l-3 10c0 2 2 3 5 3l4-1 2-10 2-8z" fill="url(#gp-denim)"/>
+                <path d="M-22 1.3h13l-1.5-5.4h-9.2z" fill="url(#gp-boot)"/>
+                <!-- lead leg, deeply bent, planted forward -->
+                <path d="M2-20c4 1 9 6 11 12l3 8c0 2-2 3-6 3h-5l-1-9-1-10z" fill="url(#gp-denim2)"/>
+                <path d="M5 1.5h14l-2.1-5.6H8z" fill="url(#gp-boot)"/>
+                <!-- torso, leaned into the swing -->
+                <path d="M-8-22c-3-15 1-29 8-32 7-3 14 5 16 24 1 5-3 9-9 10h-8c-5-1-8-3-7-6z" fill="url(#gp-char)"/>
+                <!-- rear arm, high on the haft -->
+                <path d="M-4-46c-10-12-20-16-22-11-2 4 6 11 15 16 5 3 10 3 12 0 1-2-1-4-5-5z" fill="url(#gp-skin)"/>
+                <path d="M-2-45c-5-3-9-1-10 4 1 6 8 11 13 10 3 0 4-4 2-7-2-3-3-6-5-7z" fill="url(#gp-char)"/>
+                <!-- pickaxe, follow-through high -->
+                <g transform="rotate(-50 2 -56)">
+                  <rect x="-20" y="-59.2" width="58" height="3.4" rx="1.5" fill="url(#gp-wood)" transform="rotate(-10 7 -57.5)"/>
+                  <g transform="translate(38,-64) rotate(-14)">
+                    <path d="M-2 0h4v7c0 5 2 9 6 12l-3 3c-6-4-9-10-9-16V0z" fill="url(#gp-steel)"/>
+                    <path d="M-2 0h4v-3c0-5-3-9-8-12l3-3c7 4 11 10 11 16v2z" fill="url(#gp-steel)"/>
+                    <rect x="-3.2" y="-3" width="6.4" height="6" rx="1" fill="#5a6068"/>
+                  </g>
+                </g>
+                <!-- front arm, lower on the handle -->
+                <path d="M7-42c9-1 18-6 21-1 3 4-3 9-12 12-5 2-11 1-13-1-2-2 0-6 4-10z" fill="url(#gp-skin)"/>
+                <path d="M6-43c4 0 8 3 9 7 1 3-1 5-5 5-4 0-8-3-9-6-1-3 1-6 5-6z" fill="url(#gp-char)"/>
+                <rect x="1" y="-54" width="5" height="6" rx="1.5" fill="url(#gp-skin)"/>
+                <circle cx="4.8" cy="-60" r="7.2" fill="url(#gp-skin)"/>
+                <ellipse cx="4.8" cy="-63.5" rx="8.6" ry="3.1" fill="#c9a03e"/>
+                <path d="M-3.4-64c1-8 6.5-13 8.2-13 5.6 0 10.4 5 11 13z" fill="url(#gp-hat)"/>
+                <rect x="9.6" y="-66.8" width="4.2" height="3.2" rx="0.8" fill="#3a4048"/>
+                <circle cx="14" cy="-65.2" r="6.5" fill="url(#gp-lamp)"/>
+                <circle cx="14" cy="-65.2" r="1.35" fill="#fff6d0"/>
+              </g>
+              <!-- sparks on the left-hand bar front -->
+              <g fill="#fbe9a8" stroke="#f0c14b" stroke-width="0.35">
+                <polygon points="74,206 78,196 80,206 90,208 80,211 78,220 74,211 64,208" fill="#fff6d0" stroke="none" opacity="0.9"/>
+                <circle cx="72" cy="204" r="1.3" fill="#fff6d0"/>
+                <circle cx="86" cy="210" r="1.1" fill="#f0c14b"/>
+                <polygon points="82,201 84,197 85,201" fill="#f8d978"/>
+                <polygon points="69,212 67,217 71,213" fill="#f0c14b"/>
+                <rect x="88" y="203" width="2.2" height="2.2" transform="rotate(25 89 204)" fill="#d4a030"/>
+                <rect x="66" y="199" width="1.6" height="1.6" transform="rotate(-18 67 200)" fill="#fff6d0"/>
+              </g>
+
+              <!-- right miner, facing left, earlier in the swing, more crouched -->
+              <g transform="translate(336,308) scale(-1,1) rotate(-6)">
+                <ellipse cx="2" cy="1.6" rx="16" ry="3.6" fill="#1a1406" opacity="0.4"/>
+                <path d="M-10-18c-2 0-5 3-7 9l-2 9c0 2 2 3 5 3l4-1 1-9 2-9z" fill="url(#gp-char)"/>
+                <path d="M-21 1.4h12l-1.3-5.3h-8.5z" fill="url(#gp-boot)"/>
+                <path d="M3-19c5 2 8 8 9 13l2 6c0 2-2 3-6 3H5l-1-8 0-10z" fill="url(#gp-char)"/>
+                <path d="M3 1.6h13l-2-5.5H6z" fill="url(#gp-boot)"/>
+                <path d="M-7-21c-1-14 3-26 9-29 6-3 13 6 14 23 0 5-4 8-9 9h-7c-5-1-7-3-7-6z" fill="url(#gp-denim)"/>
+                <path d="M0-44c-7-8-14-10-16-6-2 4 4 9 11 13 4 2 9 2 11-1 1-2 0-4-6-6z" fill="url(#gp-skin2)"/>
+                <path d="M1-43c-4-2-8 0-9 4 1 5 7 9 11 8 3 0 4-3 2-6-2-3-3-5-4-6z" fill="url(#gp-denim)"/>
+                <!-- pickaxe still on the way down, flatter than the left miner -->
+                <g transform="rotate(-22 4 -50)">
+                  <rect x="-18" y="-53.2" width="54" height="3.4" rx="1.5" fill="url(#gp-wood)" transform="rotate(-4 7 -51.5)"/>
+                  <g transform="translate(36,-58) rotate(-8)">
+                    <path d="M-2 0h4v7c0 5 2 9 6 12l-3 3c-6-4-9-10-9-16V0z" fill="url(#gp-steel)"/>
+                    <path d="M-2 0h4v-3c0-5-3-9-8-12l3-3c7 4 11 10 11 16v2z" fill="url(#gp-steel)"/>
+                    <rect x="-3.2" y="-3" width="6.4" height="6" rx="1" fill="#5a6068"/>
+                  </g>
+                </g>
+                <path d="M8-40c8 2 14 8 12 13-2 3-9 2-15-2-4-3-6-6-4-8 2-2 4-3 7-3z" fill="url(#gp-skin2)"/>
+                <path d="M7-40c4 2 6 5 5 8-1 2-4 3-7 2-3-1-5-4-4-7 1-2 3-4 6-3z" fill="url(#gp-denim)"/>
+                <rect x="1" y="-52" width="5" height="6" rx="1.5" fill="url(#gp-skin2)"/>
+                <circle cx="4.5" cy="-58" r="7.2" fill="url(#gp-skin2)"/>
+                <ellipse cx="4.5" cy="-61.5" rx="8.6" ry="3.1" fill="#c9a03e"/>
+                <path d="M-3.6-62c1-8 6.5-13 8.2-13 5.6 0 10.4 5 11 13z" fill="url(#gp-hat)"/>
+                <rect x="9.4" y="-64.8" width="4.2" height="3.2" rx="0.8" fill="#3a4048"/>
+                <circle cx="13.8" cy="-63.2" r="6.5" fill="url(#gp-lamp)"/>
+                <circle cx="13.8" cy="-63.2" r="1.35" fill="#fff6d0"/>
+              </g>
+              <!-- sparks on the right-hand bar -->
+              <g fill="#fbe9a8">
+                <polygon points="308,200 312,190 314,200 324,202 314,205 312,214 308,205 298,202" fill="#fff6d0" opacity="0.9"/>
+                <circle cx="306" cy="198" r="1.2" fill="#fff6d0"/>
+                <circle cx="320" cy="204" r="1" fill="#f0c14b"/>
+                <polygon points="316,195 318,191 319,195" fill="#f8d978"/>
+                <polygon points="303,208 301,213 305,209" fill="#f0c14b"/>
+                <rect x="322" y="197" width="2" height="2" transform="rotate(22 323 198)" fill="#d4a030"/>
+              </g>
+
+              <!-- smaller front miner, crouched, chopping down into a nugget -->
+              <g transform="translate(196,324) rotate(-20) scale(0.8)">
+                <ellipse cx="3" cy="1.6" rx="16" ry="3.6" fill="#1a1406" opacity="0.4"/>
+                <!-- both knees deeply bent, sitting into the chop -->
+                <path d="M-10-16c-3 1-6 5-7 10l-1 6c0 2 2 3 5 3h4l1-8 1-9z" fill="url(#gp-denim2)"/>
+                <path d="M-20 1.5h12l-1.2-5.1h-8.4z" fill="url(#gp-boot)"/>
+                <path d="M4-16c5 2 8 7 8 12v4c0 2-2 3-6 3H4l0-7 1-10z" fill="url(#gp-denim2)"/>
+                <path d="M2 1.6h13l-2-5.5H5z" fill="url(#gp-boot)"/>
+                <path d="M-6-18c-2-12 2-22 7-25 6-3 12 5 13 20 0 4-3 7-8 8h-6c-4-1-6-3-6-5z" fill="url(#gp-char)"/>
+                <path d="M-2-38c-6 0-11 5-9 9 2 4 8 5 13 2 3-2 4-5 2-7-2-2-4-4-6-4z" fill="url(#gp-char)"/>
+                <g transform="rotate(66 8 -24)">
+                  <rect x="-4" y="-26.6" width="48" height="3.2" rx="1.4" fill="url(#gp-wood)"/>
+                  <g transform="translate(44,-25) rotate(10)">
+                    <path d="M-2 0h4v6c0 4 2 8 6 11l-3 3c-6-4-9-9-9-15V0z" fill="url(#gp-steel)"/>
+                    <path d="M-2 0h4v-3c0-4-3-8-8-11l3-3c7 4 11 9 11 15v2z" fill="url(#gp-steel)"/>
+                    <rect x="-3" y="-2.8" width="6" height="5.6" rx="1" fill="#5a6068"/>
+                  </g>
+                </g>
+                <path d="M8-36c8 5 14 12 11 16-2 3-9 1-15-4-4-3-5-6-3-8 2-2 4-3 7-4z" fill="url(#gp-skin)"/>
+                <path d="M7-36c4 2 6 6 5 9-1 2-4 3-7 1-3-1-5-4-4-7 1-2 3-4 6-3z" fill="url(#gp-char)"/>
+                <rect x="0" y="-50" width="5" height="6" rx="1.5" fill="url(#gp-skin)"/>
+                <circle cx="3.8" cy="-56" r="7" fill="url(#gp-skin)"/>
+                <ellipse cx="3.8" cy="-59.4" rx="8.4" ry="3" fill="#c9a03e"/>
+                <path d="M-4.1-60c1-8 6.2-12.5 7.8-12.5 5.4 0 10 5 10.6 12.5z" fill="url(#gp-hat)"/>
+                <rect x="8.5" y="-62.4" width="4" height="3" rx="0.8" fill="#3a4048"/>
+                <circle cx="12.7" cy="-60.8" r="6" fill="url(#gp-lamp)"/>
+                <circle cx="12.7" cy="-60.8" r="1.2" fill="#fff6d0"/>
+              </g>
+              <!-- sparks off a front nugget -->
+              <g fill="#fbe9a8">
+                <polygon points="230,292 233,284 235,292 243,294 235,296 233,304 230,296 222,294" fill="#fff6d0" opacity="0.88"/>
+                <circle cx="228" cy="290" r="1.1" fill="#fff6d0"/>
+                <circle cx="240" cy="296" r="0.9" fill="#f0c14b"/>
+                <polygon points="236,287 237,283 239,287" fill="#f8d978"/>
+                <rect x="224" y="298" width="1.8" height="1.8" transform="rotate(-30 225 299)" fill="#d4a030"/>
+              </g>
+
+</svg>
+          </div>
+          </div>
+        </div>
+          <div class="tape-col">
+<section class="corner" aria-labelledby="corner-trend">
+            <p class="corner-label">The Stock Market TV corner</p>
+            <h3 id="corner-trend">JC Parets and Jason Perz</h3>
+            <p class="camp">TrendLabs founder, with All Star Charts' Chief Commodities Strategist</p>
+            <p class="quote-note">Hosts’ and guests’ comments do not necessarily reflect those of Stock Market Media LLC. See Stock Market TV’s <a href="https://www.stockmarkettv.com/disclaimer" target="_blank" rel="noopener noreferrer">disclaimer</a>.</p>
+            <dl class="meta">
+              <dt>Date</dt>
+              <dd>Nov 11, 2026, Stock Market TV Morning Show, plus JC's Nov 5 TrendLabs note. The Morning Show is Stock Market TV's show, not a TrendLabs production.</dd>
+              <dt>Instrument</dt>
+              <dd>Gold miners over gold, scored here with GLD and the VanEck Gold Miners ETF (GDX)</dd>
+              <dt>Condition</dt>
+              <dd>Perz's bullish case depends on gold holding above 4,000, “really 3,900.” He did not call that level a stop.</dd>
+              <dt>Target / time frame</dt>
+              <dd>None given</dd>
+            </dl>
+            <blockquote>
+              <p>“I started buying gold stocks yesterday. We already got a double on that Newmont.”</p>
+            </blockquote>
+            <p class="quote-note">JC Parets, on air. That speaker credit comes from Joey's own listening to the episode. The Newmont double is his own claim; it has not been independently verified here. <a href="https://www.youtube.com/watch?v=0zSu0WomxwU&amp;t=2512s" target="_blank" rel="noopener noreferrer">Watch at 41:52</a>.</p>
+            <blockquote>
+              <p>“And if it really holds above 4,000, really 3,900, I think this thing can really hold up and be very bullish.”</p>
+            </blockquote>
+            <p class="quote-note">Jason Perz, word for word from the captions. <a href="https://www.youtube.com/watch?v=0zSu0WomxwU&amp;t=2549s" target="_blank" rel="noopener noreferrer">Watch at 42:29</a>.</p>
+            <blockquote>
+              <p>“I think you want to be a buyer.”</p>
+            </blockquote>
+            <p class="quote-note">Jason Perz, on gold miners relative to gold. <a href="https://www.youtube.com/watch?v=0zSu0WomxwU&amp;t=2594s" target="_blank" rel="noopener noreferrer">Watch at 43:14</a>.</p>
+            <blockquote>
+              <p>“It's not that I like gold. But we put on three gold trades on Wednesday.”</p>
+            </blockquote>
+            <p class="quote-note">JC Parets, in <a href="https://trendlabs.com/when-the-jokes-write-themselves/" target="_blank" rel="noopener noreferrer">“When the Jokes Write Themselves”</a>, Nov 5, 2026. Wednesday is Nov 4. The three trades are not named in the note.</p>
+          </section>
+        </div>
+        </div>
+        <h2>This Week's Scorecard</h2>
+        <p class="score-caption">Round 1, week of Nov 16. Prices are closes through Nov 13.</p>
+        <p class="score-pointer">Scored by the <a href="#ring-title">house rules below</a>.</p>
+        <div class="score-wrap">
+          <table class="scorecard">
+            <caption class="visually-hidden">Round 1 gold scorecard for the week of Nov 16, 2026</caption>
+            <thead>
+              <tr>
+                <th scope="col">Corner</th>
+                <th scope="col">Instrument</th>
+                <th scope="col">Which way the call wanted</th>
+                <th scope="col">Change</th>
+                <th scope="col">Start close</th>
+                <th scope="col">Nov 13 close</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="rowgroup" rowspan="2">ARK Invest</th>
+                <td>GLD</td>
+                <td>Down (gold price falling)</td>
+                <td class="num change">&minus;4.58%</td>
+                <td class="num">372.52</td>
+                <td class="num">355.45</td>
+              </tr>
+              <tr>
+                <td>GDX</td>
+                <td>Not her call (scored for comparison)</td>
+                <td class="num change">&minus;6.80%</td>
+                <td class="num">87.60</td>
+                <td class="num">81.64</td>
+              </tr>
+              <tr>
+                <th scope="rowgroup" rowspan="2">Stock Market TV</th>
+                <td>GLD</td>
+                <td>Hold above 3,900 (gold)</td>
+                <td class="num change">&minus;3.77%</td>
+                <td class="num">369.36</td>
+                <td class="num">355.45</td>
+              </tr>
+              <tr>
+                <td>GDX</td>
+                <td>Up, and beating gold (miners)</td>
+                <td class="num change">&minus;5.61%</td>
+                <td class="num">86.49</td>
+                <td class="num">81.64</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="score-cards" aria-label="Round 1 gold scorecard for the week of Nov 16, 2026">
+          <article class="score-card">
+            <p class="score-card-label">ARK Invest</p>
+            <p class="score-card-instrument">GLD</p>
+            <p class="score-card-change">&minus;4.58%</p>
+            <p class="score-card-wanted">Which way the call wanted: Down (gold price falling)</p>
+            <div class="score-card-closes">
+              <p class="score-card-label">Start close</p>
+              <p class="num">372.52</p>
+              <p class="score-card-label">Nov 13 close</p>
+              <p class="num">355.45</p>
+            </div>
+          </article>
+          <article class="score-card">
+            <p class="score-card-label">ARK Invest</p>
+            <p class="score-card-instrument">GDX</p>
+            <p class="score-card-change">&minus;6.80%</p>
+            <p class="score-card-wanted">Which way the call wanted: Not her call (scored for comparison)</p>
+            <div class="score-card-closes">
+              <p class="score-card-label">Start close</p>
+              <p class="num">87.60</p>
+              <p class="score-card-label">Nov 13 close</p>
+              <p class="num">81.64</p>
+            </div>
+          </article>
+          <article class="score-card">
+            <p class="score-card-label">Stock Market TV</p>
+            <p class="score-card-instrument">GLD</p>
+            <p class="score-card-change">&minus;3.77%</p>
+            <p class="score-card-wanted">Which way the call wanted: Hold above 3,900 (gold)</p>
+            <div class="score-card-closes">
+              <p class="score-card-label">Start close</p>
+              <p class="num">369.36</p>
+              <p class="score-card-label">Nov 13 close</p>
+              <p class="num">355.45</p>
+            </div>
+          </article>
+          <article class="score-card">
+            <p class="score-card-label">Stock Market TV</p>
+            <p class="score-card-instrument">GDX</p>
+            <p class="score-card-change">&minus;5.61%</p>
+            <p class="score-card-wanted">Which way the call wanted: Up, and beating gold (miners)</p>
+            <div class="score-card-closes">
+              <p class="score-card-label">Start close</p>
+              <p class="num">86.49</p>
+              <p class="score-card-label">Nov 13 close</p>
+              <p class="num">81.64</p>
+            </div>
+          </article>
+        </div>
+        <p>This is early. There is no winner. The table is direction only, and it covers five trading sessions from ARK Invest's start and three from the Stock Market TV start. So far, both GLD and GDX have moved lower from both start dates, which is the direction Cathie described.</p>
+        <p>One factual check on Perz's condition: COMEX gold futures closed at 3,885.30 on Nov 12 and 3,886.30 on Nov 13, both below 3,900. His stated condition is currently not met. He never called that level a stop, so this page says exactly that and no more.</p>
+
+        <aside class="ring" aria-labelledby="ring-title">
+          <h2 id="ring-title">Rules of the Ring</h2>
+          <p>Neither side gave a price target or a time frame. Nobody can be marked right or wrong on their own terms yet. The scoring above is my house rules, written down before later results pile up, so the card cannot drift after the fact.</p>
+          <ul>
+            <li>Each call is scored weekly from that side's start date, using regular-session closes.</li>
+            <li>ARK Invest starts at the Nov 6, 2026 close: GLD 372.52 and GDX 87.60.</li>
+            <li>Stock Market TV starts at the Nov 10, 2026 close: GLD 369.36 and GDX 86.49. The Morning Show aired before the Nov 11 close, so the prior session is the fairer starting print.</li>
+            <li>Round 1 ends Dec 31, 2026.</li>
+            <li>Both sides are scored with GLD and with GDX, even though Cathie was talking about the gold price and Perz was talking about miners.</li>
+            <li>The table tracks direction only. It is not a verdict, and it is not investment advice.</li>
+          </ul>
+        </aside>
+
+        <aside class="joey-read" aria-labelledby="joey-read-title">
+          <h2 id="joey-read-title">Joey's Read</h2>
+          <p>Full disclosure: I’m a fan of both corners. In my opinion, ARK Invest and Stock Market TV have some of the highest-quality people I’ve come across. They’re very different firms, so if you came here for a grudge match, I’m sorry to disappoint you. This is a friendly sparring session they didn’t sign up for - it’s just for fun.</p>
+          <p>Technically speaking, it’s not even a fair fight, which is part of the fun. Neither side put a hard target or a deadline on it, and one corner thinks the gold price keeps sliding while the other is bullish and putting money into gold miners. That’s not apples to apples. It’s more like apples to an apple orchard. Miners usually move with gold, just louder. At some big turns, like 2000 and 2008, they started up first, but other times, like early 2016, they bottomed after gold. So I watch them as a clue, not a guarantee. Since nobody set a clock, I’m setting one through Dec 31. Neither of them agreed to that deadline. Consider the scorecard what it is: a look at two smart camps reading the same shiny rock differently.</p>
+          <p>And in the spirit of honesty, this is my first battle post, so it’s really to help me figure out the format and hopefully improve on the next one. Feel free to <a href="/contact/">message me your ideas or insults</a>. Smarter folks will probably run better battles down the road. Plenty of people already keep score on pundits (shout-out to <a href="https://www.cxoadvisory.com/gurus/" target="_blank" rel="noopener noreferrer">CXO’s Guru Grades</a> and <a href="https://www.alphaaudit.net/" target="_blank" rel="noopener noreferrer">AlphaAudit</a>). My spin is the fight-card format. I put the idea on the record Nov 16, 2026. Borrow it all you want, just give the old guy a little credit. 😄</p>
+        </aside>
+
+        <aside class="disclaimer-box" aria-labelledby="own-words-title">
+          <h2 id="own-words-title">In Their Own Words</h2>
+          <p>Each camp already tells readers that the risk is theirs. Here is the language from their official terms, word for word.</p>
+          <p>From <a href="https://www.ark-invest.com/terms" target="_blank" rel="noopener noreferrer">ARK Invest's Terms &amp; Conditions</a>:</p>
+          <blockquote>
+            <p>“The information provided is for informational purposes only. It does not constitute any form of advice or recommendation to buy or sell any securities or adopt any investment strategy mentioned. It is intended only to provide observations and views of the author(s) at the time of writing, both of which are subject to change at any time without prior notice. The information provided does not have regard to the specific investment objectives, financial situation or particular needs of any specific person who may read it, and investors should determine for themselves whether a particular service or product is suitable for their investment needs or should seek such professional advice for their particular situation.”</p>
+          </blockquote>
+          <p>From <a href="https://trendlabs.com/terms-and-conditions/" target="_blank" rel="noopener noreferrer">TrendLabs' Terms and Conditions</a>, on trade alerts:</p>
+          <blockquote>
+            <p>“Alerts are educational tools meant to guide your decision-making process, not to replace it. You are solely responsible for your trading decisions and outcomes.”</p>
+          </blockquote>
+          <p>Stock Market TV’s <a href="https://www.stockmarkettv.com/disclaimer" target="_blank" rel="noopener noreferrer">disclaimer</a> says hosts’ and guests’ comments do not necessarily reflect those of Stock Market Media LLC.</p>
+          <p class="site-note">This page is commentary and education, not investment advice. KidRunComVC and Joey Kirkman are not affiliated with or endorsed by ARK Invest, TrendLabs, All Star Charts, or Stock Market TV. Readers are responsible for their own decisions. Short quotes are used for commentary and scoring only, with links back to the originals. I don’t republish anyone’s videos, charts, or research. All names, logos, and content belong to their owners.</p>
+        </aside>
+
+        <section class="sources" aria-label="Sources">
+          <h2>Sources</h2>
+          <ul>
+            <li>Cathie Wood, ARK Invest, <cite>In The Know</cite>, Nov 6, 2026. <a href="https://www.youtube.com/watch?v=Pk3XgEYGBWQ" target="_blank" rel="noopener noreferrer">YouTube</a>.</li>
+            <li>Stock Market TV Morning Show, Nov 11, 2026, with JC Parets and Jason Perz. <a href="https://www.youtube.com/watch?v=0zSu0WomxwU" target="_blank" rel="noopener noreferrer">YouTube</a>.</li>
+            <li>JC Parets, “When the Jokes Write Themselves,” TrendLabs, Nov 5, 2026. <a href="https://trendlabs.com/when-the-jokes-write-themselves/" target="_blank" rel="noopener noreferrer">trendlabs.com</a>.</li>
+            <li>ARK Invest Terms &amp; Conditions. <a href="https://www.ark-invest.com/terms" target="_blank" rel="noopener noreferrer">ark-invest.com/terms</a>.</li>
+            <li>TrendLabs Terms and Conditions. <a href="https://trendlabs.com/terms-and-conditions/" target="_blank" rel="noopener noreferrer">trendlabs.com/terms-and-conditions</a>.</li>
+            <li>SPDR Gold Shares (GLD), VanEck Gold Miners ETF (GDX), and COMEX gold futures (GC=F) regular-session closes from Yahoo Finance, as recorded in the research files used for this draft. Latest close used: Nov 13, 2026.</li>
+          </ul>
+        </section>
+
+        <nav class="more" aria-label="More to read">
+          <h2>Keep reading</h2>
+          <ul>
+            <li><a href="/posts/morning-show-study-hall.html">Morning Show, Study Hall</a></li>
+            <li><a href="/battle-calls/">All Battle Calls posts</a></li>
+            <li><a href="/">Back to the desk</a></li>
+          </ul>
+          <p class="catalog-more">More rounds coming.</p>
+        </nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <nav class="footer-nav" aria-label="Footer">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/road-log/">Road Log</a></li>
+            <li><a href="/runners-log/">Runner's Log</a></li>
+            <li><a href="/technical-analysis/">TARA Blog</a></li>
+            <li><a href="/battle-calls/" aria-current="page">Battle Calls</a></li>
+            <li><a href="/spacexsi/">SpaceXSI</a></li>
+            <li><a href="/market-history/">Market History</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </nav>
+        <p class="legal">© 2026 KidRunComVC. All rights reserved. Education and entertainment only, not investment advice.</p>
+      </div>
+    </footer>
+    <script src="/assets/creative.js"></script>
+    <script src="/js/site.js"></script>
+  </body>
+</html>
