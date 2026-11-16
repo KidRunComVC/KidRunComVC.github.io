@@ -783,6 +783,20 @@ h3 {
   border: 2px solid var(--stroke);
 }
 
+picture.story-thumb {
+  display: block;
+  object-fit: unset;
+  border: 0;
+}
+
+picture.story-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 2px solid var(--stroke);
+  display: block;
+}
+
 .story,
 .story-title,
 .story-deck {
@@ -1524,12 +1538,18 @@ body[data-section="spacexsi"] .catalog {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .story-thumb {
+  .story-thumb,
+  picture.story-thumb img {
     width: 100%;
     height: auto;
     max-height: none;
     aspect-ratio: auto;
     object-fit: contain;
+  }
+
+  picture.story-thumb {
+    width: 100%;
+    height: auto;
   }
 }
 
