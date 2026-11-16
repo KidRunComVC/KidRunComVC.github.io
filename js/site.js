@@ -117,8 +117,16 @@
     }
 
     Array.prototype.forEach.call(photos, function (photo) {
+      photo.setAttribute("tabindex", "0");
+      photo.setAttribute("role", "button");
       photo.addEventListener("click", function () {
         openPhoto(photo);
+      });
+      photo.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openPhoto(photo);
+        }
       });
     });
 
