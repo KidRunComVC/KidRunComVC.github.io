@@ -197,6 +197,9 @@ a:focus-visible {
   left: 0.75rem;
   top: 0.75rem;
   z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   padding: 0.55rem 0.8rem;
   background: var(--amber);
   color: var(--amber-ink);
@@ -336,6 +339,9 @@ a:focus-visible {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: var(--ink);
   font-family: var(--display);
   font-weight: 700;
@@ -361,8 +367,10 @@ a:focus-visible {
 .site-nav a {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-width: 44px;
   min-height: 44px;
-  padding: 0.2rem 0.15rem;
+  padding: 0.2rem 0.35rem;
   color: var(--ink);
   font-family: var(--mono);
   font-size: 1.05rem;
@@ -453,7 +461,7 @@ h3 {
 }
 
 .section-ctas .button {
-  min-height: 40px;
+  min-height: 44px;
   padding: 0.28rem 0.65rem;
   font-size: 0.76rem;
   white-space: nowrap;
@@ -957,7 +965,7 @@ picture.story-thumb img {
 }
 
 .family-entry {
-  max-width: 26rem;
+  max-width: 42rem;
   margin: 0 0 3rem;
 }
 
@@ -1420,6 +1428,12 @@ body[data-section="spacexsi"] .catalog {
   margin-top: 0.35rem;
 }
 
+.more a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
 .template-banner {
   margin: 0 0 1.25rem;
   padding: 0.75rem 0.85rem;
@@ -1460,7 +1474,10 @@ body[data-section="spacexsi"] .catalog {
 .footer-nav a {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-width: 44px;
   min-height: 44px;
+  padding: 0 0.2rem;
   color: var(--label);
   font-family: var(--mono);
   font-size: 1rem;
@@ -1480,7 +1497,10 @@ body[data-section="spacexsi"] .catalog {
 .footer-contact a {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-width: 44px;
   min-height: 44px;
+  padding: 0 0.2rem;
   color: var(--label);
   font-family: var(--mono);
   font-size: 1rem;
@@ -1615,33 +1635,18 @@ body[data-section="spacexsi"] .catalog {
   }
 }
 
-@media (min-width: 701px) and (max-width: 1100px) {
+@media (min-width: 701px) and (max-width: 1180px) {
   .brand-row {
-    flex-wrap: nowrap;
-    gap: 0.35rem 0.55rem;
-  }
-
-  .brand {
-    flex: none;
-    font-size: 1.15rem;
+    row-gap: 0.15rem;
   }
 
   .site-nav {
-    flex: 1 1 auto;
+    flex: 1 1 100%;
     min-width: 0;
   }
 
   .site-nav ul {
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    gap: 0;
-  }
-
-  .site-nav a {
-    padding: 0.1rem 0.28rem;
-    font-size: 0.7rem;
-    letter-spacing: 0;
-    white-space: nowrap;
+    justify-content: flex-start;
   }
 }
 
@@ -1904,6 +1909,6 @@ body.lightbox-open {
 .zec-check { font-size: .9em; margin: .6rem 0 .5rem; }
 .zec-check strong { font-family: ui-monospace, monospace; color: var(--ink); }
 .zec-actions { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin: 0; }
-.zec-copy { font: inherit; font-size: .85rem; padding: .4rem .8rem; background: transparent; color: var(--ink); border: 1px solid var(--ink); cursor: pointer; }
+.zec-copy { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; font: inherit; font-size: .85rem; padding: .4rem .8rem; background: transparent; color: var(--ink); border: 1px solid var(--ink); cursor: pointer; }
 .zec-copy:hover { background: var(--ink); color: var(--bg); }
 @media (max-width: 560px) { .zec-tip { flex-direction: column; } .zec-qr img { width: 200px; height: 200px; } }
