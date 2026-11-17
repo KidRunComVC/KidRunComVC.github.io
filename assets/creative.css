@@ -116,6 +116,10 @@ html.fx-tints[data-theme="dark"] body[data-section="kitchen"] {
   --section-accent: #8fd9a8;
 }
 
+html.fx-tints[data-theme="dark"] body[data-section="family"] {
+  --section-accent: #e8b4c4;
+}
+
 html.fx-tints[data-theme="dark"] body[data-section="tara"] {
   --section-accent: #f0c14b;
 }
@@ -153,6 +157,10 @@ html.fx-tints[data-theme="dark"] .section-block[data-tint="kitchen"] {
   border-top-color: #8fd9a8;
 }
 
+html.fx-tints[data-theme="dark"] .section-block[data-tint="family"] {
+  border-top-color: #e8b4c4;
+}
+
 html.fx-tints[data-theme="dark"] .section-block[data-tint="tara"] {
   border-top-color: #f0c14b;
 }
@@ -183,6 +191,10 @@ html.fx-tints[data-theme="dark"] .section-block[data-tint="road-log"] > .section
 
 html.fx-tints[data-theme="dark"] .section-block[data-tint="kitchen"] > .section-copy > .kicker {
   color: #8fd9a8;
+}
+
+html.fx-tints[data-theme="dark"] .section-block[data-tint="family"] > .section-copy > .kicker {
+  color: #e8b4c4;
 }
 
 html.fx-tints[data-theme="dark"] .section-block[data-tint="tara"] > .section-copy > .kicker {
