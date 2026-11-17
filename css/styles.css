@@ -973,6 +973,29 @@ picture.story-thumb img {
   font-size: 1.05rem;
 }
 
+.family-download-note {
+  margin: 1rem 0 0.75rem;
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+
+.family-downloads {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.family-downloads .button {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.7rem 1rem;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.35;
+}
+
 .family-video {
   margin: 1.25rem 0 0;
 }
