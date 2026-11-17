@@ -961,10 +961,18 @@ picture.story-thumb img {
   margin: 0 0 3rem;
 }
 
+.family-entry .kicker {
+  margin: 0 0 0.45rem;
+}
+
 .family-entry h2 {
   margin: 0 0 0.4rem;
   font-family: var(--display);
   font-size: clamp(1.6rem, 3vw, 2.1rem);
+}
+
+.family-entry p {
+  margin: 0.85rem 0 0;
 }
 
 .family-entry-deck {
@@ -973,18 +981,12 @@ picture.story-thumb img {
   font-size: 1.05rem;
 }
 
-.family-download-note {
-  margin: 1rem 0 0.75rem;
-  color: var(--ink);
-  font-size: 1.05rem;
-}
-
 .family-downloads {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 0.75rem;
-  margin: 0;
+  margin: 1rem 0 0;
 }
 
 .family-downloads .button {
