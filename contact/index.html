@@ -41,7 +41,7 @@
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/assets/creative.css">
     <style>
-      /* Page-only form layout. Uses the desk tokens. No third-party scripts. */
+      /* Page-only form layout. Uses the desk tokens. The Web3Forms captcha script is loaded on this page only. */
       .contact-page {
         width: min(44rem, calc(100% - 2.5rem));
         margin-inline: auto;
@@ -118,6 +118,14 @@
         margin-top: 0.25rem;
         cursor: pointer;
         font-size: 1rem;
+      }
+      .contact-form .h-captcha {
+        margin: 0 0 1rem;
+        max-width: 100%;
+        line-height: 0;
+      }
+      .contact-form .h-captcha iframe {
+        max-width: 100%;
       }
       /* Honeypot: hidden from sighted users and from the tab order, left in the POST. */
       .honeypot {
@@ -206,6 +214,8 @@
             <textarea id="message" name="message" required></textarea>
           </div>
 
+          <div class="h-captcha" data-captcha="true" data-theme="dark" data-size="compact"></div>
+
           <button type="submit" class="button">Send</button>
         </form>
       </div>
@@ -232,5 +242,6 @@
     </footer>
     <script src="/assets/creative.js"></script>
     <script src="/js/site.js"></script>
+    <script src="https://web3forms.com/client/script.js" async defer></script>
   </body>
 </html>
