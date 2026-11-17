@@ -6,6 +6,7 @@
     "About": "4.4",
     "Road Log": "13.1",
     "Runner's Log": "16.2",
+    "Family": "18.0",
     "TARA Blog": "20.0",
     "Battle Calls": "22.0",
     "SpaceXSI": "23.1",

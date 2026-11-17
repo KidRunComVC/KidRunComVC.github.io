@@ -951,6 +951,43 @@ picture.story-thumb img {
   padding: 1.25rem 0 3rem;
 }
 
+/* Family tab: portrait story videos. */
+.family-catalog {
+  padding-top: 1.5rem;
+}
+
+.family-entry {
+  max-width: 26rem;
+  margin: 0 0 3rem;
+}
+
+.family-entry h2 {
+  margin: 0 0 0.4rem;
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+}
+
+.family-entry-deck {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.family-video {
+  margin: 1.25rem 0 0;
+}
+
+.family-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #000;
+  border: 2px solid var(--stroke);
+  border-radius: 0.75rem;
+  box-shadow: 5px 5px 0 var(--shadow);
+}
+
+
 /* Battle Calls tab: fight-night hero. Full 16:9, no crop. */
 .fight-night.wrap {
   margin-top: 1.25rem;
