@@ -47,6 +47,43 @@
     <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/assets/creative.css">
+    <style>
+      .battle-outbound {
+        padding-top: 0.4rem;
+      }
+      .battle-outbound h2 {
+        margin: 0 0 0.4rem;
+        font-family: var(--display);
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+      }
+      .battle-outbound p {
+        margin: 0;
+        max-width: 42rem;
+        color: var(--ink);
+        font-size: 1.15rem;
+      }
+      a.battle-site-link {
+        display: flex;
+        width: 100%;
+        max-width: 28rem;
+        min-height: 48px;
+        margin-top: 1rem;
+        padding: 0.85rem 1.2rem;
+        font-size: 1.05rem;
+        white-space: normal;
+        text-align: center;
+      }
+      a.battle-site-link,
+      a.battle-site-link:visited,
+      a.battle-site-link:hover,
+      a.battle-site-link:focus-visible {
+        color: var(--amber-ink);
+      }
+      a.battle-site-link:focus-visible {
+        outline: 3px solid var(--ink);
+        outline-offset: 3px;
+      }
+    </style>
   </head>
   <body data-section="battle-calls">
     <a class="skip" href="#content">Skip to content</a>
@@ -89,6 +126,11 @@
         <h1>Battle Calls</h1>
         <p class="deck">The unauthorized fight card. Smart people I respect make public market calls. I quote only their own words and check in weekly against the charts, using my own house rules. No advice, no grudges, and I have no one&rsquo;s permission.</p>
       </header>
+      <section class="battle-outbound wrap" aria-labelledby="battle-site-heading">
+        <h2 id="battle-site-heading">The Battle Calls site</h2>
+        <p>It is live at the link below. The posts already on this page stay here.</p>
+        <a class="button button-primary battle-site-link" href="https://kidruncomvc.github.io/battle-calls-2/" target="_blank" rel="noopener noreferrer">Visit the Battle Calls site</a>
+      </section>
       <div class="fight-night wrap">
         <figure class="fight-night-frame">
           <picture>
