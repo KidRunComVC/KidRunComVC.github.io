@@ -1032,6 +1032,61 @@ picture.story-thumb img {
   color: inherit;
 }
 
+.article.chart-post .chart-figure a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.crash-title {
+  animation: crash-title 2.2s linear 1;
+}
+
+@keyframes crash-title {
+  0%,
+  62%,
+  100% {
+    transform: none;
+    color: inherit;
+    text-shadow: none;
+  }
+
+  7% {
+    transform: translate(-1px, 0);
+    color: var(--accent-strong);
+    text-shadow: 2px 0 #ff2a2a, -2px 0 var(--accent);
+  }
+
+  14% {
+    transform: translate(2px, -1px);
+    color: inherit;
+    text-shadow: -3px 0 var(--accent-strong), 1px 0 #ff2a2a;
+  }
+
+  22% {
+    transform: none;
+    color: inherit;
+    text-shadow: none;
+  }
+
+  32% {
+    transform: translate(-2px, 1px);
+    color: #ff2a2a;
+    text-shadow: 3px 0 var(--accent-strong), -2px 0 var(--accent);
+  }
+
+  42% {
+    transform: translate(1px, 0);
+    color: var(--accent-strong);
+    text-shadow: -2px 0 #ff2a2a;
+  }
+
+  52% {
+    transform: translate(-1px, 0);
+    color: inherit;
+    text-shadow: 2px 0 var(--accent-strong), -1px 0 var(--accent);
+  }
+}
+
 .article-head h1 {
   margin: 0.35rem 0 0.75rem;
   font-size: clamp(2.15rem, 5vw, 3.35rem);
@@ -1732,6 +1787,10 @@ body[data-section="spacexsi"] .catalog {
   .theme-toggle:hover {
     transform: none;
   }
+
+  .crash-title {
+    animation: none;
+  }
 }
 
 article img {
@@ -1752,6 +1811,12 @@ article img {
 
 .lightbox.is-open {
   display: flex;
+}
+
+.lightbox picture {
+  display: block;
+  max-width: 100%;
+  line-height: 0;
 }
 
 .lightbox img {
