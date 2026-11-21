@@ -1564,6 +1564,28 @@ body[data-section="spacexsi"] .catalog {
   font-size: 1.05rem;
 }
 
+.privacy {
+  flex: 1 1 100%;
+  margin: 0.35rem 0 0;
+  max-width: 46rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.privacy a,
+.privacy a:visited {
+  color: var(--muted);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.privacy a:hover,
+.privacy a:focus-visible {
+  color: var(--accent);
+}
+
 @media (min-width: 900px) {
   .catalog .story-list,
   .section-block .story-list {
