@@ -71,7 +71,10 @@
     });
   }
 
-  var photos = document.querySelectorAll("article img[src]");
+  var photos = [];
+  Array.prototype.forEach.call(document.querySelectorAll("article img[src]"), function (photo) {
+    if (!photo.closest("a")) photos.push(photo);
+  });
   if (photos.length) {
     var overlay = document.createElement("div");
     overlay.className = "lightbox";

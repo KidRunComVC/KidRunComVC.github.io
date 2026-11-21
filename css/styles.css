@@ -1010,6 +1010,28 @@ picture.story-thumb img {
   margin-block: 2.2rem 3.5rem;
 }
 
+.article.chart-post {
+  width: min(1120px, calc(100% - 2.5rem));
+}
+
+.article.chart-post .article-head,
+.article.chart-post .post-copy,
+.article.chart-post .more {
+  width: min(72ch, 100%);
+  margin-inline: auto;
+}
+
+.article.chart-post .chart-figure {
+  width: 100%;
+}
+
+.article.chart-post .chart-figure a {
+  display: block;
+  line-height: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
 .article-head h1 {
   margin: 0.35rem 0 0.75rem;
   font-size: clamp(2.15rem, 5vw, 3.35rem);
@@ -1687,7 +1709,8 @@ body[data-section="spacexsi"] .catalog {
   .wrap,
   .mast-inner,
   .footer-inner,
-  .article {
+  .article,
+  .article.chart-post {
     width: min(1120px, calc(100% - 1.4rem));
   }
 
