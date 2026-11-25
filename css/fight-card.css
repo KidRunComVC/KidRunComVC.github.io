@@ -499,11 +499,27 @@
   transform: translate(-50%, -50%);
 }
 
+.fight-meter-ends {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0.45rem 0 0;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.fight-meter-ends span:last-child {
+  text-align: right;
+}
+
 .fight-legend {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem 0.9rem;
-  margin: 0.55rem 0 0;
+  margin: 0.35rem 0 0;
   padding: 0;
   list-style: none;
   color: var(--ink);

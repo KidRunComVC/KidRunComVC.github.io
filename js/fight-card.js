@@ -72,13 +72,29 @@
     return Math.round(price * 100) / 100;
   }
 
-  function koFor(card) {
+  function percentText(size) {
+    var pct = Math.round(Math.abs(size) * 1000) / 10;
+    var body = pct % 1 === 0 ? String(pct) : pct.toFixed(1);
+    return body + "%";
+  }
+
+  function levelsFor(card) {
     var progress = card.progress || {};
-    var direction = card.tape && card.tape.direction;
+    var direction = (card.tape && card.tape.direction) || "";
     var size = callSizeOf(progress);
-    var price = koPrice(progress.entry, size, direction);
-    if (price == null) return null;
-    return { size: size, price: price, label: "KO " + money(price) };
+    var market = koPrice(progress.entry, size, direction);
+    if (market == null || !isNum(progress.target)) return null;
+    var used = Math.min(Math.abs(size), 0.5);
+    var pct = percentText(used);
+    var bearish = /bear|short/i.test(direction);
+    return {
+      callerPrice: progress.target,
+      marketPrice: market,
+      callerText: money(progress.target) + " (" + (bearish ? "-" : "+") + pct + ")",
+      marketText: money(market) + " (" + (bearish ? "+" : "-") + pct + ")",
+      callerEnd: "Caller's KO " + money(progress.target),
+      marketEnd: "Market's KO " + money(market)
+    };
   }
 
   function note(value) {
@@ -110,14 +126,16 @@
     return wrap;
   }
 
-  function renderTape(tape, ko) {
+  function renderTape(tape, levels) {
     var data = tape || {};
     var dl = el("dl", "fight-tape");
     tapeRow(dl, "Asset", data.asset, "");
     tapeRow(dl, "Direction", data.direction, "");
     tapeRow(dl, "Entry", data.entry, note(data.entryNote));
-    tapeRow(dl, "Target", data.target, note(data.targetNote));
-    if (ko) tapeRow(dl, "KO line", money(ko.price), "");
+    if (levels) {
+      tapeRow(dl, "Caller's KO", levels.callerText, "");
+      tapeRow(dl, "Market's KO", levels.marketText, "");
+    }
     tapeRow(dl, "Deadline", data.deadline, "");
     tapeRow(dl, "Win rule", data.winRule, "", methodLink());
     return dl;
@@ -125,35 +143,28 @@
 
   function meterLayout(progress) {
     var entry = progress.entry;
-    var target = progress.target;
-    if (!isNum(entry) || !isNum(target) || entry === target) return null;
-    var hasMark = isNum(progress.mark);
-    var lo = Math.min(entry, target);
-    var hi = Math.max(entry, target);
-    var hasKo = isNum(progress.ko);
-    if (hasMark) {
-      lo = Math.min(lo, progress.mark);
-      hi = Math.max(hi, progress.mark);
-    }
-    if (hasKo) {
-      lo = Math.min(lo, progress.ko);
-      hi = Math.max(hi, progress.ko);
-    }
-    var span = hi - lo;
-    if (!(span > 0)) return null;
+    var caller = progress.target;
+    var market = progress.ko;
+    if (!isNum(entry) || !isNum(caller) || !isNum(market) || caller === market) return null;
 
     function xOf(value) {
-      return ((value - lo) / span) * 100;
+      return ((value - market) / (caller - market)) * 100;
     }
 
-    var entryX = xOf(entry);
-    var targetX = xOf(target);
-    var markX = hasMark ? xOf(progress.mark) : null;
-    var koX = hasKo ? xOf(progress.ko) : null;
-    var toward = hasMark ? (progress.mark - entry) / (target - entry) : 1;
-    var fillEnd = targetX;
+    function clamp(value) {
+      return Math.max(0, Math.min(100, value));
+    }
+
+    var entryX = clamp(xOf(entry));
+    var hasMark = isNum(progress.mark);
+    var rawMark = hasMark ? xOf(progress.mark) : null;
+    var beyond = rawMark != null && rawMark >= 100;
+    var behind = rawMark != null && rawMark <= 0 && xOf(entry) !== 0;
+    var markX = rawMark == null ? null : clamp(rawMark);
+    var fillEnd = 100;
     var place = "none";
     if (hasMark) {
+      var toward = (progress.mark - entry) / (caller - entry);
       if (toward <= 0) {
         fillEnd = entryX;
         place = "behind";
@@ -161,19 +172,19 @@
         fillEnd = markX;
         place = "between";
       } else {
-        fillEnd = targetX;
+        fillEnd = 100;
         place = "beyond";
       }
     }
 
     return {
       entryX: entryX,
-      targetX: targetX,
       markX: markX,
-      koX: koX,
       fillLeft: Math.min(entryX, fillEnd),
       fillWidth: Math.abs(fillEnd - entryX),
-      place: place
+      place: place,
+      beyond: beyond,
+      behind: behind
     };
   }
 
@@ -186,17 +197,17 @@
   }
 
   function meterText(progress, layout) {
-    var sentence = "Progress from " + progress.entryLabel + " to " + progress.targetLabel + ".";
+    var sentence = progress.marketEnd + " on the left. " + progress.callerEnd + " on the right.";
+    if (progress.entryLabel) sentence += " " + progress.entryLabel + " is marked.";
     if (progress.markLabel) sentence += " " + progress.markLabel + " is marked.";
-    if (progress.koLabel) sentence += " " + progress.koLabel + " is marked.";
-    if (layout.place === "beyond") sentence += " The mark is at or beyond the target.";
-    if (layout.place === "between") sentence += " The mark is between the entry and the target.";
-    if (layout.place === "behind") sentence += " The mark has not moved toward the target.";
+    if (layout.place === "beyond") sentence += " The high is at or beyond Caller's KO.";
+    if (layout.place === "between") sentence += " The mark is between the entry and Caller's KO.";
+    if (layout.place === "behind") sentence += " The mark is on the Market's KO side of the entry.";
     return sentence;
   }
 
   function renderMeter(progress) {
-    if (!progress || !progress.entryLabel || !progress.targetLabel) return null;
+    if (!progress || !progress.callerEnd || !progress.marketEnd) return null;
     var layout = meterLayout(progress);
     if (!layout) return null;
 
@@ -214,31 +225,25 @@
     place(entry, layout.entryX);
     track.appendChild(entry);
 
-    var target = el("span", "fight-meter-target");
-    place(target, layout.targetX);
-    track.appendChild(target);
-
     if (layout.markX != null) {
       var mark = el("span", "fight-meter-mark");
       place(mark, layout.markX);
       track.appendChild(mark);
     }
 
-    if (layout.koX != null) {
-      var koMark = el("span", "fight-meter-ko");
-      place(koMark, layout.koX);
-      track.appendChild(koMark);
-    }
-
     figure.appendChild(track);
+
+    var ends = el("div", "fight-meter-ends");
+    ends.setAttribute("aria-hidden", "true");
+    ends.appendChild(text("span", null, progress.marketEnd));
+    ends.appendChild(text("span", null, progress.callerEnd));
+    figure.appendChild(ends);
 
     var caption = el("figcaption");
     var list = el("ul", "fight-legend");
     list.setAttribute("aria-hidden", "true");
     [
       ["entry", progress.entryLabel],
-      ["ko", progress.koLabel],
-      ["target", progress.targetLabel],
       ["mark", progress.markLabel]
     ].forEach(function (item) {
       if (!item[1]) return;
@@ -359,13 +364,14 @@
       article.appendChild(source);
     }
 
-    var ko = koFor(card);
-    if (ko && card.progress) {
-      card.progress.ko = ko.price;
-      card.progress.koLabel = ko.label;
+    var levels = levelsFor(card);
+    if (levels && card.progress) {
+      card.progress.ko = levels.marketPrice;
+      card.progress.callerEnd = levels.callerEnd;
+      card.progress.marketEnd = levels.marketEnd;
     }
     article.appendChild(text("h4", "fight-kicker fight-tape-title", "Tale of the tape"));
-    article.appendChild(renderTape(card.tape, ko));
+    article.appendChild(renderTape(card.tape, levels));
     article.appendChild(renderResult(card));
 
     var meter = renderMeter(card.progress);

@@ -77,27 +77,30 @@
         <p>A bout is one public caller against the market. The entry, the target, and the deadline come from the caller’s own post. Those three lines are the fight.</p>
 
         <h2>The call size</h2>
-        <p>The call size is the percent move from the entry to the target. A call from $100 to $120 is a 20% call.</p>
+        <p>The call size is the percent move from the entry to Caller’s KO. If a caller gives a range, only the lower number counts. A call from $100 to $120–$140 is a 20% call.</p>
 
-        <h2>The KO line</h2>
-        <p>The KO line is that same percent, taken the other way from the entry. A long from $100 to $120 is knocked out at $80. A short from $100 to $80 is knocked out at $120.</p>
+        <h2>Caller’s KO</h2>
+        <p>Caller’s KO is the target. A touch at or beyond it is a knockout win for the caller. $166.00 counts. $165.99 does not.</p>
+
+        <h2>Market’s KO</h2>
+        <p>Market’s KO is that same percent, taken the other way from the entry. A touch at or beyond it is a knockout win for the market. A long from $100 to $120 is knocked out at $80. A short from $100 to $80 is knocked out at $120.</p>
         <p>The line is capped at 50% against the call. A call for a 100% move is knocked out 50% the other way from entry, not 100%.</p>
-        <p>There is no stop on the card. The KO line is what ends a bout the hard way. A stop a caller named is not used for now.</p>
+        <p>There is no stop on the card. Market’s KO is what ends a bout the hard way. A stop a caller named is not used for now.</p>
 
         <h2>A touch</h2>
-        <p>A level is hit when price trades there. An intraday touch counts, for the target and for the KO line. It does not have to be the close.</p>
+        <p>A level is hit when price trades there. An intraday touch counts, for Caller’s KO and for Market’s KO. It does not have to be the close.</p>
 
         <h2>How it ends</h2>
         <ul>
-          <li><strong>Win by KO.</strong> The target is touched before the deadline.</li>
-          <li><strong>Win by decision.</strong> The target is never touched, and the deadline close is past the entry in the caller’s direction.</li>
-          <li><strong>Loss by KO.</strong> The KO line is touched before the deadline.</li>
+          <li><strong>Win by KO.</strong> Caller’s KO is touched before the deadline.</li>
+          <li><strong>Win by decision.</strong> Caller’s KO is not touched, and the deadline close is past the entry in the caller’s direction.</li>
+          <li><strong>Loss by KO.</strong> Market’s KO is touched before the deadline.</li>
           <li><strong>Loss by decision.</strong> The deadline passes with price on the wrong side of the entry.</li>
         </ul>
         <p class="bubble">The Price Decided and the Market won.</p>
 
         <h2>Same day</h2>
-        <p>If the target and the KO line are both touched on the same day, the one that was hit first wins. That order comes from intraday minute data. If the order cannot be told, the bout is marked Under review until it can.</p>
+        <p>If Caller’s KO and Market’s KO are both touched on the same day, the one that was hit first wins. That order comes from intraday minute data. If the order cannot be told, the bout is marked Under review until it can.</p>
 
         <h2>The clock</h2>
         <p>Entry is the price at the time of the post. When the post lands outside market hours, entry is the last regular-session trade. The deadline is the regular-session close on the deadline date.</p>

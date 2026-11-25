@@ -93,7 +93,7 @@ Fight cards live on [Battle Calls](battle-calls/index.html). Each one is a singl
 2. Use the caller's handle, follower line, date, and exact quote. Link `sourceUrl` to the original post.
 3. Fill the tape from what they actually said. Do not invent a number. There is no stop field.
 4. Set `status` to `OPEN`, `WIN BY KO`, `WIN BY DECISION`, `LOSS BY KO`, `LOSS BY DECISION`, `UNDER REVIEW`, or `EXPIRED`. Add `result` when there is something to report.
-5. On `progress`, set `callSize` to the call's percent move as a decimal. `0.322` is a 32.2% call. The card computes the KO line from the entry and that size, caps the move at 50% against the call, and rounds to cents. Leave `callSize` off and the percent is taken from the entry and target prices. `progress` also places the bar. The label strings are what readers see.
+5. On `progress`, set `target` to Caller's KO, the one number that counts. If the caller gave a range, use only the lower number, and do not mention the range on the card. Set `callSize` to the percent move from entry to that number. `0.322` is 32.2%. The card shows Caller's KO with that percent, and computes Market's KO as the same move the other way from entry, capped at 50% and rounded to cents. The bar runs from Market's KO on the left to Caller's KO on the right. Leave `callSize` off and the percent is taken from the entry and target prices. The label strings are what readers see.
 6. Reload `/battle-calls/`. Leave the Battle Calls site button and the Round 1 post where they are.
 
 How a bout is scored lives at [battle-calls/methodology/](battle-calls/methodology/). The right corner stays THE MARKET. Do not add an avatar image.
