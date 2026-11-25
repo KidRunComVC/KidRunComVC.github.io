@@ -6,12 +6,18 @@
    1. Copy the object below.
    2. Paste the copy above it, at the top of FIGHT_CARDS.
    3. Fill in the caller's own words and the tape. Do not invent a number.
-      Stops are not a card field. They belong in the methodology.
-   4. Set status to OPEN, WON, LOST, or EXPIRED.
+      There is no stop field. The KO line is computed. See
+      /battle-calls/methodology/.
+   4. Set status to OPEN, WIN BY KO, WIN BY DECISION, LOSS BY KO,
+      LOSS BY DECISION, UNDER REVIEW, or EXPIRED.
    5. Reload /battle-calls/. The renderer in fight-card.js draws the card.
 
-   progress is optional. Its numbers only place the bar. entryLabel, targetLabel,
-   and markLabel are the words readers see, so those strings must match the call.
+   progress is optional. Its numbers place the bar and the KO line.
+   callSize is the call's percent move as a decimal (0.322 is 32.2%).
+   The KO line is that same move the other way from entry, capped at 50%,
+   rounded to cents. Leave callSize off and the percent is taken from the
+   entry and target prices. entryLabel, targetLabel, and markLabel are the
+   words readers see, so those strings must match the call.
    Omit progress and the bar stays hidden. Omit result details on an open card.
    result.scoredBy is the name only. The card adds "Scored by". */
 var FIGHT_CARDS = [
@@ -32,7 +38,7 @@ var FIGHT_CARDS = [
       deadline: "Dec 31, 2026 close",
       winRule: "Trades at or above $166 before the Dec 31, 2026 close (an intraday touch counts)"
     },
-    status: "WON",
+    status: "WIN BY KO",
     result: {
       when: "Mon Nov 23, after one session",
       detail: "Regular-session high $171.50 at 10:25 AM ET, which also reached the top of his $166-172 range.",
@@ -46,7 +52,8 @@ var FIGHT_CARDS = [
       target: 166,
       targetLabel: "Target $166+",
       mark: 171.5,
-      markLabel: "High $171.50"
+      markLabel: "High $171.50",
+      callSize: 0.322
     }
   }
 ];

@@ -1,6 +1,16 @@
 /* Renders FIGHT_CARDS into #fight-card-list. Cards are text, not HTML. */
 (function () {
-  var STATUSES = { OPEN: true, WON: true, LOST: true, EXPIRED: true };
+  var STATUSES = {
+    OPEN: "open",
+    EXPIRED: "expired",
+    "WIN BY KO": "win-by-ko",
+    "WIN BY DECISION": "win-by-decision",
+    "LOSS BY KO": "loss-by-ko",
+    "LOSS BY DECISION": "loss-by-decision",
+    "UNDER REVIEW": "under-review",
+    WON: "won",
+    LOST: "lost"
+  };
   var PRINTS = [
     ["open", "Open", "O"],
     ["high", "High", "H"],
@@ -37,8 +47,38 @@
     return raw || "OPEN";
   }
 
-  function knownStatus(status) {
-    return STATUSES[status] ? status : "unknown";
+  function statusSlug(status) {
+    return STATUSES[status] || "unknown";
+  }
+
+  function money(amount) {
+    return "$" + amount.toFixed(2);
+  }
+
+  function callSizeOf(progress) {
+    if (!progress) return null;
+    if (isNum(progress.callSize)) return Math.abs(progress.callSize);
+    if (isNum(progress.entry) && isNum(progress.target) && progress.entry !== 0) {
+      return Math.abs(progress.target - progress.entry) / Math.abs(progress.entry);
+    }
+    return null;
+  }
+
+  function koPrice(entry, callSize, direction) {
+    if (!isNum(entry) || !isNum(callSize)) return null;
+    var move = Math.min(Math.abs(callSize), 0.5);
+    var bearish = /bear|short/i.test(String(direction || ""));
+    var price = bearish ? entry * (1 + move) : entry * (1 - move);
+    return Math.round(price * 100) / 100;
+  }
+
+  function koFor(card) {
+    var progress = card.progress || {};
+    var direction = card.tape && card.tape.direction;
+    var size = callSizeOf(progress);
+    var price = koPrice(progress.entry, size, direction);
+    if (price == null) return null;
+    return { size: size, price: price, label: "KO " + money(price) };
   }
 
   function note(value) {
@@ -53,23 +93,33 @@
     if (extra) dd.appendChild(text("span", "fight-note", " " + extra));
   }
 
-  function tapeRow(dl, label, value, extra) {
-    if (!value) return;
+  function tapeRow(dl, label, value, extra, extraNode) {
+    if (!value && !extraNode) return;
     dl.appendChild(text("dt", null, label));
     var dd = el("dd");
-    appendValue(dd, value, extra);
+    if (value) appendValue(dd, value, extra);
+    if (extraNode) dd.appendChild(extraNode);
     dl.appendChild(dd);
   }
 
-  function renderTape(tape) {
+  function methodLink() {
+    var wrap = el("p", "fight-rule-link");
+    var link = text("a", null, "How bouts are scored");
+    link.href = "/battle-calls/methodology/";
+    wrap.appendChild(link);
+    return wrap;
+  }
+
+  function renderTape(tape, ko) {
     var data = tape || {};
     var dl = el("dl", "fight-tape");
     tapeRow(dl, "Asset", data.asset, "");
     tapeRow(dl, "Direction", data.direction, "");
     tapeRow(dl, "Entry", data.entry, note(data.entryNote));
     tapeRow(dl, "Target", data.target, note(data.targetNote));
+    if (ko) tapeRow(dl, "KO line", money(ko.price), "");
     tapeRow(dl, "Deadline", data.deadline, "");
-    tapeRow(dl, "Win rule", data.winRule, "");
+    tapeRow(dl, "Win rule", data.winRule, "", methodLink());
     return dl;
   }
 
@@ -80,9 +130,14 @@
     var hasMark = isNum(progress.mark);
     var lo = Math.min(entry, target);
     var hi = Math.max(entry, target);
+    var hasKo = isNum(progress.ko);
     if (hasMark) {
       lo = Math.min(lo, progress.mark);
       hi = Math.max(hi, progress.mark);
+    }
+    if (hasKo) {
+      lo = Math.min(lo, progress.ko);
+      hi = Math.max(hi, progress.ko);
     }
     var span = hi - lo;
     if (!(span > 0)) return null;
@@ -94,6 +149,7 @@
     var entryX = xOf(entry);
     var targetX = xOf(target);
     var markX = hasMark ? xOf(progress.mark) : null;
+    var koX = hasKo ? xOf(progress.ko) : null;
     var toward = hasMark ? (progress.mark - entry) / (target - entry) : 1;
     var fillEnd = targetX;
     var place = "none";
@@ -114,6 +170,7 @@
       entryX: entryX,
       targetX: targetX,
       markX: markX,
+      koX: koX,
       fillLeft: Math.min(entryX, fillEnd),
       fillWidth: Math.abs(fillEnd - entryX),
       place: place
@@ -131,6 +188,7 @@
   function meterText(progress, layout) {
     var sentence = "Progress from " + progress.entryLabel + " to " + progress.targetLabel + ".";
     if (progress.markLabel) sentence += " " + progress.markLabel + " is marked.";
+    if (progress.koLabel) sentence += " " + progress.koLabel + " is marked.";
     if (layout.place === "beyond") sentence += " The mark is at or beyond the target.";
     if (layout.place === "between") sentence += " The mark is between the entry and the target.";
     if (layout.place === "behind") sentence += " The mark has not moved toward the target.";
@@ -166,6 +224,12 @@
       track.appendChild(mark);
     }
 
+    if (layout.koX != null) {
+      var koMark = el("span", "fight-meter-ko");
+      place(koMark, layout.koX);
+      track.appendChild(koMark);
+    }
+
     figure.appendChild(track);
 
     var caption = el("figcaption");
@@ -173,6 +237,7 @@
     list.setAttribute("aria-hidden", "true");
     [
       ["entry", progress.entryLabel],
+      ["ko", progress.koLabel],
       ["target", progress.targetLabel],
       ["mark", progress.markLabel]
     ].forEach(function (item) {
@@ -214,11 +279,11 @@
     var status = statusOf(card.status);
     var result = card.result || {};
     var block = el("div", "fight-result");
-    block.setAttribute("data-status", knownStatus(status).toLowerCase());
+    block.setAttribute("data-status", statusSlug(status));
     var line = el("h4", "fight-result-line");
     line.appendChild(text("span", "fight-kicker", "Status"));
     var chip = el("span", "fight-status");
-    var icon = el("span", "fight-status-icon fight-status-icon-" + knownStatus(status).toLowerCase());
+    var icon = el("span", "fight-status-icon fight-status-icon-" + statusSlug(status));
     icon.setAttribute("aria-hidden", "true");
     chip.appendChild(icon);
     chip.appendChild(document.createTextNode(status));
@@ -294,8 +359,13 @@
       article.appendChild(source);
     }
 
+    var ko = koFor(card);
+    if (ko && card.progress) {
+      card.progress.ko = ko.price;
+      card.progress.koLabel = ko.label;
+    }
     article.appendChild(text("h4", "fight-kicker fight-tape-title", "Tale of the tape"));
-    article.appendChild(renderTape(card.tape));
+    article.appendChild(renderTape(card.tape, ko));
     article.appendChild(renderResult(card));
 
     var meter = renderMeter(card.progress);

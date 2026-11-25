@@ -124,6 +124,23 @@
   clip-path: circle(43%);
 }
 
+.fight-method {
+  margin: 0 0 0.85rem;
+}
+
+.fight-method a,
+.fight-rule-link a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--mono);
+  font-size: 0.92rem;
+}
+
+.fight-rule-link {
+  margin: 0.25rem 0 0;
+}
+
 .fight-quote {
   margin: 0.9rem 0 0;
   padding: 0.85rem 0.9rem;
@@ -241,12 +258,18 @@
 }
 
 .fight-result[data-status="open"],
-.fight-result[data-status="unknown"] {
+.fight-result[data-status="unknown"],
+.fight-result[data-status="loss-by-decision"] {
   border-style: dashed;
 }
 
-.fight-result[data-status="expired"] {
+.fight-result[data-status="expired"],
+.fight-result[data-status="under-review"] {
   border-style: dotted;
+}
+
+.fight-result[data-status="win-by-decision"] {
+  border-style: double;
 }
 
 .fight-result .fight-kicker,
@@ -269,10 +292,10 @@
   align-items: center;
   gap: 0.45rem;
   font-family: var(--mono);
-  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  font-size: clamp(1.05rem, 2.6vw, 1.55rem);
   font-weight: 500;
-  letter-spacing: 0.14em;
-  line-height: 1;
+  letter-spacing: 0.06em;
+  line-height: 1.15;
 }
 
 .fight-status-icon {
@@ -293,7 +316,9 @@
   border-radius: 50%;
 }
 
-.fight-status-icon-won::before {
+.fight-status-icon-won::before,
+.fight-status-icon-win-by-ko::before,
+.fight-status-icon-win-by-decision::before {
   content: "";
   position: absolute;
   left: 0.14rem;
@@ -305,8 +330,35 @@
   transform: rotate(-45deg);
 }
 
+.fight-status-icon-win-by-decision::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 2px solid currentColor;
+}
+
+.fight-status-icon-under-review {
+  border: 2px dashed currentColor;
+  border-radius: 50%;
+}
+
+.fight-status-icon-under-review::before {
+  content: "";
+  position: absolute;
+  left: 0.42rem;
+  top: 0.12rem;
+  height: 0.42rem;
+  border-left: 2px solid currentColor;
+}
+
 .fight-status-icon-lost::before,
-.fight-status-icon-lost::after {
+.fight-status-icon-lost::after,
+.fight-status-icon-loss-by-ko::before,
+.fight-status-icon-loss-by-ko::after,
+.fight-status-icon-loss-by-decision::before,
+.fight-status-icon-loss-by-decision::after {
   content: "";
   position: absolute;
   left: 0.45rem;
@@ -315,11 +367,15 @@
   border-left: 2px solid currentColor;
 }
 
-.fight-status-icon-lost::before {
+.fight-status-icon-lost::before,
+.fight-status-icon-loss-by-ko::before,
+.fight-status-icon-loss-by-decision::before {
   transform: rotate(45deg);
 }
 
-.fight-status-icon-lost::after {
+.fight-status-icon-lost::after,
+.fight-status-icon-loss-by-ko::after,
+.fight-status-icon-loss-by-decision::after {
   transform: rotate(-45deg);
 }
 
@@ -397,7 +453,8 @@
 .fight-meter-fill,
 .fight-meter-entry,
 .fight-meter-target,
-.fight-meter-mark {
+.fight-meter-mark,
+.fight-meter-ko {
   position: absolute;
   pointer-events: none;
 }
@@ -431,6 +488,15 @@
   background: var(--amber);
   border: 2px solid var(--amber-ink);
   transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.fight-meter-ko {
+  top: 50%;
+  width: 0.7rem;
+  height: 0.7rem;
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  transform: translate(-50%, -50%);
 }
 
 .fight-legend {
@@ -482,6 +548,13 @@
   background: var(--amber);
   border: 2px solid var(--amber-ink);
   transform: rotate(45deg);
+}
+
+.fight-swatch-ko {
+  width: 0.7rem;
+  height: 0.7rem;
+  background: var(--bg);
+  border: 2px solid var(--ink);
 }
 
 .fight-disclaimer {

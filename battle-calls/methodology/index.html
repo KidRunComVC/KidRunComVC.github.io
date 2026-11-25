@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" class="fx-milemarkers fx-tints fx-progress fx-marquee fx-404" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var theme = saved === "light" || saved === "dark" ? saved : "dark";
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {}
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>How bouts are scored — KidRunComVC</title>
+    <meta name="description" content="How a Battle Calls bout is scored. One public caller against the market, with the caller's own entry, target, and deadline.">
+    <meta name="author" content="KidRunComVC">
+    <link rel="canonical" href="https://kidruncomvc.github.io/battle-calls/methodology/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="How bouts are scored — KidRunComVC">
+    <meta name="twitter:description" content="How a Battle Calls bout is scored. One public caller against the market, with the caller's own entry, target, and deadline.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How bouts are scored — KidRunComVC">
+    <meta property="og:description" content="How a Battle Calls bout is scored. One public caller against the market, with the caller's own entry, target, and deadline.">
+    <meta property="og:url" content="https://kidruncomvc.github.io/battle-calls/methodology/">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#10140f" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f3efe4" media="(prefers-color-scheme: light)">
+    <link rel="preload" href="/assets/fonts/fraunces-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/assets/creative.css">
+  </head>
+  <body data-section="battle-calls">
+    <a class="skip" href="#content">Skip to content</a>
+    <header class="mast">
+      <div class="mast-inner">
+        <div class="status-row">
+          <p class="status"><span class="dot" aria-hidden="true"></span> Desk online <span aria-hidden="true">/</span> education only</p>
+          <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to light theme">
+            <span class="theme-swatch" aria-hidden="true"></span>
+            <span class="theme-toggle-label"><span class="label-to-light">Light</span><span class="label-to-dark">Dark</span></span>
+          </button>
+        </div>
+        <div class="brand-row">
+          <a class="brand" href="/">KidRunComVC</a>
+          <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+            <span class="nav-toggle-bars" aria-hidden="true"></span>
+            <span class="nav-toggle-label">Menu</span>
+          </button>
+          <nav class="site-nav" id="site-nav" aria-label="Primary">
+            <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/road-log/">Road Log</a></li>
+            <li><a href="/runners-log/">Runner's Log</a></li>
+            <li><a href="/technical-analysis/">TARA Blog</a></li>
+            <li><a href="/battle-calls/" aria-current="page">Battle Calls</a></li>
+            <li><a href="/spacexsi/">SpaceXSI</a></li>
+            <li><a href="/market-history/">Market History</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" tabindex="-1">
+      <article class="article">
+        <header class="article-head">
+          <p class="kicker"><a href="/battle-calls/">Battle Calls</a></p>
+          <h1>How bouts are scored</h1>
+        </header>
+        <p>A bout is one public caller against the market. The entry, the target, and the deadline come from the caller’s own post. Those three lines are the fight.</p>
+
+        <h2>The call size</h2>
+        <p>The call size is the percent move from the entry to the target. A call from $100 to $120 is a 20% call.</p>
+
+        <h2>The KO line</h2>
+        <p>The KO line is that same percent, taken the other way from the entry. A long from $100 to $120 is knocked out at $80. A short from $100 to $80 is knocked out at $120.</p>
+        <p>The line is capped at 50% against the call. A call for a 100% move is knocked out 50% the other way from entry, not 100%.</p>
+        <p>There is no stop on the card. The KO line is what ends a bout the hard way. A stop a caller named is not used for now.</p>
+
+        <h2>A touch</h2>
+        <p>A level is hit when price trades there. An intraday touch counts, for the target and for the KO line. It does not have to be the close.</p>
+
+        <h2>How it ends</h2>
+        <ul>
+          <li><strong>Win by KO.</strong> The target is touched before the deadline.</li>
+          <li><strong>Win by decision.</strong> The target is never touched, and the deadline close is past the entry in the caller’s direction.</li>
+          <li><strong>Loss by KO.</strong> The KO line is touched before the deadline.</li>
+          <li><strong>Loss by decision.</strong> The deadline passes with price on the wrong side of the entry.</li>
+        </ul>
+        <p class="bubble">The Price Decided and the Market won.</p>
+
+        <h2>Same day</h2>
+        <p>If the target and the KO line are both touched on the same day, the one that was hit first wins. That order comes from intraday minute data. If the order cannot be told, the bout is marked Under review until it can.</p>
+
+        <h2>The clock</h2>
+        <p>Entry is the price at the time of the post. When the post lands outside market hours, entry is the last regular-session trade. The deadline is the regular-session close on the deadline date.</p>
+        <p>This is commentary and entertainment, not investment advice.</p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <nav class="footer-nav" aria-label="Footer">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/road-log/">Road Log</a></li>
+            <li><a href="/runners-log/">Runner's Log</a></li>
+            <li><a href="/technical-analysis/">TARA Blog</a></li>
+            <li><a href="/battle-calls/">Battle Calls</a></li>
+            <li><a href="/spacexsi/">SpaceXSI</a></li>
+            <li><a href="/market-history/">Market History</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </nav>
+        <p class="legal">© 2026 KidRunComVC. All rights reserved. Education and entertainment only, not investment advice.</p>
+        <p class="privacy">Visits and link clicks are counted with <a href="https://www.goatcounter.com" target="_blank" rel="noopener noreferrer">GoatCounter</a>: no cookies, no personal data.</p>
+      </div>
+    </footer>
+    <script src="/assets/creative.js"></script>
+    <script src="/js/site.js"></script>
+    <script src="/js/goatcounter-events.js" defer></script>
+    <script data-goatcounter="https://kidruncomvc.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+  </body>
+</html>
