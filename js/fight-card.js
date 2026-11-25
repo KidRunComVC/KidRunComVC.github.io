@@ -311,6 +311,50 @@
     return wrap;
   }
 
+  function robotIcon() {
+    var ns = "http://www.w3.org/2000/svg";
+    var svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("viewBox", "0 0 20 20");
+    svg.setAttribute("width", "20");
+    svg.setAttribute("height", "20");
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("focusable", "false");
+    function part(name, attrs) {
+      var node = document.createElementNS(ns, name);
+      Object.keys(attrs).forEach(function (key) { node.setAttribute(key, attrs[key]); });
+      svg.appendChild(node);
+    }
+    part("circle", { cx: "10", cy: "2.7", r: "1.15", fill: "currentColor" });
+    part("rect", { x: "9.25", y: "3.7", width: "1.5", height: "2.1", fill: "currentColor" });
+    part("rect", { x: "3.2", y: "5.8", width: "13.6", height: "11.2", rx: "3", fill: "none", stroke: "currentColor", "stroke-width": "1.6" });
+    part("circle", { cx: "7.3", cy: "10.6", r: "1.1", fill: "currentColor" });
+    part("circle", { cx: "12.7", cy: "10.6", r: "1.1", fill: "currentColor" });
+    part("path", { d: "M7.2 14.1h5.6", fill: "none", stroke: "currentColor", "stroke-width": "1.4", "stroke-linecap": "round" });
+    return svg;
+  }
+
+  function renderScorer(result) {
+    var name = result.scorerName || result.scoredBy;
+    var label = result.scorerLabel;
+    if (!name && !label) return null;
+    var line = el("p", "fight-scored");
+    line.appendChild(document.createTextNode("Scored by " + (name || "")));
+    if (label) line.appendChild(document.createTextNode(", "));
+    if (result.scorerUrl && label) {
+      var link = el("a");
+      link.href = result.scorerUrl;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.setAttribute("aria-label", "Grok Bot website (opens in a new tab)");
+      link.appendChild(robotIcon());
+      link.appendChild(document.createTextNode(label));
+      line.appendChild(link);
+    } else if (label) {
+      line.appendChild(document.createTextNode(label));
+    }
+    return line;
+  }
+
   function renderResult(card) {
     var status = statusOf(card.status);
     var result = card.result || {};
@@ -329,7 +373,8 @@
     if (result.detail) block.appendChild(text("p", "fight-result-detail", result.detail));
     var print = renderPrint(result);
     if (print) block.appendChild(print);
-    if (result.scoredBy) block.appendChild(text("p", "fight-scored", "Scored by " + result.scoredBy));
+    var credit = renderScorer(result);
+    if (credit) block.appendChild(credit);
     return block;
   }
 

@@ -27,7 +27,9 @@
    on the left to Caller's KO on the right, each half scaled to its own distance so the entry stays
    centered. entryLabel and markLabel are the words readers see.
    Omit progress and the bar stays hidden. Omit result details on an open card.
-   result.scoredBy is the name only. The card adds "Scored by". */
+   result.scorerName is the scorer. result.scorerLabel is the short credit
+   after the comma, and result.scorerUrl is where that label links.
+   The card writes "Scored by" and draws the robot icon. */
 var FIGHT_CARDS = [
   {
     handle: "@MentoviaX",
@@ -50,7 +52,9 @@ var FIGHT_CARDS = [
       detail: "Regular-session high $171.50 at 10:25 AM ET.",
       barLabel: "Nov 23",
       bar: { open: "167.04", high: "171.50", low: "156.93", close: "165.05" },
-      scoredBy: "HLK IV Quant"
+      scorerName: "HLK IV Quant",
+      scorerLabel: "a Grok Bot",
+      scorerUrl: "https://x.ai/bot"
     },
     progress: {
       entry: 125.53,

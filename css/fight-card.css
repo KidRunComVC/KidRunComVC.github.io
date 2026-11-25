@@ -449,11 +449,43 @@
 }
 
 .fight-scored {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem 0.35rem;
   margin: 0.55rem 0 0;
   font-family: var(--mono);
   font-size: 0.88rem;
   letter-spacing: 0.03em;
   line-height: 1.4;
+}
+
+.fight-scored a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  min-height: 44px;
+  color: var(--amber-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+.fight-scored a:visited,
+.fight-scored a:hover,
+.fight-scored a:focus-visible {
+  color: var(--amber-ink);
+}
+
+.fight-scored a:focus-visible {
+  outline: 3px solid var(--amber-ink);
+  outline-offset: 3px;
+}
+
+.fight-scored svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex: none;
 }
 
 .fight-tug {
