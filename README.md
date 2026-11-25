@@ -85,6 +85,20 @@ Road Log is for short stories from the road, with the photos as proof. The secti
 </li>
 ```
 
+## Add a fight card
+
+Fight cards live on [Battle Calls](battle-calls/index.html). Each one is a single public call versus THE MARKET. The list is [`js/fight-cards.js`](js/fight-cards.js), newest first. [`js/fight-card.js`](js/fight-card.js) draws every entry into the same card, so a new bout is a new object at the top of `FIGHT_CARDS`.
+
+1. Copy the first object in `FIGHT_CARDS` and paste it above that object.
+2. Use the caller's handle, follower line, date, and exact quote. Link `sourceUrl` to the original post.
+3. Fill the tape from what they actually said. Do not invent a number. There is no stop field.
+4. Set `status` to `OPEN`, `WIN`, `WIN BY KO`, `WIN BY DECISION`, `LOSS`, `LOSS BY KO`, `LOSS BY DECISION`, `UNDER REVIEW`, or `EXPIRED`. `WIN` is an exact touch of the target. `WIN BY KO` is a penny past it. `LOSS` is an exact touch of THE MARKET's level. `LOSS BY KO` is a penny past that level. Add `result` when there is something to report.
+5. On `progress`, set `entry` and `target` to the call's prices. `target` is the exact number that wins, not the KO. If the caller gave a range, use only the lower number, and do not mention the range on the card. The renderer works in cents. A touch of the target is a win. Caller's KO is one penny past it. THE MARKET's level is the same distance the other way from entry, and a touch there is a loss. THE MARKET's KO is one penny past that level. The against-distance is the smaller of the call distance and 50% of entry, rounded down to the cent, then one more penny. The percent on the card is rounded half-up to one decimal. It is not used to price the levels. Entry is the official unadjusted close of the last regular session. Set `result.caption` when the bar sentence should use the card's own words. The bar is a tug-of-war centered on the entry: THE MARKET's KO is the left end, Caller's KO is the right end, and each half is scaled to its own distance. The label strings are what readers see.
+6. On `result`, set `scorerName`, `scorerLabel`, and `scorerUrl` when someone should get the credit. The card writes "Scored by", then the name, then links the label and a small robot icon to `scorerUrl`.
+7. Reload `/battle-calls/`. Leave the Battle Calls site button and the Round 1 post where they are.
+
+How a bout is scored lives at [battle-calls/methodology/](battle-calls/methodology/). The right corner stays THE MARKET. Do not add an avatar image.
+
 ## Before you want to be found
 
 Search engines are blocked on purpose, until there is more to read.
