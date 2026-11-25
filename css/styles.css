@@ -847,68 +847,12 @@ picture.story-thumb img {
   color: var(--ink);
 }
 
-.story:has(> .story-main) {
-  position: relative;
-}
-
-.story-main {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  color: inherit;
-  text-decoration: none;
-}
-
-.story-handle {
-  position: relative;
-  z-index: 2;
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.14em;
-  text-decoration-color: color-mix(in srgb, currentColor 42%, transparent);
-}
-
-.story-handle:hover,
-.story-handle:focus-visible {
-  color: var(--section-accent, #f0a06a);
-  text-decoration-color: currentColor;
-}
-
 .story-deck {
   display: block;
   margin-top: 0.3rem;
   color: var(--ink);
   font-size: 1rem;
   line-height: 1.45;
-}
-
-.story-status {
-  display: block;
-  position: relative;
-  z-index: 2;
-  margin-top: 0.4rem;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  line-height: 1.35;
-}
-
-.story-cue {
-  display: block;
-  margin-top: 0.55rem;
-  color: var(--accent);
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.06em;
-  line-height: 1.35;
-  pointer-events: none;
-}
-
-.story:hover .story-cue,
-.story:focus-within .story-cue {
-  color: var(--accent-strong);
 }
 
 .story-deck p {
@@ -957,40 +901,6 @@ picture.story-thumb img {
 
 .catalog {
   padding: 1.25rem 0 3rem;
-}
-
-/* Battle Calls tab: fight-night hero. Full 16:9, no crop. */
-.fight-night.wrap {
-  margin-top: 1.25rem;
-}
-
-.fight-night-frame {
-  margin: 0;
-  background: var(--bg-panel);
-  border: 2px solid var(--stroke);
-  border-radius: 0.75rem;
-  box-shadow: 5px 5px 0 var(--shadow);
-  overflow: hidden;
-  line-height: 0;
-}
-
-.fight-night-frame img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: contain;
-  object-position: center;
-}
-
-@media (max-width: 700px) {
-  .fight-night.wrap {
-    width: calc(100% - 1rem);
-  }
-
-  .fight-night-frame {
-    border-radius: 0.5rem;
-  }
 }
 
 .catalog-more {
@@ -1538,10 +1448,6 @@ body[data-section="spacexsi"] .catalog {
 .footer-nav a:visited,
 .footer-contact a:visited {
   color: var(--label);
-}
-
-.story-handle:visited {
-  color: inherit;
 }
 
 .site-nav a:hover,

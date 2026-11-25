@@ -120,10 +120,6 @@ html.fx-tints[data-theme="dark"] body[data-section="tara"] {
   --section-accent: #f0c14b;
 }
 
-html.fx-tints[data-theme="dark"] body[data-section="battle-calls"] {
-  --section-accent: #f0a06a;
-}
-
 html.fx-tints[data-theme="dark"] body[data-section="spacexsi"] {
   --section-accent: #9ecbff;
 }
@@ -157,10 +153,6 @@ html.fx-tints[data-theme="dark"] .section-block[data-tint="tara"] {
   border-top-color: #f0c14b;
 }
 
-html.fx-tints[data-theme="dark"] .section-block[data-tint="battle-calls"] {
-  border-top-color: #f0a06a;
-}
-
 html.fx-tints[data-theme="dark"] .section-block[data-tint="spacexsi"] {
   border-top-color: #9ecbff;
 }
@@ -187,10 +179,6 @@ html.fx-tints[data-theme="dark"] .section-block[data-tint="kitchen"] > .section-
 
 html.fx-tints[data-theme="dark"] .section-block[data-tint="tara"] > .section-copy > .kicker {
   color: #f0c14b;
-}
-
-html.fx-tints[data-theme="dark"] .section-block[data-tint="battle-calls"] > .section-copy > .kicker {
-  color: #f0a06a;
 }
 
 html.fx-tints[data-theme="dark"] .section-block[data-tint="spacexsi"] > .section-copy > .kicker {
