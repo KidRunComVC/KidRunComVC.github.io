@@ -473,11 +473,12 @@
 }
 
 .fight-tug-row,
-.fight-tug-caps {
+.fight-tug-caps,
+.fight-tug-extremes {
   display: grid;
   grid-column: 1 / -1;
   grid-template-columns: subgrid;
-  align-items: end;
+  align-items: baseline;
 }
 
 .fight-tug-top {
@@ -620,7 +621,8 @@
   right: 0.45rem;
 }
 
-.fight-tug-caps {
+.fight-tug-caps,
+.fight-tug-extremes {
   margin-top: 0.35rem;
   color: var(--ink);
   font-family: var(--mono);
@@ -630,48 +632,50 @@
   line-height: 1.35;
 }
 
+.fight-tug-extremes {
+  margin-top: 0.12rem;
+}
+
+.fight-tug-cap-market,
 .fight-tug-cap-caller,
-.fight-tug-caps > span:first-child {
-  display: flex;
-  flex-direction: column;
-  gap: 0.12rem;
-}
-
-.fight-tug-cap-caller {
-  align-items: flex-end;
-  text-align: right;
-}
-
 .fight-tug-extreme {
-  color: var(--ink);
-  font-size: 0.75rem;
-  letter-spacing: 0.03em;
+  display: block;
+  margin: 0;
+  padding: 0;
   white-space: nowrap;
 }
 
-.fight-tug-caps span:first-child {
+.fight-tug-caps > span:first-child,
+.fight-tug-extremes > span:first-child {
   grid-column: 1;
+  justify-self: start;
+  text-align: left;
 }
 
-.fight-tug-visual.has-market-over .fight-tug-caps span:first-child {
+.fight-tug-visual.has-market-over .fight-tug-caps > span:first-child,
+.fight-tug-visual.has-market-over .fight-tug-extremes > span:first-child {
   grid-column: 2;
 }
 
-.fight-tug-caps span:last-child {
+.fight-tug-caps > span:last-child,
+.fight-tug-extremes > span:last-child {
   grid-column: 2;
   justify-self: end;
   text-align: right;
 }
 
-.fight-tug-visual.has-market-over .fight-tug-caps span:last-child {
+.fight-tug-visual.has-market-over .fight-tug-caps > span:last-child,
+.fight-tug-visual.has-market-over .fight-tug-extremes > span:last-child {
   grid-column: 3;
 }
 
-.fight-tug-visual.has-caller-over .fight-tug-caps span:last-child {
+.fight-tug-visual.has-caller-over .fight-tug-caps > span:last-child,
+.fight-tug-visual.has-caller-over .fight-tug-extremes > span:last-child {
   grid-column: 2;
 }
 
-.fight-tug-visual.has-caller-over.has-market-over .fight-tug-caps span:last-child {
+.fight-tug-visual.has-caller-over.has-market-over .fight-tug-caps > span:last-child,
+.fight-tug-visual.has-caller-over.has-market-over .fight-tug-extremes > span:last-child {
   grid-column: 3;
 }
 

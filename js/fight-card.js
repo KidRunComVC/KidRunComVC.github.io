@@ -256,19 +256,20 @@
     visual.appendChild(row);
 
     var caps = el("div", "fight-tug-caps");
-    var marketCap = el("span");
-    marketCap.appendChild(document.createTextNode("MARKET KO " + money(market)));
-    if (marketBroke && low != null && !onCaller(low)) {
-      marketCap.appendChild(text("span", "fight-tug-extreme", "LOW " + money(low)));
-    }
-    caps.appendChild(marketCap);
-    var callerCap = el("span", "fight-tug-cap-caller");
-    callerCap.appendChild(document.createTextNode("CALLER KO " + money(caller)));
-    if (callerBroke && high != null && onCaller(high)) {
-      callerCap.appendChild(text("span", "fight-tug-extreme", "HIGH " + money(high)));
-    }
-    caps.appendChild(callerCap);
+    caps.appendChild(text("span", "fight-tug-cap-market", "MARKET KO " + money(market)));
+    caps.appendChild(text("span", "fight-tug-cap-caller", "CALLER KO " + money(caller)));
     visual.appendChild(caps);
+
+    if ((marketBroke && low != null && !onCaller(low)) || (callerBroke && high != null && onCaller(high))) {
+      var extremes = el("div", "fight-tug-extremes");
+      var lowLabel = el("span", "fight-tug-extreme");
+      if (marketBroke && low != null && !onCaller(low)) lowLabel.textContent = "LOW " + money(low);
+      extremes.appendChild(lowLabel);
+      var highLabel = el("span", "fight-tug-extreme");
+      if (callerBroke && high != null && onCaller(high)) highLabel.textContent = "HIGH " + money(high);
+      extremes.appendChild(highLabel);
+      visual.appendChild(extremes);
+    }
     figure.appendChild(visual);
     figure.appendChild(text("figcaption", "fight-tug-caption", tugCaption(card, levels)));
     return figure;
