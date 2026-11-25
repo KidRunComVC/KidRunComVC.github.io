@@ -249,10 +249,16 @@
     caller.appendChild(id);
     header.appendChild(caller);
 
-    var versus = el("p", "fight-vs");
-    versus.appendChild(text("span", "visually-hidden", "versus"));
-    versus.appendChild(text("span", "fight-vs-mark", "vs"));
-    versus.lastChild.setAttribute("aria-hidden", "true");
+    var versus = el("div", "fight-vs");
+    var logo = el("img", "fight-vs-logo");
+    logo.src = "/assets/img/battle-calls/bc-vs-logo-512.webp";
+    logo.srcset = "/assets/img/battle-calls/bc-vs-logo-256.webp 256w, /assets/img/battle-calls/bc-vs-logo-512.webp 512w";
+    logo.sizes = "(min-width: 640px) 140px, 96px";
+    logo.width = 512;
+    logo.height = 512;
+    logo.alt = "Battle Calls logo: crossed BC boxing gloves with VS";
+    logo.decoding = "async";
+    versus.appendChild(logo);
     header.appendChild(versus);
 
     var market = el("div", "fight-side fight-side-market");
