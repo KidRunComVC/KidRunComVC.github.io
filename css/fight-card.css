@@ -1,0 +1,534 @@
+/* Caller-versus-the-market fight card. Mobile first.
+   Status is the word, the icon shape, and the chip border — not the color. */
+
+.fight-cards {
+  padding-top: 1.35rem;
+  padding-bottom: 0.35rem;
+}
+
+.fight-cards > h2 {
+  margin: 0 0 0.85rem;
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.fight-card + .fight-card {
+  margin-top: 1rem;
+}
+
+.fight-card {
+  margin: 0;
+  padding: 0.95rem 0.9rem 0.85rem;
+  background: var(--bg-panel);
+  color: var(--ink);
+  border: 2px solid var(--stroke);
+  border-top: 4px solid var(--accent-strong);
+  box-shadow: 5px 5px 0 var(--shadow);
+}
+
+.fight-corners {
+  display: grid;
+  align-items: center;
+  gap: 0.7rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 2px solid var(--line);
+}
+
+.fight-side {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.fight-side-market {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.fight-badge,
+.fight-market-mark {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: none;
+  border: 2px solid var(--stroke);
+  background: var(--bg-inset);
+  color: var(--ink);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.fight-market-mark::before {
+  content: "";
+  width: 0.72rem;
+  height: 0.72rem;
+  background: var(--accent);
+  transform: rotate(45deg);
+}
+
+.fight-id {
+  min-width: 0;
+}
+
+.fight-handle,
+.fight-market-name {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.fight-handle {
+  font-size: clamp(1.15rem, 3vw, 1.6rem);
+}
+
+.fight-market-name {
+  font-size: clamp(1rem, 2.4vw, 1.3rem);
+  letter-spacing: 0.04em;
+}
+
+.fight-followers {
+  margin: 0.18rem 0 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+}
+
+.fight-vs {
+  margin: 0;
+  justify-self: center;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.fight-quote {
+  margin: 0.9rem 0 0;
+  padding: 0.85rem 0.9rem;
+  background: var(--amber);
+  color: var(--amber-ink);
+  border: 2px solid var(--stroke);
+  box-shadow: 4px 4px 0 var(--shadow);
+}
+
+.fight-quote p {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 2.6vw, 1.32rem);
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  quotes: "\201C" "\201D";
+}
+
+.fight-quote p::before {
+  content: open-quote;
+}
+
+.fight-quote p::after {
+  content: close-quote;
+}
+
+.fight-date {
+  margin: 0.75rem 0 0;
+  color: var(--label);
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+.fight-source {
+  margin: 0.15rem 0 0;
+}
+
+.fight-source a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--link);
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+  text-underline-offset: 0.18em;
+}
+
+.fight-source a:visited {
+  color: var(--link);
+}
+
+.fight-source a:hover,
+.fight-source a:focus-visible {
+  color: var(--accent-strong);
+}
+
+.fight-kicker {
+  margin: 0;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.fight-tape-title {
+  margin-top: 1rem;
+}
+
+.fight-tape {
+  display: grid;
+  grid-template-columns: minmax(5.6rem, 8.25rem) minmax(0, 1fr);
+  gap: 0.45rem 0.75rem;
+  margin: 0.5rem 0 0;
+}
+
+.fight-tape dt {
+  margin: 0;
+  color: var(--label);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.fight-tape dd {
+  margin: 0;
+  min-width: 0;
+  color: var(--ink);
+  font-size: 1.02rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.fight-note {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.fight-result {
+  margin-top: 1rem;
+  padding: 0.8rem 0.85rem 0.9rem;
+  background: var(--amber);
+  color: var(--amber-ink);
+  border: 3px solid var(--amber-ink);
+  box-shadow: 4px 4px 0 var(--shadow);
+}
+
+.fight-result[data-status="open"],
+.fight-result[data-status="unknown"] {
+  border-style: dashed;
+}
+
+.fight-result[data-status="expired"] {
+  border-style: dotted;
+}
+
+.fight-result .fight-kicker,
+.fight-result-when,
+.fight-result-detail,
+.fight-scored {
+  color: var(--amber-ink);
+}
+
+.fight-result-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+  margin: 0;
+}
+
+.fight-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--mono);
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1;
+}
+
+.fight-status-icon {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+}
+
+.fight-status-icon-open,
+.fight-status-icon-unknown {
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+
+.fight-status-icon-expired {
+  border: 2px dotted currentColor;
+  border-radius: 50%;
+}
+
+.fight-status-icon-won::before {
+  content: "";
+  position: absolute;
+  left: 0.14rem;
+  top: 0.26rem;
+  width: 0.55rem;
+  height: 0.28rem;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+}
+
+.fight-status-icon-lost::before,
+.fight-status-icon-lost::after {
+  content: "";
+  position: absolute;
+  left: 0.45rem;
+  top: 0;
+  height: 1rem;
+  border-left: 2px solid currentColor;
+}
+
+.fight-status-icon-lost::before {
+  transform: rotate(45deg);
+}
+
+.fight-status-icon-lost::after {
+  transform: rotate(-45deg);
+}
+
+.fight-result-when,
+.fight-result-detail {
+  margin: 0.45rem 0 0;
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.fight-result-when {
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+}
+
+.fight-print {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.85rem;
+  margin: 0.7rem 0 0;
+  padding: 0.55rem 0.65rem;
+  background: var(--bg-inset);
+  border: 2px solid var(--stroke);
+}
+
+.fight-print-date,
+.fight-ohlc,
+.fight-ohlc dd {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+}
+
+.fight-print-date {
+  color: var(--label);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.fight-ohlc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.85rem;
+}
+
+.fight-ohlc div {
+  display: flex;
+}
+
+.fight-scored {
+  margin: 0.55rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+}
+
+.fight-meter {
+  margin: 0.95rem 0 0;
+}
+
+.fight-meter-track {
+  position: relative;
+  height: 0.8rem;
+  margin: 0.55rem 0.45rem 0.35rem;
+  background: var(--bg-inset);
+  border: 2px solid var(--stroke);
+}
+
+.fight-meter-fill,
+.fight-meter-entry,
+.fight-meter-target,
+.fight-meter-mark {
+  position: absolute;
+  pointer-events: none;
+}
+
+.fight-meter-fill {
+  top: 0;
+  bottom: 0;
+  background-color: var(--accent-strong);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.22) 3px,
+    rgba(0, 0, 0, 0.22) 5px
+  );
+}
+
+.fight-meter-entry,
+.fight-meter-target {
+  top: -5px;
+  bottom: -5px;
+  width: 2px;
+  background: var(--ink);
+  transform: translateX(-1px);
+}
+
+.fight-meter-mark {
+  top: 50%;
+  width: 0.72rem;
+  height: 0.72rem;
+  background: var(--amber);
+  border: 2px solid var(--amber-ink);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.fight-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+.fight-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.fight-swatch {
+  width: 0.85rem;
+  height: 0.85rem;
+  flex: none;
+}
+
+.fight-swatch-entry {
+  background-color: var(--accent-strong);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.22) 2px,
+    rgba(0, 0, 0, 0.22) 3px
+  );
+  border: 2px solid var(--stroke);
+}
+
+.fight-swatch-target {
+  width: 2px;
+  height: 0.95rem;
+  background: var(--ink);
+}
+
+.fight-swatch-mark {
+  width: 0.62rem;
+  height: 0.62rem;
+  background: var(--amber);
+  border: 2px solid var(--amber-ink);
+  transform: rotate(45deg);
+}
+
+.fight-disclaimer {
+  margin: 0.9rem 0 0;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--line);
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+@media (min-width: 640px) {
+  .fight-card {
+    padding: 1.15rem 1.2rem 1rem;
+  }
+
+  .fight-corners {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 0.5rem 1rem;
+  }
+
+  .fight-badge,
+  .fight-market-mark {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.35rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .fight-card,
+  .fight-quote,
+  .fight-print,
+  .fight-meter-track,
+  .fight-badge,
+  .fight-market-mark,
+  .fight-status {
+    border-color: CanvasText;
+    background: Canvas;
+    color: CanvasText;
+    box-shadow: none;
+  }
+
+  .fight-meter-fill,
+  .fight-swatch-entry,
+  .fight-market-mark::before {
+    background: CanvasText;
+    background-image: none;
+  }
+
+  .fight-meter-mark,
+  .fight-swatch-mark {
+    background: Canvas;
+    border-color: CanvasText;
+  }
+}

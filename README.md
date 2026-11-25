@@ -85,6 +85,18 @@ Road Log is for short stories from the road, with the photos as proof. The secti
 </li>
 ```
 
+## Add a fight card
+
+Fight cards live on [Battle Calls](battle-calls/index.html). Each one is a single public call versus the market. The list is [`js/fight-cards.js`](js/fight-cards.js), newest first. [`js/fight-card.js`](js/fight-card.js) draws every entry into the same card, so a new bout is a new object at the top of `FIGHT_CARDS`.
+
+1. Copy the first object in `FIGHT_CARDS` and paste it above that object.
+2. Use the caller's handle, follower line, date, and exact quote. Link `sourceUrl` to the original post.
+3. Fill the tape from what they actually said. If they gave no stop, set `stop` to `no stop given`. Do not invent one.
+4. Set `status` to `OPEN`, `WON`, `LOST`, or `EXPIRED`. Add `result` when there is something to report. `progress` is optional and only places the bar. The label strings are what readers see.
+5. Reload `/battle-calls/`. Leave the Battle Calls site button and the Round 1 post where they are.
+
+The right corner stays THE MARKET. Do not add an avatar image.
+
 ## Before you want to be found
 
 Search engines are blocked on purpose, until there is more to read.
