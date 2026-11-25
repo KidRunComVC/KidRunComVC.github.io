@@ -55,25 +55,12 @@
     return "$" + amount.toFixed(2);
   }
 
-  function callSizeOf(progress) {
-    if (!progress) return null;
-    if (isNum(progress.callSize)) return Math.abs(progress.callSize);
-    if (isNum(progress.entry) && isNum(progress.target) && progress.entry !== 0) {
-      return Math.abs(progress.target - progress.entry) / Math.abs(progress.entry);
-    }
-    return null;
+  function toCents(amount) {
+    return Math.round(amount * 100);
   }
 
-  function koPrice(entry, callSize, direction) {
-    if (!isNum(entry) || !isNum(callSize)) return null;
-    var move = Math.min(Math.abs(callSize), 0.5);
-    var bearish = /bear|short/i.test(String(direction || ""));
-    var price = bearish ? entry * (1 + move) : entry * (1 - move);
-    return Math.round(price * 100) / 100;
-  }
-
-  function percentText(size) {
-    var pct = Math.round(Math.abs(size) * 1000) / 10;
+  function percentText(ratio) {
+    var pct = Math.round(Math.abs(ratio) * 1000) / 10;
     var body = pct % 1 === 0 ? String(pct) : pct.toFixed(1);
     return body + "%";
   }
@@ -81,18 +68,25 @@
   function levelsFor(card) {
     var progress = card.progress || {};
     var direction = (card.tape && card.tape.direction) || "";
-    var size = callSizeOf(progress);
-    var market = koPrice(progress.entry, size, direction);
-    if (market == null || !isNum(progress.target)) return null;
-    var used = Math.min(Math.abs(size), 0.5);
-    var pct = percentText(used);
+    if (!isNum(progress.entry) || !isNum(progress.target) || progress.entry === 0) return null;
     var bearish = /bear|short/i.test(direction);
+    var entryCents = toCents(progress.entry);
+    var targetCents = toCents(progress.target);
+    var distance = Math.abs(targetCents - entryCents);
+    var cap = Math.round(entryCents / 2);
+    if (distance > cap) distance = cap;
+    var callerCents = bearish ? targetCents - 1 : targetCents + 1;
+    var marketCents = bearish ? entryCents + distance + 1 : entryCents - distance - 1;
+    var caller = callerCents / 100;
+    var market = marketCents / 100;
+    var callPct = percentText(Math.abs(targetCents - entryCents) / entryCents);
+    var usedPct = percentText(distance / entryCents);
     return {
-      callerPrice: progress.target,
+      callerPrice: caller,
       marketPrice: market,
-      callerText: money(progress.target) + " (" + (bearish ? "-" : "+") + pct + ")",
-      marketText: money(market) + " (" + (bearish ? "+" : "-") + pct + ")",
-      callerEnd: "Caller's KO " + money(progress.target),
+      callerText: money(caller) + " (" + (bearish ? "-" : "+") + callPct + ")",
+      marketText: money(market) + " (" + (bearish ? "+" : "-") + usedPct + ")",
+      callerEnd: "Caller's KO " + money(caller),
       marketEnd: "Market's KO " + money(market)
     };
   }
@@ -143,7 +137,7 @@
 
   function meterLayout(progress) {
     var entry = progress.entry;
-    var caller = progress.target;
+    var caller = isNum(progress.callerKo) ? progress.callerKo : progress.target;
     var market = progress.ko;
     if (!isNum(entry) || !isNum(caller) || !isNum(market) || caller === market) return null;
 
@@ -367,6 +361,7 @@
     var levels = levelsFor(card);
     if (levels && card.progress) {
       card.progress.ko = levels.marketPrice;
+      card.progress.callerKo = levels.callerPrice;
       card.progress.callerEnd = levels.callerEnd;
       card.progress.marketEnd = levels.marketEnd;
     }
