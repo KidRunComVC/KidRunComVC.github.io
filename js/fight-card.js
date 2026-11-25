@@ -68,7 +68,6 @@
     tapeRow(dl, "Direction", data.direction, "");
     tapeRow(dl, "Entry", data.entry, note(data.entryNote));
     tapeRow(dl, "Target", data.target, note(data.targetNote));
-    tapeRow(dl, "Stop", data.stop ? data.stop : "no stop given", "");
     tapeRow(dl, "Deadline", data.deadline, "");
     tapeRow(dl, "Win rule", data.winRule, "");
     return dl;

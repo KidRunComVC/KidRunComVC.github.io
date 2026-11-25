@@ -5,8 +5,8 @@
    Add a card:
    1. Copy the object below.
    2. Paste the copy above it, at the top of FIGHT_CARDS.
-   3. Fill in the caller's own words and the tape. Leave stop as "no stop given"
-      when they did not name one. Do not invent a stop or any other number.
+   3. Fill in the caller's own words and the tape. Do not invent a number.
+      Stops are not a card field. They belong in the methodology.
    4. Set status to OPEN, WON, LOST, or EXPIRED.
    5. Reload /battle-calls/. The renderer in fight-card.js draws the card.
 
@@ -29,7 +29,6 @@ var FIGHT_CARDS = [
       entryNote: "official Nov 20 close",
       target: "$166+",
       targetNote: "low end of his range, +32.2%",
-      stop: "no stop given",
       deadline: "Dec 31, 2026 close",
       winRule: "Trades at or above $166 before the Dec 31, 2026 close (an intraday touch counts)"
     },

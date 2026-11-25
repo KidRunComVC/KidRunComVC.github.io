@@ -91,7 +91,7 @@ Fight cards live on [Battle Calls](battle-calls/index.html). Each one is a singl
 
 1. Copy the first object in `FIGHT_CARDS` and paste it above that object.
 2. Use the caller's handle, follower line, date, and exact quote. Link `sourceUrl` to the original post.
-3. Fill the tape from what they actually said. If they gave no stop, set `stop` to `no stop given`. Do not invent one.
+3. Fill the tape from what they actually said. Do not invent a number. There is no stop field. Stops belong in the methodology, not on the card.
 4. Set `status` to `OPEN`, `WON`, `LOST`, or `EXPIRED`. Add `result` when there is something to report. `progress` is optional and only places the bar. The label strings are what readers see.
 5. Reload `/battle-calls/`. Leave the Battle Calls site button and the Round 1 post where they are.
 
