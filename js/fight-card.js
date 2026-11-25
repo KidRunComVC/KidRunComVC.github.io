@@ -62,7 +62,8 @@
   }
 
   function percentText(ratio) {
-    var pct = Math.round(Math.abs(ratio) * 1000) / 10;
+    var tenths = Math.floor(Math.abs(ratio) * 1000 + 0.5);
+    var pct = tenths / 10;
     var body = pct % 1 === 0 ? String(pct) : pct.toFixed(1);
     return body + "%";
   }
@@ -75,7 +76,7 @@
     var entryCents = toCents(progress.entry);
     var targetCents = toCents(progress.target);
     var distance = Math.abs(targetCents - entryCents);
-    var cap = Math.round(entryCents / 2);
+    var cap = Math.floor(entryCents / 2);
     if (distance > cap) distance = cap;
     var callerTarget = targetCents / 100;
     var callerKo = (bearish ? targetCents - 1 : targetCents + 1) / 100;
@@ -149,6 +150,7 @@
   }
 
   function tugCaption(card, levels) {
+    if (card.result && card.result.caption) return card.result.caption;
     var progress = card.progress || {};
     var bar = card.result && card.result.bar;
     var entry = progress.entry;
