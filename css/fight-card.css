@@ -117,7 +117,11 @@
   display: block;
   width: 96px;
   height: 96px;
-  object-fit: contain;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  /* The round badge sits inside the square file. This clips the mat. */
+  clip-path: circle(43%);
 }
 
 .fight-quote {
