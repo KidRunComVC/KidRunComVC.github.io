@@ -135,119 +135,142 @@
     return dl;
   }
 
-  function meterLayout(progress) {
+  function asNumber(value) {
+    if (isNum(value)) return value;
+    if (value == null || value === "") return null;
+    var parsed = Number(String(value).replace(/[$,]/g, ""));
+    return isNum(parsed) ? parsed : null;
+  }
+
+  function tugCaption(card, levels) {
+    var progress = card.progress || {};
+    var bar = card.result && card.result.bar;
     var entry = progress.entry;
-    var caller = isNum(progress.callerKo) ? progress.callerKo : progress.target;
-    var market = progress.ko;
-    if (!isNum(entry) || !isNum(caller) || !isNum(market) || caller === market) return null;
+    var high = asNumber(progress.mark);
+    if (high == null && bar) high = asNumber(bar.high);
+    var low = bar ? asNumber(bar.low) : null;
+    var close = bar ? asNumber(bar.close) : null;
+    var status = statusOf(card.status);
+    var start = money(entry);
+    var caller = money(levels.callerPrice);
+    var market = money(levels.marketPrice);
 
-    function xOf(value) {
-      return ((value - market) / (caller - market)) * 100;
+    if (status === "WIN BY KO" && high != null) {
+      return "Price ran from " + start + " to " + money(high) + ", through the Caller's KO at " + caller + ".";
     }
-
-    function clamp(value) {
-      return Math.max(0, Math.min(100, value));
+    if (status === "LOSS BY KO") {
+      var broke = low != null ? low : high;
+      return "Price ran from " + start + " to " + money(broke) + ", through the Market's KO at " + market + ".";
     }
-
-    var entryX = clamp(xOf(entry));
-    var hasMark = isNum(progress.mark);
-    var rawMark = hasMark ? xOf(progress.mark) : null;
-    var beyond = rawMark != null && rawMark >= 100;
-    var behind = rawMark != null && rawMark <= 0 && xOf(entry) !== 0;
-    var markX = rawMark == null ? null : clamp(rawMark);
-    var fillEnd = 100;
-    var place = "none";
-    if (hasMark) {
-      var toward = (progress.mark - entry) / (caller - entry);
-      if (toward <= 0) {
-        fillEnd = entryX;
-        place = "behind";
-      } else if (toward < 1) {
-        fillEnd = markX;
-        place = "between";
-      } else {
-        fillEnd = 100;
-        place = "beyond";
+    if (status === "WIN BY DECISION" && close != null) {
+      return "Price closed at " + money(close) + ", past the start at " + start + ", short of the Caller's KO at " + caller + ".";
+    }
+    if (status === "LOSS BY DECISION" && close != null) {
+      return "Price closed at " + money(close) + ", on the market's side of the start at " + start + ".";
+    }
+    if (status === "UNDER REVIEW") {
+      return "Price touched the Caller's KO at " + caller + " and the Market's KO at " + market + ".";
+    }
+    if (status === "OPEN" || status === "EXPIRED") {
+      if (high != null && low != null) {
+        return "Since the start at " + start + ", price has traded from " + money(low) + " to " + money(high) + ".";
       }
+      if (high != null) return "Price has run from " + start + " to " + money(high) + ".";
+      return "The bout is open from the start at " + start + ".";
+    }
+    if (high != null) return "Price ran from " + start + " to " + money(high) + ".";
+    return "The bout starts at " + start + ".";
+  }
+
+  function reachOf(entry, boundary, price) {
+    var span = Math.abs(boundary - entry);
+    if (!(span > 0) || !isNum(price)) return 0;
+    return Math.abs(price - entry) / span;
+  }
+
+  function renderMeter(card, levels) {
+    var progress = card.progress || {};
+    if (!levels || !isNum(progress.entry)) return null;
+    var entry = progress.entry;
+    var caller = levels.callerPrice;
+    var market = levels.marketPrice;
+    var bearish = /bear|short/i.test((card.tape && card.tape.direction) || "");
+    var bar = card.result && card.result.bar;
+    var high = asNumber(progress.mark);
+    if (high == null && bar) high = asNumber(bar.high);
+    var low = bar ? asNumber(bar.low) : null;
+
+    function onCaller(price) {
+      if (!isNum(price) || price === entry) return false;
+      return bearish ? price < entry : price > entry;
     }
 
-    return {
-      entryX: entryX,
-      markX: markX,
-      fillLeft: Math.min(entryX, fillEnd),
-      fillWidth: Math.abs(fillEnd - entryX),
-      place: place,
-      beyond: beyond,
-      behind: behind
-    };
-  }
-
-  function pct(value) {
-    return (Math.round(value * 1000) / 1000) + "%";
-  }
-
-  function place(node, x) {
-    node.style.left = pct(x);
-  }
-
-  function meterText(progress, layout) {
-    var sentence = progress.marketEnd + " on the left. " + progress.callerEnd + " on the right.";
-    if (progress.entryLabel) sentence += " " + progress.entryLabel + " is marked.";
-    if (progress.markLabel) sentence += " " + progress.markLabel + " is marked.";
-    if (layout.place === "beyond") sentence += " The high is at or beyond Caller's KO.";
-    if (layout.place === "between") sentence += " The mark is between the entry and Caller's KO.";
-    if (layout.place === "behind") sentence += " The mark is on the Market's KO side of the entry.";
-    return sentence;
-  }
-
-  function renderMeter(progress) {
-    if (!progress || !progress.callerEnd || !progress.marketEnd) return null;
-    var layout = meterLayout(progress);
-    if (!layout) return null;
-
-    var figure = el("figure", "fight-meter");
-    var track = el("div", "fight-meter-track");
-    track.setAttribute("role", "img");
-    track.setAttribute("aria-label", meterText(progress, layout));
-
-    var fill = el("span", "fight-meter-fill");
-    fill.style.left = pct(layout.fillLeft);
-    fill.style.width = pct(layout.fillWidth);
-    track.appendChild(fill);
-
-    var entry = el("span", "fight-meter-entry");
-    place(entry, layout.entryX);
-    track.appendChild(entry);
-
-    if (layout.markX != null) {
-      var mark = el("span", "fight-meter-mark");
-      place(mark, layout.markX);
-      track.appendChild(mark);
-    }
-
-    figure.appendChild(track);
-
-    var ends = el("div", "fight-meter-ends");
-    ends.setAttribute("aria-hidden", "true");
-    ends.appendChild(text("span", null, progress.marketEnd));
-    ends.appendChild(text("span", null, progress.callerEnd));
-    figure.appendChild(ends);
-
-    var caption = el("figcaption");
-    var list = el("ul", "fight-legend");
-    list.setAttribute("aria-hidden", "true");
-    [
-      ["entry", progress.entryLabel],
-      ["mark", progress.markLabel]
-    ].forEach(function (item) {
-      if (!item[1]) return;
-      var li = el("li");
-      li.appendChild(el("span", "fight-swatch fight-swatch-" + item[0]));
-      li.appendChild(document.createTextNode(item[1]));
-      list.appendChild(li);
+    var callerReach = 0;
+    var marketReach = 0;
+    [high, low].forEach(function (price) {
+      if (!isNum(price)) return;
+      if (onCaller(price)) callerReach = Math.max(callerReach, reachOf(entry, caller, price));
+      else if (price !== entry) marketReach = Math.max(marketReach, reachOf(entry, market, price));
     });
-    caption.appendChild(list);
-    figure.appendChild(caption);
+    var callerBroke = callerReach >= 1;
+    var marketBroke = marketReach >= 1;
+    var callerFill = Math.max(0, Math.min(1, callerReach));
+    var marketFill = Math.max(0, Math.min(1, marketReach));
+
+    var figure = el("figure", "fight-tug");
+    var visual = el("div", "fight-tug-visual");
+    if (callerBroke) visual.classList.add("has-caller-over");
+    if (marketBroke) visual.classList.add("has-market-over");
+    visual.setAttribute("aria-hidden", "true");
+
+    var top = el("div", "fight-tug-top");
+    top.appendChild(text("span", "fight-tug-start", "START " + money(entry)));
+    visual.appendChild(top);
+
+    var row = el("div", "fight-tug-row");
+    if (marketBroke) {
+      var leftOver = el("div", "fight-tug-over");
+      leftOver.appendChild(el("span", "fight-tug-pin fight-tug-pin-left"));
+      row.appendChild(leftOver);
+    }
+
+    var marketHalf = el("div", "fight-tug-half fight-tug-market");
+    var marketFillEl = el("span", "fight-tug-fill");
+    marketFillEl.style.width = (Math.round(marketFill * 1000) / 10) + "%";
+    marketHalf.appendChild(marketFillEl);
+    if (marketBroke) marketHalf.appendChild(text("span", "fight-tug-burst", "KO"));
+    row.appendChild(marketHalf);
+
+    var callerHalf = el("div", "fight-tug-half fight-tug-caller");
+    var callerFillEl = el("span", "fight-tug-fill");
+    callerFillEl.style.width = (Math.round(callerFill * 1000) / 10) + "%";
+    callerHalf.appendChild(callerFillEl);
+    if (callerBroke) callerHalf.appendChild(text("span", "fight-tug-burst", "KO"));
+    row.appendChild(callerHalf);
+
+    if (callerBroke) {
+      var over = el("div", "fight-tug-over");
+      over.appendChild(el("span", "fight-tug-pin"));
+      row.appendChild(over);
+    }
+    visual.appendChild(row);
+
+    var caps = el("div", "fight-tug-caps");
+    var marketCap = el("span");
+    marketCap.appendChild(document.createTextNode("MARKET KO " + money(market)));
+    if (marketBroke && low != null && !onCaller(low)) {
+      marketCap.appendChild(text("span", "fight-tug-extreme", "LOW " + money(low)));
+    }
+    caps.appendChild(marketCap);
+    var callerCap = el("span", "fight-tug-cap-caller");
+    callerCap.appendChild(document.createTextNode("CALLER KO " + money(caller)));
+    if (callerBroke && high != null && onCaller(high)) {
+      callerCap.appendChild(text("span", "fight-tug-extreme", "HIGH " + money(high)));
+    }
+    caps.appendChild(callerCap);
+    visual.appendChild(caps);
+    figure.appendChild(visual);
+    figure.appendChild(text("figcaption", "fight-tug-caption", tugCaption(card, levels)));
     return figure;
   }
 
@@ -369,7 +392,7 @@
     article.appendChild(renderTape(card.tape, levels));
     article.appendChild(renderResult(card));
 
-    var meter = renderMeter(card.progress);
+    var meter = renderMeter(card, levels);
     if (meter) article.appendChild(meter);
 
     article.appendChild(text(

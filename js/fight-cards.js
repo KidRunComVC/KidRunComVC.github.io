@@ -20,8 +20,8 @@
    entry, plus one more penny. A distance over 50% of entry is capped first,
    then the extra penny is applied. The shown percent is the exact move to
    one decimal. It is not used to price the KO. The bar runs from Market's KO
-   on the left to Caller's KO on the right. entryLabel and markLabel are the
-   words readers see.
+   on the left to Caller's KO    on the right, each half scaled to its own distance so the entry stays
+   centered. entryLabel and markLabel are the words readers see.
    Omit progress and the bar stays hidden. Omit result details on an open card.
    result.scoredBy is the name only. The card adds "Scored by". */
 var FIGHT_CARDS = [
