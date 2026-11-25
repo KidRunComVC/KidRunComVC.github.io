@@ -10,14 +10,18 @@
       If they gave a range, use only the lower number. The renderer
       computes both KOs from entry and target. See
       /battle-calls/methodology/.
-   4. Set status to OPEN, WIN BY KO, WIN BY DECISION, LOSS BY KO,
-      LOSS BY DECISION, UNDER REVIEW, or EXPIRED.
+   4. Set status to OPEN, WIN, WIN BY KO, WIN BY DECISION, LOSS,
+      LOSS BY KO, LOSS BY DECISION, UNDER REVIEW, or EXPIRED.
+      WIN is an exact touch of the target. WIN BY KO is a penny past it.
+      LOSS is an exact touch of THE MARKET's level. LOSS BY KO is a penny past that.
    5. Reload /battle-calls/. The renderer in fight-card.js draws the card.
 
    progress.target is the call's number, not the KO. The renderer works in
-   cents. Caller's KO is one penny past that number, in the caller's
-   direction. THE MARKET's KO is the exact cent distance the other way from
-   entry, plus one more penny. A distance over 50% of entry is capped first,
+   cents. A touch of the target is a WIN. Caller's KO is one penny past
+   that number, in the caller's direction, and that is a WIN BY KO.
+   THE MARKET's level is the exact cent distance the other way from entry.
+   A touch there is a LOSS. THE MARKET's KO is one penny past that level,
+   and that is a LOSS BY KO. A distance over 50% of entry is capped first,
    then the extra penny is applied. The shown percent is the exact move to
    one decimal. It is not used to price the KO. The bar runs from THE MARKET's KO
    on the left to Caller's KO on the right, each half scaled to its own distance so the entry stays
@@ -38,7 +42,7 @@ var FIGHT_CARDS = [
       entry: "$125.53",
       entryNote: "official Nov 20 close",
       deadline: "Dec 31, 2026 close",
-      winRule: "A touch at $166.01 or higher before the Dec 31, 2026 close"
+      winRule: "A touch at $166.00 or higher wins; $166.01 or higher is a win by KO, before the Dec 31, 2026 close"
     },
     status: "WIN BY KO",
     result: {

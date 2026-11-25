@@ -3,8 +3,10 @@
   var STATUSES = {
     OPEN: "open",
     EXPIRED: "expired",
+    WIN: "win",
     "WIN BY KO": "win-by-ko",
     "WIN BY DECISION": "win-by-decision",
+    LOSS: "loss",
     "LOSS BY KO": "loss-by-ko",
     "LOSS BY DECISION": "loss-by-decision",
     "UNDER REVIEW": "under-review",
@@ -75,19 +77,23 @@
     var distance = Math.abs(targetCents - entryCents);
     var cap = Math.round(entryCents / 2);
     if (distance > cap) distance = cap;
-    var callerCents = bearish ? targetCents - 1 : targetCents + 1;
-    var marketCents = bearish ? entryCents + distance + 1 : entryCents - distance - 1;
-    var caller = callerCents / 100;
-    var market = marketCents / 100;
+    var callerTarget = targetCents / 100;
+    var callerKo = (bearish ? targetCents - 1 : targetCents + 1) / 100;
+    var marketLevel = (bearish ? entryCents + distance : entryCents - distance) / 100;
+    var marketKo = (bearish ? entryCents + distance + 1 : entryCents - distance - 1) / 100;
     var callPct = percentText(Math.abs(targetCents - entryCents) / entryCents);
     var usedPct = percentText(distance / entryCents);
+    var callerSign = bearish ? "-" : "+";
+    var marketSign = bearish ? "+" : "-";
     return {
-      callerPrice: caller,
-      marketPrice: market,
-      callerText: money(caller) + " (" + (bearish ? "-" : "+") + callPct + ")",
-      marketText: money(market) + " (" + (bearish ? "+" : "-") + usedPct + ")",
-      callerEnd: "Caller's KO " + money(caller),
-      marketEnd: "THE MARKET's KO " + money(market)
+      callerPrice: callerKo,
+      marketPrice: marketKo,
+      callerTarget: callerTarget,
+      marketLevel: marketLevel,
+      callerText: money(callerTarget) + " target, " + money(callerKo) + " KO (" + callerSign + callPct + ")",
+      marketText: money(marketLevel) + " level, " + money(marketKo) + " KO (" + marketSign + usedPct + ")",
+      callerEnd: "CALLER KO " + money(callerKo),
+      marketEnd: "THE MARKET KO " + money(marketKo)
     };
   }
 
@@ -127,8 +133,8 @@
     tapeRow(dl, "Direction", data.direction, "");
     tapeRow(dl, "Entry", data.entry, note(data.entryNote));
     if (levels) {
-      tapeRow(dl, "Caller's KO", levels.callerText, "");
-      tapeRow(dl, "THE MARKET's KO", levels.marketText, "");
+      tapeRow(dl, "Caller", levels.callerText, "");
+      tapeRow(dl, "THE MARKET", levels.marketText, "");
     }
     tapeRow(dl, "Deadline", data.deadline, "");
     tapeRow(dl, "Win rule", data.winRule, "", methodLink());
@@ -155,8 +161,15 @@
     var caller = money(levels.callerPrice);
     var market = money(levels.marketPrice);
 
+    if (status === "WIN" && high != null) {
+      return "Price ran from " + start + " to " + money(high) + ", hitting the call at " + money(levels.callerTarget) + ".";
+    }
     if (status === "WIN BY KO" && high != null) {
       return "Price ran from " + start + " to " + money(high) + ", through the Caller's KO at " + caller + ".";
+    }
+    if (status === "LOSS") {
+      var touched = low != null ? low : high;
+      return "Price ran from " + start + " to " + money(touched) + ", and THE MARKET wins at " + money(levels.marketLevel) + ".";
     }
     if (status === "LOSS BY KO") {
       var broke = low != null ? low : high;

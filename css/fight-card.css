@@ -316,6 +316,24 @@
   border-radius: 50%;
 }
 
+.fight-status-icon-win::before {
+  content: "";
+  position: absolute;
+  left: 0.42rem;
+  top: 0.12rem;
+  bottom: 0.12rem;
+  border-left: 2px solid currentColor;
+}
+
+.fight-status-icon-loss::before {
+  content: "";
+  position: absolute;
+  left: 0.12rem;
+  right: 0.12rem;
+  top: 0.42rem;
+  border-top: 2px solid currentColor;
+}
+
 .fight-status-icon-won::before,
 .fight-status-icon-win-by-ko::before,
 .fight-status-icon-win-by-decision::before {
