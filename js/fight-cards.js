@@ -1,5 +1,5 @@
 /* Fight cards for /battle-calls/. Newest first.
-   Each card is one public call versus the market. The right corner is always
+   Each card is one public call versus THE MARKET. The right corner is always
    THE MARKET. Do not add a second person, an avatar URL, or a profile photo.
 
    Add a card:
@@ -16,11 +16,11 @@
 
    progress.target is the call's number, not the KO. The renderer works in
    cents. Caller's KO is one penny past that number, in the caller's
-   direction. Market's KO is the exact cent distance the other way from
+   direction. THE MARKET's KO is the exact cent distance the other way from
    entry, plus one more penny. A distance over 50% of entry is capped first,
    then the extra penny is applied. The shown percent is the exact move to
-   one decimal. It is not used to price the KO. The bar runs from Market's KO
-   on the left to Caller's KO    on the right, each half scaled to its own distance so the entry stays
+   one decimal. It is not used to price the KO. The bar runs from THE MARKET's KO
+   on the left to Caller's KO on the right, each half scaled to its own distance so the entry stays
    centered. entryLabel and markLabel are the words readers see.
    Omit progress and the bar stays hidden. Omit result details on an open card.
    result.scoredBy is the name only. The card adds "Scored by". */

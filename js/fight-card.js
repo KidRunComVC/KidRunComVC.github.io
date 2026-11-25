@@ -87,7 +87,7 @@
       callerText: money(caller) + " (" + (bearish ? "-" : "+") + callPct + ")",
       marketText: money(market) + " (" + (bearish ? "+" : "-") + usedPct + ")",
       callerEnd: "Caller's KO " + money(caller),
-      marketEnd: "Market's KO " + money(market)
+      marketEnd: "THE MARKET's KO " + money(market)
     };
   }
 
@@ -128,7 +128,7 @@
     tapeRow(dl, "Entry", data.entry, note(data.entryNote));
     if (levels) {
       tapeRow(dl, "Caller's KO", levels.callerText, "");
-      tapeRow(dl, "Market's KO", levels.marketText, "");
+      tapeRow(dl, "THE MARKET's KO", levels.marketText, "");
     }
     tapeRow(dl, "Deadline", data.deadline, "");
     tapeRow(dl, "Win rule", data.winRule, "", methodLink());
@@ -160,16 +160,16 @@
     }
     if (status === "LOSS BY KO") {
       var broke = low != null ? low : high;
-      return "Price ran from " + start + " to " + money(broke) + ", through the Market's KO at " + market + ".";
+      return "Price ran from " + start + " to " + money(broke) + ", through THE MARKET's KO at " + market + ".";
     }
     if (status === "WIN BY DECISION" && close != null) {
       return "Price closed at " + money(close) + ", past the start at " + start + ", short of the Caller's KO at " + caller + ".";
     }
     if (status === "LOSS BY DECISION" && close != null) {
-      return "Price closed at " + money(close) + ", on the market's side of the start at " + start + ".";
+      return "Price closed at " + money(close) + ", on THE MARKET's side of the start at " + start + ".";
     }
     if (status === "UNDER REVIEW") {
-      return "Price touched the Caller's KO at " + caller + " and the Market's KO at " + market + ".";
+      return "Price touched the Caller's KO at " + caller + " and THE MARKET's KO at " + market + ".";
     }
     if (status === "OPEN" || status === "EXPIRED") {
       if (high != null && low != null) {
@@ -256,7 +256,7 @@
     visual.appendChild(row);
 
     var caps = el("div", "fight-tug-caps");
-    caps.appendChild(text("span", "fight-tug-cap-market", "MARKET KO " + money(market)));
+    caps.appendChild(text("span", "fight-tug-cap-market", "THE MARKET KO " + money(market)));
     caps.appendChild(text("span", "fight-tug-cap-caller", "CALLER KO " + money(caller)));
     visual.appendChild(caps);
 
@@ -323,7 +323,7 @@
   function renderCard(card) {
     var handle = String(card.handle || "").trim();
     var article = el("article", "fight-card");
-    article.setAttribute("aria-label", (handle || "Caller") + " versus the market");
+    article.setAttribute("aria-label", (handle || "Caller") + " versus THE MARKET");
 
     var header = el("header", "fight-corners");
     var caller = el("div", "fight-side fight-side-caller");

@@ -1,4 +1,4 @@
-/* Caller-versus-the-market fight card. Mobile first.
+/* Caller-versus-THE-MARKET fight card. Mobile first.
    Status is the word, the icon shape, and the chip border — not the color. */
 
 .fight-cards {
@@ -218,7 +218,7 @@
 
 .fight-tape {
   display: grid;
-  grid-template-columns: minmax(5.6rem, 8.25rem) minmax(0, 1fr);
+  grid-template-columns: minmax(6.5rem, 11.5rem) minmax(0, 1fr);
   gap: 0.45rem 0.75rem;
   margin: 0.5rem 0 0;
 }
